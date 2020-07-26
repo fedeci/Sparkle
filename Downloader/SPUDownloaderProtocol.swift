@@ -8,6 +8,7 @@
 
 import Foundation
 
+@objc
 protocol SPUDownloaderProtocol {
     func startPersistentDownloadWithRequest(_ request: SPUURLRequest, bundleIdentifier: String, desiredFilename: String)
     
