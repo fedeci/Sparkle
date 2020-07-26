@@ -15,7 +15,7 @@
 #import "SUAppcastItem.h"
 #import <Sparkle/SUErrors.h>
 #import "SPUURLDownload.h"
-#import <Sparkle/SPUDownloadData.h>
+#import <Sparkle/Sparkle-Swift.h>
 #import "SPUResumableUpdate.h"
 
 

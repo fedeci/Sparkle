@@ -29,7 +29,6 @@
 #import <Sparkle/SPUStandardUserDriver.h>
 #import <Sparkle/SPUStandardUserDriverDelegate.h>
 #import <Sparkle/SPUUserDriverCoreComponent.h>
-#import <Sparkle/SPUDownloadData.h>
 
 #import <Sparkle/SUUpdater.h> // deprecated
 #import <Sparkle/SUUpdaterDelegate.h> // deprecated

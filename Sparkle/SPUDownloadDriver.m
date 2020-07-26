@@ -18,7 +18,7 @@
 #import <Sparkle/SUErrors.h>
 #import "SPUURLRequest.h"
 #import "SPUDownloadedUpdate.h"
-#import <Sparkle/SPUDownloadData.h>
+#import <Sparkle/Sparkle-Swift.h>
 
 
 #include "AppKitPrevention.h"

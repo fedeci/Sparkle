@@ -9,7 +9,7 @@
 #import "SPUURLDownload.h"
 #import "SPUXPCServiceInfo.h"
 #import "SPUURLRequest.h"
-#import <Sparkle/SPUDownloadData.h>
+#import <Sparkle/Sparkle-Swift.h>
 #import "SPUDownloaderProtocol.h"
 #import "SPUDownloaderDelegate.h"
 #import "SPUDownloader.h"

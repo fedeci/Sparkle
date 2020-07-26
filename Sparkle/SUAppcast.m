@@ -16,7 +16,7 @@
 #import "SULocalizations.h"
 #import "SPUXPCServiceInfo.h"
 #import "SPUURLDownload.h"
-#import <Sparkle/SPUDownloadData.h>
+#import <Sparkle/Sparkle-Swift.h>
 
 
 #include "AppKitPrevention.h"

@@ -19,7 +19,7 @@
 #import "SULog.h"
 #import "SULocalizations.h"
 #import <Sparkle/SUAppcastItem.h>
-#import <Sparkle/SPUDownloadData.h>
+#import <Sparkle/Sparkle-Swift.h>
 #import "SUApplicationInfo.h"
 #import <Sparkle/SPUUpdaterSettings.h>
 #import "SUSystemUpdateInfo.h"
