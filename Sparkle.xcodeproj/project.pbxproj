@@ -423,9 +423,12 @@
 		7A4677D724CD9BAF00D0F75F /* SPUDownloaderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4677D624CD9BAF00D0F75F /* SPUDownloaderProtocol.swift */; };
 		7A4677DD24CD9C6B00D0F75F /* SPUDownloaderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4677D624CD9BAF00D0F75F /* SPUDownloaderProtocol.swift */; };
 		7A4677DE24CD9C6B00D0F75F /* SPUDownloaderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4677D624CD9BAF00D0F75F /* SPUDownloaderProtocol.swift */; };
+		7A4677DF24CD9C6D00D0F75F /* SPUDownloaderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE8093D24CD9A8200CE076A /* SPUDownloaderDelegate.swift */; };
+		7A4677E024CD9C6E00D0F75F /* SPUDownloaderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE8093D24CD9A8200CE076A /* SPUDownloaderDelegate.swift */; };
 		7AE8093A24CD8FB600CE076A /* SPUDownloadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE8093924CD8FB600CE076A /* SPUDownloadData.swift */; };
 		7AE8093B24CD8FB600CE076A /* SPUDownloadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE8093924CD8FB600CE076A /* SPUDownloadData.swift */; };
 		7AE8093C24CD8FB600CE076A /* SPUDownloadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE8093924CD8FB600CE076A /* SPUDownloadData.swift */; };
+		7AE8093E24CD9A8200CE076A /* SPUDownloaderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE8093D24CD9A8200CE076A /* SPUDownloaderDelegate.swift */; };
 		C23E885B1BE7B24F0050BB73 /* SparkleTestCodeSignApp.enc.dmg in Resources */ = {isa = PBXBuildFile; fileRef = C23E88591BE7AF890050BB73 /* SparkleTestCodeSignApp.enc.dmg */; };
 		EA1E281722B645AE004AA304 /* libbsdiff.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA1E280F22B64522004AA304 /* libbsdiff.a */; };
 		EA1E281822B645CE004AA304 /* libbsdiff.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA1E280F22B64522004AA304 /* libbsdiff.a */; };
@@ -1311,6 +1314,7 @@
 		7A4677D624CD9BAF00D0F75F /* SPUDownloaderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SPUDownloaderProtocol.swift; path = Downloader/SPUDownloaderProtocol.swift; sourceTree = SOURCE_ROOT; };
 		7AE8093824CD8FB500CE076A /* SparkleDownloader-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SparkleDownloader-Bridging-Header.h"; sourceTree = "<group>"; };
 		7AE8093924CD8FB600CE076A /* SPUDownloadData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPUDownloadData.swift; sourceTree = "<group>"; };
+		7AE8093D24CD9A8200CE076A /* SPUDownloaderDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SPUDownloaderDelegate.swift; path = Downloader/SPUDownloaderDelegate.swift; sourceTree = SOURCE_ROOT; };
 		8DC2EF5A0486A6940098B216 /* Sparkle-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Sparkle-Info.plist"; sourceTree = "<group>"; };
 		8DC2EF5B0486A6940098B216 /* Sparkle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Sparkle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		901C63762292336900D4D658 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -2102,6 +2106,7 @@
 				729BB3D11D503826007C4276 /* org.sparkle-project.Downloader.entitlements */,
 				723B5DA21CF7AB0100365F95 /* SPUDownloader.h */,
 				723B5DA31CF7AB0100365F95 /* SPUDownloader.m */,
+				7AE8093D24CD9A8200CE076A /* SPUDownloaderDelegate.swift */,
 				723B5DA41CF7AB0100365F95 /* SPUDownloaderDelegate.h */,
 				7A4677D624CD9BAF00D0F75F /* SPUDownloaderProtocol.swift */,
 				723B5DA51CF7AB0100365F95 /* SPUDownloaderProtocol.h */,
@@ -3429,6 +3434,7 @@
 				7AE8093C24CD8FB600CE076A /* SPUDownloadData.swift in Sources */,
 				723B5DA71CF7AB0100365F95 /* main.m in Sources */,
 				723B5DA91CF7AB0100365F95 /* SPUDownloader.m in Sources */,
+				7AE8093E24CD9A8200CE076A /* SPUDownloaderDelegate.swift in Sources */,
 				7A4677D724CD9BAF00D0F75F /* SPUDownloaderProtocol.swift in Sources */,
 				721BC2101D1CDE55002BC71E /* SPULocalCacheDirectory.m in Sources */,
 				7293A1B11CEE9B9F00B957A7 /* SPUURLRequest.m in Sources */,
@@ -3480,6 +3486,7 @@
 				72A5D5DA1D6929F90009E5AC /* SPUUserDriverCoreComponent.m in Sources */,
 				72A5D5C81D6929F80009E5AC /* SPUUserInitiatedUpdateDriver.m in Sources */,
 				72A5D5AD1D6929F80009E5AC /* SPUXPCServiceInfo.m in Sources */,
+				7A4677DF24CD9C6D00D0F75F /* SPUDownloaderDelegate.swift in Sources */,
 				72A5D5B91D6929F80009E5AC /* SUAppcast.m in Sources */,
 				72A5D5D11D6929F80009E5AC /* SUAppcastDriver.m in Sources */,
 				72A5D5BA1D6929F80009E5AC /* SUAppcastItem.m in Sources */,
@@ -3567,6 +3574,7 @@
 				7A4677DD24CD9C6B00D0F75F /* SPUDownloaderProtocol.swift in Sources */,
 				721BC20F1D1CDE55002BC71E /* SPULocalCacheDirectory.m in Sources */,
 				7267E5B21D3D8AD500D1BF90 /* SPUMessageTypes.m in Sources */,
+				7A4677E024CD9C6E00D0F75F /* SPUDownloaderDelegate.swift in Sources */,
 				72B3DECF1E23479000457642 /* SPUInformationalUpdate.m in Sources */,
 				728337A71C9E6FF40085AA99 /* SPUProbeInstallStatus.m in Sources */,
 				72B767D31C9C7B9300A07552 /* SPUProbingUpdateDriver.m in Sources */,
