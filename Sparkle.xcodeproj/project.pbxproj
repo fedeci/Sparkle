@@ -1103,8 +1103,6 @@
 		723B5DA01CF7AB0100365F95 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Downloader/main.m; sourceTree = SOURCE_ROOT; };
 		723B5DA21CF7AB0100365F95 /* SPUDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPUDownloader.h; path = Downloader/SPUDownloader.h; sourceTree = SOURCE_ROOT; };
 		723B5DA31CF7AB0100365F95 /* SPUDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPUDownloader.m; path = Downloader/SPUDownloader.m; sourceTree = SOURCE_ROOT; };
-		723B5DA41CF7AB0100365F95 /* SPUDownloaderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPUDownloaderDelegate.h; path = Downloader/SPUDownloaderDelegate.h; sourceTree = SOURCE_ROOT; };
-		723B5DA51CF7AB0100365F95 /* SPUDownloaderProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPUDownloaderProtocol.h; path = Downloader/SPUDownloaderProtocol.h; sourceTree = SOURCE_ROOT; };
 		723C8A521E2D60DB00C14942 /* SUTouchBarButtonGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUTouchBarButtonGroup.h; sourceTree = "<group>"; };
 		723C8A531E2D60DB00C14942 /* SUTouchBarButtonGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUTouchBarButtonGroup.m; sourceTree = "<group>"; };
 		7246E0A11C83B685003B4E75 /* SPUStandardUpdaterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPUStandardUpdaterController.h; sourceTree = "<group>"; };
@@ -2108,9 +2106,7 @@
 				723B5DA21CF7AB0100365F95 /* SPUDownloader.h */,
 				723B5DA31CF7AB0100365F95 /* SPUDownloader.m */,
 				7AE8093D24CD9A8200CE076A /* SPUDownloaderDelegate.swift */,
-				723B5DA41CF7AB0100365F95 /* SPUDownloaderDelegate.h */,
 				7A4677D624CD9BAF00D0F75F /* SPUDownloaderProtocol.swift */,
-				723B5DA51CF7AB0100365F95 /* SPUDownloaderProtocol.h */,
 			);
 			name = Downloader;
 			path = ../UpdateDownloader;
