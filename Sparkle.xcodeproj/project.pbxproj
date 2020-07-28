@@ -140,10 +140,6 @@
 		723C8A541E2D60DB00C14942 /* SUTouchBarButtonGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = 723C8A521E2D60DB00C14942 /* SUTouchBarButtonGroup.h */; };
 		723C8A551E2D60DB00C14942 /* SUTouchBarButtonGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 723C8A531E2D60DB00C14942 /* SUTouchBarButtonGroup.m */; };
 		723C8A561E2D60DB00C14942 /* SUTouchBarButtonGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 723C8A531E2D60DB00C14942 /* SUTouchBarButtonGroup.m */; };
-		72464F701E1F31E000FB341C /* SUOperatingSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 726F2CE41BC9C33D001971A4 /* SUOperatingSystem.m */; };
-		72464F711E1F326A00FB341C /* SUOperatingSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 726F2CE41BC9C33D001971A4 /* SUOperatingSystem.m */; };
-		72464F721E1F327C00FB341C /* SUOperatingSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 726F2CE41BC9C33D001971A4 /* SUOperatingSystem.m */; };
-		72464F7C1E2097F600FB341C /* SUOperatingSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 726F2CE41BC9C33D001971A4 /* SUOperatingSystem.m */; };
 		72464F7E1E21ED8C00FB341C /* SUHost.m in Sources */ = {isa = PBXBuildFile; fileRef = 61EF67550E25B58D00F754E0 /* SUHost.m */; };
 		7246E0A31C83B685003B4E75 /* SPUStandardUpdaterController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7246E0A11C83B685003B4E75 /* SPUStandardUpdaterController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7246E0A41C83B685003B4E75 /* SPUStandardUpdaterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7246E0A21C83B685003B4E75 /* SPUStandardUpdaterController.m */; };
@@ -252,12 +248,8 @@
 		726E4A2B1C87D56200C57C6A /* SUTestWebServer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BF4F1C1BC7668B007A052A /* SUTestWebServer.m */; };
 		726E4A301C87DC1700C57C6A /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* Sparkle.framework */; };
 		726E4A371C89116000C57C6A /* SPUStandardUserDriverDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 726E4A361C89116000C57C6A /* SPUStandardUserDriverDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		726F2CE51BC9C33D001971A4 /* SUOperatingSystem.h in Headers */ = {isa = PBXBuildFile; fileRef = 726F2CE31BC9C33D001971A4 /* SUOperatingSystem.h */; };
-		726F2CE61BC9C33D001971A4 /* SUOperatingSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 726F2CE41BC9C33D001971A4 /* SUOperatingSystem.m */; };
-		726F2CE91BC9C499001971A4 /* SUOperatingSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 726F2CE41BC9C33D001971A4 /* SUOperatingSystem.m */; };
 		728337A61C9E6FF40085AA99 /* SPUProbeInstallStatus.h in Headers */ = {isa = PBXBuildFile; fileRef = 728337A41C9E6FF40085AA99 /* SPUProbeInstallStatus.h */; };
 		728337A71C9E6FF40085AA99 /* SPUProbeInstallStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 728337A51C9E6FF40085AA99 /* SPUProbeInstallStatus.m */; };
-		729051E41DC82AC0003DEA7F /* SUOperatingSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 726F2CE41BC9C33D001971A4 /* SUOperatingSystem.m */; };
 		729924941DF4A45000DBCDF5 /* SUUpdateValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 729924931DF4A45000DBCDF5 /* SUUpdateValidator.m */; };
 		72A1C2631CD6849C004CD282 /* SUUpdatePermissionPrompt.h in Headers */ = {isa = PBXBuildFile; fileRef = 612DCBAD0D488BC60015DBEA /* SUUpdatePermissionPrompt.h */; };
 		72A450531C69A68900D67EEA /* SUUpdatePermissionResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 72A450511C69A68900D67EEA /* SUUpdatePermissionResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -283,7 +275,6 @@
 		72A5D5C11D6929F80009E5AC /* SUHost.m in Sources */ = {isa = PBXBuildFile; fileRef = 61EF67550E25B58D00F754E0 /* SUHost.m */; };
 		72A5D5C21D6929F80009E5AC /* SUFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7267E5E41D3D90AA00D1BF90 /* SUFileManager.m */; };
 		72A5D5C31D6929F80009E5AC /* SPULocalCacheDirectory.m in Sources */ = {isa = PBXBuildFile; fileRef = 721BC20D1D1CDE55002BC71E /* SPULocalCacheDirectory.m */; };
-		72A5D5C61D6929F80009E5AC /* SUOperatingSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 726F2CE41BC9C33D001971A4 /* SUOperatingSystem.m */; };
 		72A5D5C81D6929F80009E5AC /* SPUUserInitiatedUpdateDriver.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B767DD1C9CDB9700A07552 /* SPUUserInitiatedUpdateDriver.m */; };
 		72A5D5C91D6929F80009E5AC /* SPUScheduledUpdateDriver.m in Sources */ = {isa = PBXBuildFile; fileRef = 7229E1B81C97CC4D00CB50D0 /* SPUScheduledUpdateDriver.m */; };
 		72A5D5CA1D6929F80009E5AC /* SPUProbingUpdateDriver.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B767D11C9C7B9300A07552 /* SPUProbingUpdateDriver.m */; };
@@ -389,6 +380,14 @@
 		7A1D50AA24D03D180006CA5F /* SULog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A16A82924CF569D00633A0B /* SULog.swift */; };
 		7A1D50AB24D03D180006CA5F /* SULog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A16A82924CF569D00633A0B /* SULog.swift */; };
 		7A1D50AC24D03D1D0006CA5F /* SULog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A16A82924CF569D00633A0B /* SULog.swift */; };
+		7A1D50AE24D0568D0006CA5F /* SUOperatingSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D50AD24D0568D0006CA5F /* SUOperatingSystem.swift */; };
+		7A1D50AF24D056A10006CA5F /* SUOperatingSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D50AD24D0568D0006CA5F /* SUOperatingSystem.swift */; };
+		7A1D50B024D056A10006CA5F /* SUOperatingSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D50AD24D0568D0006CA5F /* SUOperatingSystem.swift */; };
+		7A1D50B124D056A20006CA5F /* SUOperatingSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D50AD24D0568D0006CA5F /* SUOperatingSystem.swift */; };
+		7A1D50B224D056A30006CA5F /* SUOperatingSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D50AD24D0568D0006CA5F /* SUOperatingSystem.swift */; };
+		7A1D50B424D056A60006CA5F /* SUOperatingSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D50AD24D0568D0006CA5F /* SUOperatingSystem.swift */; };
+		7A1D50B524D056A80006CA5F /* SUOperatingSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D50AD24D0568D0006CA5F /* SUOperatingSystem.swift */; };
+		7A1D50B624D056B00006CA5F /* SUOperatingSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D50AD24D0568D0006CA5F /* SUOperatingSystem.swift */; };
 		7A31D4EA24CF6AB300BFB864 /* SUSignatures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A31D4E924CF6AB300BFB864 /* SUSignatures.swift */; };
 		7A31D4EB24CF6AC600BFB864 /* SUSignatures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A31D4E924CF6AB300BFB864 /* SUSignatures.swift */; };
 		7A31D4EC24CF6AC700BFB864 /* SUSignatures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A31D4E924CF6AB300BFB864 /* SUSignatures.swift */; };
@@ -1303,6 +1302,7 @@
 		72F9EC431D5E9ED8004AC8B6 /* SPUDownloadData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPUDownloadData.m; sourceTree = "<group>"; };
 		72F9EC471D5EA7D3004AC8B6 /* SPUUpdaterDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPUUpdaterDelegate.h; sourceTree = "<group>"; };
 		7A16A82924CF569D00633A0B /* SULog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SULog.swift; sourceTree = "<group>"; };
+		7A1D50AD24D0568D0006CA5F /* SUOperatingSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUOperatingSystem.swift; sourceTree = "<group>"; };
 		7A31D4E924CF6AB300BFB864 /* SUSignatures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUSignatures.swift; sourceTree = "<group>"; };
 		7A4677D624CD9BAF00D0F75F /* SPUDownloaderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SPUDownloaderProtocol.swift; path = Downloader/SPUDownloaderProtocol.swift; sourceTree = SOURCE_ROOT; };
 		7A4677D824CD9BFF00D0F75F /* SPUDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SPUDownloader.swift; path = Downloader/SPUDownloader.swift; sourceTree = SOURCE_ROOT; };
@@ -1891,8 +1891,9 @@
 				7A16A82924CF569D00633A0B /* SULog.swift */,
 				55C14F04136EF6DB00649790 /* SULog.h */,
 				55C14F05136EF6DB00649790 /* SULog.m */,
-				726F2CE31BC9C33D001971A4 /* SUOperatingSystem.h */,
+				7A1D50AD24D0568D0006CA5F /* SUOperatingSystem.swift */,
 				726F2CE41BC9C33D001971A4 /* SUOperatingSystem.m */,
+				726F2CE31BC9C33D001971A4 /* SUOperatingSystem.h */,
 			);
 			includeInIndex = 1;
 			name = "Other Sources";
@@ -2391,7 +2392,6 @@
 				61EF67590E25C5B400F754E0 /* SUHost.h in Headers */,
 				72162B081C82C9600013C1C5 /* SULocalizations.h in Headers */,
 				72B3DECD1E23479000457642 /* SPUInformationalUpdate.h in Headers */,
-				726F2CE51BC9C33D001971A4 /* SUOperatingSystem.h in Headers */,
 				61A225A40D1C4AC000430CCD /* SUStandardVersionComparator.h in Headers */,
 				6196CFF909C72148000DC222 /* SUStatusController.h in Headers */,
 				61A2279C0D1CEE7600430CCD /* SUSystemProfiler.h in Headers */,
@@ -3265,13 +3265,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A1D50B624D056B00006CA5F /* SUOperatingSystem.swift in Sources */,
 				7267E5761D3D895B00D1BF90 /* SUBinaryDeltaApply.m in Sources */,
 				7AF76B0324CDEBC3004C2838 /* SUConstants.swift in Sources */,
 				7267E5781D3D895B00D1BF90 /* SUBinaryDeltaCommon.m in Sources */,
 				7267E57A1D3D895B00D1BF90 /* SUBinaryDeltaCreate.m in Sources */,
 				7267E57C1D3D895B00D1BF90 /* SUBinaryDeltaTool.m in Sources */,
 				7267E5EA1D3D90AA00D1BF90 /* SUFileManager.m in Sources */,
-				726F2CE91BC9C499001971A4 /* SUOperatingSystem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3327,7 +3327,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				72464F7C1E2097F600FB341C /* SUOperatingSystem.m in Sources */,
 				7205C44C1E1304CE00E370AE /* Appcast.swift in Sources */,
 				7205C44D1E1304CE00E370AE /* ArchiveItem.swift in Sources */,
 				7205C44E1E1304CE00E370AE /* Signatures.swift in Sources */,
@@ -3343,6 +3342,7 @@
 				7205C4591E13062500E370AE /* SUPipedUnarchiver.m in Sources */,
 				7205C4561E13060D00E370AE /* SUStandardVersionComparator.m in Sources */,
 				7A1D50A624D03D150006CA5F /* SULog.swift in Sources */,
+				7A1D50B424D056A60006CA5F /* SUOperatingSystem.swift in Sources */,
 				7205C4571E13061F00E370AE /* SUUnarchiver.m in Sources */,
 				7205C4581E13061F00E370AE /* SUUnarchiverNotifier.m in Sources */,
 				7205C4501E1304CE00E370AE /* Unarchive.swift in Sources */,
@@ -3365,8 +3365,8 @@
 				720595EF1D700568000572E8 /* SUApplicationInfo.m in Sources */,
 				7267E5EB1D3D90C200D1BF90 /* SUFileManager.m in Sources */,
 				721C24611CB75C5D005440CB /* SUHost.m in Sources */,
-				729051E41DC82AC0003DEA7F /* SUOperatingSystem.m in Sources */,
 				7A1D50A524D03D140006CA5F /* SULog.swift in Sources */,
+				7A1D50B524D056A80006CA5F /* SUOperatingSystem.swift in Sources */,
 				7A4F606624CEB1E300C11A32 /* SUBundleIcon.swift in Sources */,
 				721C245C1CB7576E005440CB /* SUStatusController.m in Sources */,
 			);
@@ -3407,9 +3407,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				72464F7E1E21ED8C00FB341C /* SUHost.m in Sources */,
-				72464F711E1F326A00FB341C /* SUOperatingSystem.m in Sources */,
 				7A1D50A724D03D160006CA5F /* SULog.swift in Sources */,
 				7A4F606724CEB1EE00C11A32 /* SUBundleIcon.swift in Sources */,
+				7A1D50AF24D056A10006CA5F /* SUOperatingSystem.swift in Sources */,
 				726E07B41CAF08D6001A286B /* main.m in Sources */,
 				721D8A7B1D4963190032E472 /* SPULocalCacheDirectory.m in Sources */,
 				7267E5E11D3D901600D1BF90 /* SPUMessageTypes.m in Sources */,
@@ -3425,8 +3425,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				72464F721E1F327C00FB341C /* SUOperatingSystem.m in Sources */,
 				7A1D50AB24D03D180006CA5F /* SULog.swift in Sources */,
+				7A1D50B224D056A30006CA5F /* SUOperatingSystem.swift in Sources */,
 				7A4677EF24CDA41700D0F75F /* SPUURLRequest.swift in Sources */,
 				7AE8093C24CD8FB600CE076A /* SPUDownloadData.swift in Sources */,
 				7A4677E824CD9F0900D0F75F /* SPUDownloader.swift in Sources */,
@@ -3472,6 +3472,7 @@
 				72A5D5CA1D6929F80009E5AC /* SPUProbingUpdateDriver.m in Sources */,
 				72A5D5C91D6929F80009E5AC /* SPUScheduledUpdateDriver.m in Sources */,
 				72A5D5B61D6929F80009E5AC /* SPUSecureCoding.m in Sources */,
+				7A1D50B124D056A20006CA5F /* SUOperatingSystem.swift in Sources */,
 				72A5D5B81D6929F80009E5AC /* SPUSystemAuthorization.m in Sources */,
 				72A5D5CC1D6929F80009E5AC /* SPUUIBasedUpdateDriver.m in Sources */,
 				72A5D5D61D6929F80009E5AC /* SPUUpdatePermissionRequest.m in Sources */,
@@ -3499,7 +3500,6 @@
 				72A5D5AE1D6929F80009E5AC /* SUInstallerLauncher.m in Sources */,
 				72B3DED01E23479000457642 /* SPUInformationalUpdate.m in Sources */,
 				72A5D5B21D6929F80009E5AC /* SUInstallerStatus.m in Sources */,
-				72A5D5C61D6929F80009E5AC /* SUOperatingSystem.m in Sources */,
 				72A5D5BE1D6929F80009E5AC /* SUStandardVersionComparator.m in Sources */,
 				72A5D5BF1D6929F80009E5AC /* SUSystemProfiler.m in Sources */,
 				72A5D5D71D6929F80009E5AC /* SUUpdatePermissionResponse.m in Sources */,
@@ -3513,7 +3513,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7AF76AFC24CDEBAB004C2838 /* SUConstants.swift in Sources */,
-				72464F701E1F31E000FB341C /* SUOperatingSystem.m in Sources */,
 				7267E5A81D3D8A9900D1BF90 /* AgentConnection.m in Sources */,
 				7267E5A21D3D8A7E00D1BF90 /* AppInstaller.m in Sources */,
 				7267E59F1D3D8A6F00D1BF90 /* main.m in Sources */,
@@ -3533,6 +3532,7 @@
 				7267E5E71D3D90AA00D1BF90 /* SUFileManager.m in Sources */,
 				7267E5C21D3D8B2700D1BF90 /* SUGuidedPackageInstaller.m in Sources */,
 				7267E5D71D3D8D3F00D1BF90 /* SUHost.m in Sources */,
+				7A1D50B024D056A10006CA5F /* SUOperatingSystem.swift in Sources */,
 				7A1D50A824D03D170006CA5F /* SULog.swift in Sources */,
 				7267E5C31D3D8B2700D1BF90 /* SUInstaller.m in Sources */,
 				7267E5C41D3D8B2700D1BF90 /* SUPackageInstaller.m in Sources */,
@@ -3602,6 +3602,7 @@
 				61B5FC6F09C51F4900B25A18 /* SUAppcastItem.m in Sources */,
 				725602D61C83551C00DAA70E /* SUApplicationInfo.m in Sources */,
 				72DBA37F1D62C23E002594A8 /* SUCodeSigningVerifier.m in Sources */,
+				7A1D50AE24D0568D0006CA5F /* SUOperatingSystem.swift in Sources */,
 				7267E5E61D3D90AA00D1BF90 /* SUFileManager.m in Sources */,
 				61EF67560E25B58D00F754E0 /* SUHost.m in Sources */,
 				724BB3891D32B915005D534A /* SUInstallerConnection.m in Sources */,
@@ -3609,7 +3610,6 @@
 				724BB3AA1D3347C2005D534A /* SUInstallerStatus.m in Sources */,
 				7A1D50AA24D03D180006CA5F /* SULog.swift in Sources */,
 				7A4677E724CD9F0800D0F75F /* SPUDownloader.swift in Sources */,
-				726F2CE61BC9C33D001971A4 /* SUOperatingSystem.m in Sources */,
 				61A225A50D1C4AC000430CCD /* SUStandardVersionComparator.m in Sources */,
 				6196CFFA09C72149000DC222 /* SUStatusController.m in Sources */,
 				72B3DECA1E23472200457642 /* SPUDownloadedUpdate.m in Sources */,
