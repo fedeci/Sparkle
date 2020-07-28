@@ -33,7 +33,7 @@ private let dispatchOnce: () = {
     if hasOSLogging == true {
         if #available(OSX 10.12, *) {
             // This creates a thread-safe object
-            logger = OSLog(subsystem: SUBundleIdentifier, category: "Sparkle")
+            logger = OSLog(subsystem: SPUSparkleBundleIdentifier, category: "Sparkle")
         }
     } else {
         var options: UInt32 = UInt32(ASL_OPT_NO_DELAY)
@@ -44,7 +44,7 @@ private let dispatchOnce: () = {
         
         let displayName = FileManager.default.displayName(atPath: mainBundle.bundlePath)
         displayName.appending(" [Sparkle]").withCString {
-            client = asl_open($0, SUBundleIdentifier, options)
+            client = asl_open($0, SPUSparkleBundleIdentifier, options)
         }
         queue = DispatchQueue(label: "")
     }

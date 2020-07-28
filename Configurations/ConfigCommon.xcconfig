@@ -1,5 +1,6 @@
 // Common
 
+// Update any Bundle Identifier also in Constants.swift
 SPARKLE_BUNDLE_IDENTIFIER = org.sparkle-project.Sparkle
 SPARKLE_RELAUNCH_TOOL_NAME = Autoupdate
 SPARKLE_INSTALLER_PROGRESS_TOOL_NAME = Updater

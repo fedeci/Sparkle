@@ -18,7 +18,7 @@ class SPULocalCacheDirectory: NSObject {
         let cacheURL = try? FileManager.default.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
         assert(cacheURL != nil)
         
-        let resultPath = cacheURL?.appendingPathComponent(bundleIdentifier).appendingPathComponent(SUBundleIdentifier).path
+        let resultPath = cacheURL?.appendingPathComponent(bundleIdentifier).appendingPathComponent(SPUSparkleBundleIdentifier).path
         assert(resultPath != nil)
         
         return resultPath!
