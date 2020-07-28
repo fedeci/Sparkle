@@ -23,6 +23,7 @@ let SUImpatientUpdateCheckInterval: TimeInterval = DEBUG ? (60 * 2) : (60 * 60 *
 
 
 let SPUSparkleBundleIdentifier = "org.sparkle-project.Sparkle"
+let SPUDownloaderBundleIdentifier = "org.sparkle-project.Downloader"
 
 let SUAppcastAttributeValueMacOS = "macos"
 
