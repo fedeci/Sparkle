@@ -17,7 +17,7 @@ enum SUError: OSStatus {
     case SUInvalidUpdaterError = 0005
     case SUInvalidHostBundleIdentifierError = 0006
     case SUInvalidHostVersionError = 0007
-    
+
     // Appcast phase errors.
     case SUAppcastParseError = 1000
     case SUNoUpdateError = 1001
@@ -25,15 +25,15 @@ enum SUError: OSStatus {
     case SURunningFromDiskImageError = 1003
     case SUResumeAppcastError = 1004
     case SURunningTranslocated = 1005
-    
+
     // Download phase errors.
     case SUTemporaryDirectoryError = 2000
     case SUDownloadError = 2001
-    
+
     // Extraction phase errors.
     case SUUnarchivingError = 3000
     case SUSignatureError = 3001
-    
+
     // Installation phase errors.
     case SUFileCopyFailure = 4000
     case SUAuthenticationFailure = 4001
@@ -45,7 +45,7 @@ enum SUError: OSStatus {
     case SUInstallationCanceledError = 4007
     case SUInstallationAuthorizeLaterError = 4008
     case SUNotAllowedInteractionError = 4009
-    
+
     // API misuse errors.
     case SUIncorrectAPIUsageError = 5000
 }

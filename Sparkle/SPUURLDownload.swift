@@ -11,7 +11,7 @@ import Foundation
 @objcMembers
 class SPUTemporaryDownloaderDelegate: NSObject {
     var completionBlock: ((SPUDownloadData?, NSError?) -> Void)?
- 
+
     init(withCompletion completionBlock: @escaping (SPUDownloadData?, NSError?) -> Void) {
         self.completionBlock = completionBlock
     }
@@ -19,18 +19,18 @@ class SPUTemporaryDownloaderDelegate: NSObject {
 
 extension SPUTemporaryDownloaderDelegate: SPUDownloaderDelegate {
     func downloaderDidSetDestinationName(_ destinationName: String?, temporaryDirection: String?) {}
-    
+
     func downloaderDidReceiveExpectedContentLength(_ expectedContentLength: Int64) {}
-    
+
     func downloaderDidReceiveDataOfLength(_ length: UInt64) {}
-    
+
     func downloaderDidFinishWithTemporaryDownloadData(_ downloadData: SPUDownloadData?) {
         if let completionBlock = completionBlock {
             completionBlock(downloadData, nil)
             self.completionBlock = nil
         }
     }
-    
+
     func downloaderDidFailWithError(_ error: NSError) {
         if let completionBlock = completionBlock {
             completionBlock(nil, error)
@@ -40,16 +40,16 @@ extension SPUTemporaryDownloaderDelegate: SPUDownloaderDelegate {
 }
 
 func SPUDownloadURLWithRequest(_ request: URLRequest, completionBlock: (SPUDownloadData?, NSError?) -> Void) {
-    var downloader: SPUDownloaderProtocol? = nil
-    var connection: NSXPCConnection? = nil
+    var downloader: SPUDownloaderProtocol?
+    var connection: NSXPCConnection?
     var retrievedDownloadResult = false
-    
+
     let temporaryDownloaderDelegate = SPUTemporaryDownloaderDelegate(withCompletion: { downloadData, error in
         DispatchQueue.main.async {
             if !retrievedDownloadResult {
                 retrievedDownloadResult = true
                 connection?.invalidate()
-                
+
                 if downloadData == nil || downloadData?.data == nil {
                     completionBlock(nil, error)
                 } else {
@@ -58,8 +58,7 @@ func SPUDownloadURLWithRequest(_ request: URLRequest, completionBlock: (SPUDownl
             }
         }
     })
-    
-    
+
     if !SPUXPCServiceExists(SPUDownloaderBundleIdentifier) {
         downloader = SPUDownloader(withDelegate: temporaryDownloaderDelegate)
     } else {
@@ -67,7 +66,7 @@ func SPUDownloadURLWithRequest(_ request: URLRequest, completionBlock: (SPUDownl
         connection?.remoteObjectInterface = NSXPCInterface(with: SPUDownloaderProtocol.self)
         connection?.exportedInterface = NSXPCInterface(with: SPUDownloaderDelegate.self)
         connection?.exportedObject = temporaryDownloaderDelegate
-        
+
         connection?.interruptionHandler = {
             DispatchQueue.main.async {
                 // Retain cycle
@@ -76,23 +75,23 @@ func SPUDownloadURLWithRequest(_ request: URLRequest, completionBlock: (SPUDownl
                 }
             }
         }
-        
+
         connection?.invalidationHandler = {
             DispatchQueue.main.async {
                 if !retrievedDownloadResult {
                     completionBlock(nil, NSError(domain: SUSparkleErrorDomain, code: Int(SUError.SUDownloadError.rawValue), userInfo: nil))
                 }
-                
+
                 // Break the retain cycle
                 connection?.interruptionHandler = nil
                 connection?.invalidationHandler = nil
             }
         }
-        
+
         connection?.resume()
-        
+
         downloader = connection?.remoteObjectProxy as? SPUDownloaderProtocol
-        
+
         if let request = SPUURLRequest.URLRequestWithRequest(request) {
             downloader?.startTemporaryDownloadWithRequest(request)
         } else {

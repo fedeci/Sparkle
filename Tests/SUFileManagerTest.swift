@@ -8,10 +8,8 @@
 
 import XCTest
 
-class SUFileManagerTest: XCTestCase
-{
-    func makeTempFiles(_ testBlock: (SUFileManager, URL, URL, URL, URL, URL, URL) -> Void)
-    {
+class SUFileManagerTest: XCTestCase {
+    func makeTempFiles(_ testBlock: (SUFileManager, URL, URL, URL, URL, URL, URL) -> Void) {
         let fileManager = SUFileManager()
 
         let tempDirectoryURL = try! fileManager.makeTemporaryDirectory(withPreferredName: "Sparkle Unit Test Data", appropriateForDirectoryURL: URL(fileURLWithPath: NSHomeDirectory()))
@@ -38,9 +36,8 @@ class SUFileManagerTest: XCTestCase
         testBlock(fileManager, tempDirectoryURL, ordinaryFileURL, directoryURL, fileInDirectoryURL, validSymlinkURL, invalidSymlinkURL)
     }
 
-    func testMoveFiles()
-    {
-        makeTempFiles() { fileManager, rootURL, ordinaryFileURL, directoryURL, fileInDirectoryURL, validSymlinkURL, invalidSymlinkURL in
+    func testMoveFiles() {
+        makeTempFiles { fileManager, rootURL, ordinaryFileURL, directoryURL, fileInDirectoryURL, validSymlinkURL, invalidSymlinkURL in
             XCTAssertNil(try? fileManager.moveItem(at: ordinaryFileURL, to: directoryURL))
             XCTAssertNil(try? fileManager.moveItem(at: ordinaryFileURL, to: directoryURL.appendingPathComponent("foo").appendingPathComponent("bar")))
             XCTAssertNil(try? fileManager.moveItem(at: rootURL.appendingPathComponent("does not exist"), to: directoryURL))
@@ -70,9 +67,8 @@ class SUFileManagerTest: XCTestCase
         }
     }
 
-    func testCopyFiles()
-    {
-        makeTempFiles() { fileManager, rootURL, ordinaryFileURL, directoryURL, fileInDirectoryURL, _, invalidSymlinkURL in
+    func testCopyFiles() {
+        makeTempFiles { fileManager, rootURL, ordinaryFileURL, directoryURL, fileInDirectoryURL, _, invalidSymlinkURL in
             XCTAssertNil(try? fileManager.copyItem(at: ordinaryFileURL, to: directoryURL))
             XCTAssertNil(try? fileManager.copyItem(at: ordinaryFileURL, to: directoryURL.appendingPathComponent("foo").appendingPathComponent("bar")))
             XCTAssertNil(try? fileManager.copyItem(at: rootURL.appendingPathComponent("does not exist"), to: directoryURL))
@@ -95,9 +91,8 @@ class SUFileManagerTest: XCTestCase
         }
     }
 
-    func testRemoveFiles()
-    {
-        makeTempFiles() { fileManager, rootURL, ordinaryFileURL, directoryURL, fileInDirectoryURL, validSymlinkURL, _ in
+    func testRemoveFiles() {
+        makeTempFiles { fileManager, rootURL, ordinaryFileURL, directoryURL, fileInDirectoryURL, validSymlinkURL, _ in
             XCTAssertNil(try? fileManager.removeItem(at: rootURL.appendingPathComponent("does not exist")))
 
             try! fileManager.removeItem(at: ordinaryFileURL)
@@ -113,9 +108,8 @@ class SUFileManagerTest: XCTestCase
         }
     }
 
-    func testReleaseFilesFromQuarantine()
-    {
-        makeTempFiles() { fileManager, _, ordinaryFileURL, directoryURL, fileInDirectoryURL, validSymlinkURL, _ in
+    func testReleaseFilesFromQuarantine() {
+        makeTempFiles { fileManager, _, ordinaryFileURL, directoryURL, fileInDirectoryURL, validSymlinkURL, _ in
             try! fileManager.releaseItemFromQuarantine(atRootURL: ordinaryFileURL)
             try! fileManager.releaseItemFromQuarantine(atRootURL: directoryURL)
             try! fileManager.releaseItemFromQuarantine(atRootURL: validSymlinkURL)
@@ -147,8 +141,7 @@ class SUFileManagerTest: XCTestCase
         }
     }
 
-    func groupIDAtPath(_ path: String) -> gid_t
-    {
+    func groupIDAtPath(_ path: String) -> gid_t {
         let attributes = try! FileManager.default.attributesOfItem(atPath: path)
         let groupID = attributes[FileAttributeKey.groupOwnerAccountID] as! NSNumber
         return groupID.uint32Value
@@ -156,9 +149,8 @@ class SUFileManagerTest: XCTestCase
 
     // Only the super user can alter user IDs, so changing user IDs is not tested here
     // Instead we try to change the group ID - we just have to be a member of that group
-    func testAlterFilesGroupID()
-    {
-        makeTempFiles() { fileManager, rootURL, ordinaryFileURL, directoryURL, fileInDirectoryURL, validSymlinkURL, _ in
+    func testAlterFilesGroupID() {
+        makeTempFiles { fileManager, rootURL, ordinaryFileURL, directoryURL, fileInDirectoryURL, validSymlinkURL, _ in
             XCTAssertNil(try? fileManager.changeOwnerAndGroupOfItem(atRootURL: ordinaryFileURL, toMatch: rootURL.appendingPathComponent("does not exist")))
 
             XCTAssertNil(try? fileManager.changeOwnerAndGroupOfItem(atRootURL: rootURL.appendingPathComponent("does not exist"), toMatch: ordinaryFileURL))
@@ -202,9 +194,8 @@ class SUFileManagerTest: XCTestCase
         }
     }
 
-    func testUpdateFileModificationTime()
-    {
-        makeTempFiles() { fileManager, rootURL, ordinaryFileURL, directoryURL, _, validSymlinkURL, _ in
+    func testUpdateFileModificationTime() {
+        makeTempFiles { fileManager, rootURL, ordinaryFileURL, directoryURL, _, validSymlinkURL, _ in
             XCTAssertNil(try? fileManager.updateModificationAndAccessTimeOfItem(at: rootURL.appendingPathComponent("does not exist")))
 
             let oldOrdinaryFileAttributes = try! FileManager.default.attributesOfItem(atPath: ordinaryFileURL.path)
@@ -228,8 +219,7 @@ class SUFileManagerTest: XCTestCase
         }
     }
 
-    func testUpdateFileAccessTime()
-    {
+    func testUpdateFileAccessTime() {
         let accessTime: ((URL) -> timespec?) = { url in
             var outputStat = stat()
             let result = lstat(url.path, &outputStat)
@@ -244,7 +234,7 @@ class SUFileManagerTest: XCTestCase
             (t1.tv_sec == t2.tv_sec && t1.tv_nsec == t2.tv_nsec)
         }
 
-        makeTempFiles() { fileManager, rootURL, ordinaryFileURL, directoryURL, fileInDirectoryURL, validSymlinkURL, _ in
+        makeTempFiles { fileManager, rootURL, ordinaryFileURL, directoryURL, fileInDirectoryURL, validSymlinkURL, _ in
             XCTAssertNil(try? fileManager.updateAccessTimeOfItem(atRootURL: rootURL.appendingPathComponent("does not exist")))
 
             let oldOrdinaryFileTime = accessTime(ordinaryFileURL)!
@@ -275,9 +265,8 @@ class SUFileManagerTest: XCTestCase
         }
     }
 
-    func testFileExists()
-    {
-        makeTempFiles() { fileManager, rootURL, ordinaryFileURL, directoryURL, _, validSymlinkURL, invalidSymlinkURL in
+    func testFileExists() {
+        makeTempFiles { fileManager, rootURL, ordinaryFileURL, directoryURL, _, validSymlinkURL, invalidSymlinkURL in
             XCTAssertTrue(fileManager._itemExists(at: ordinaryFileURL))
             XCTAssertTrue(fileManager._itemExists(at: directoryURL))
             XCTAssertFalse(fileManager._itemExists(at: rootURL.appendingPathComponent("does not exist")))
@@ -303,9 +292,8 @@ class SUFileManagerTest: XCTestCase
         }
     }
 
-    func testMakeDirectory()
-    {
-        makeTempFiles() { fileManager, rootURL, ordinaryFileURL, directoryURL, _, validSymlinkURL, _ in
+    func testMakeDirectory() {
+        makeTempFiles { fileManager, rootURL, ordinaryFileURL, directoryURL, _, validSymlinkURL, _ in
             XCTAssertNil(try? fileManager.makeDirectory(at: ordinaryFileURL))
             XCTAssertNil(try? fileManager.makeDirectory(at: directoryURL))
 

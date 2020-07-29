@@ -16,11 +16,11 @@ class SUOperatingSystem: NSObject {
             var version = OperatingSystemVersion(majorVersion: 0, minorVersion: 0, patchVersion: 0)
             if !ProcessInfo.instancesRespond(to: #selector(operatingSystemVersion)) {
                 let coreServices = try? FileManager.default.url(for: .coreServiceDirectory, in: .systemDomainMask, appropriateFor: nil, create: false)
-                
+
                 if let url = coreServices?.appendingPathComponent("SystemVersion.plist"),
                    let dictionary = NSDictionary(contentsOf: url),
                    let components = (dictionary["ProductVersion"] as? String)?.components(separatedBy: ".") {
-                    
+
                     version.majorVersion = components.count > 0 ? Int(components[0]) ?? 0 : 0
                     version.majorVersion = components.count > 1 ? Int(components[1]) ?? 0 : 0
                     version.majorVersion = components.count > 2 ? Int(components[2]) ?? 0 : 0

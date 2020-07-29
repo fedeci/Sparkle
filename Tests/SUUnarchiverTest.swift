@@ -8,8 +8,7 @@
 
 import XCTest
 
-class SUUnarchiverTest: XCTestCase
-{
+class SUUnarchiverTest: XCTestCase {
     func unarchiveTestAppWithExtension(_ archiveExtension: String, password: String? = nil) {
         let appName = "SparkleTestCodeSignApp"
         let archiveResourceURL = Bundle(for: type(of: self)).url(forResource: appName, withExtension: archiveExtension)!
@@ -47,7 +46,7 @@ class SUUnarchiverTest: XCTestCase
         }, progressBlock: nil)
     }
 
-    // swiftlint:disable function_parameter_count
+    // swiftlint:disable:next function_parameter_count
     func unarchiveTestSuccessAppWithExtension(_ archiveExtension: String, appName: String, tempDirectoryURL: URL, tempArchiveURL: URL, archiveResourceURL: URL, password: String?, testExpectation: XCTestExpectation) {
 
         let fileManager = FileManager.default
@@ -62,38 +61,31 @@ class SUUnarchiverTest: XCTestCase
         }, progressBlock: nil)
     }
 
-    func testUnarchivingZip()
-    {
+    func testUnarchivingZip() {
         self.unarchiveTestAppWithExtension("zip")
     }
 
-    func testUnarchivingTarDotGz()
-    {
+    func testUnarchivingTarDotGz() {
         self.unarchiveTestAppWithExtension("tar.gz")
     }
 
-    func testUnarchivingTar()
-    {
+    func testUnarchivingTar() {
         self.unarchiveTestAppWithExtension("tar")
     }
 
-    func testUnarchivingTarDotBz2()
-    {
+    func testUnarchivingTarDotBz2() {
         self.unarchiveTestAppWithExtension("tar.bz2")
     }
 
-    func testUnarchivingTarDotXz()
-    {
+    func testUnarchivingTarDotXz() {
         self.unarchiveTestAppWithExtension("tar.xz")
     }
 
-    func testUnarchivingDmg()
-    {
+    func testUnarchivingDmg() {
         self.unarchiveTestAppWithExtension("dmg")
     }
 
-    func testUnarchivingEncryptedDmg()
-    {
+    func testUnarchivingEncryptedDmg() {
         self.unarchiveTestAppWithExtension("enc.dmg", password: "testpass")
     }
 }

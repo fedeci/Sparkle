@@ -16,10 +16,10 @@ func findKeys() -> (Data, Data) {
         kSecAttrService as String: "https://sparkle-project.org",
         kSecAttrAccount as String: "ed25519",
         kSecAttrProtocol as String: kSecAttrProtocolSSH,
-        kSecReturnData as String: kCFBooleanTrue,
-        ] as CFDictionary, &item)
+        kSecReturnData as String: kCFBooleanTrue
+    ] as CFDictionary, &item)
     if res == errSecSuccess, let encoded = item as? Data, let keys = Data(base64Encoded: encoded) {
-        return (keys[0..<64], keys[64..<(64+32)])
+        return (keys[0..<64], keys[64..<(64 + 32)])
     } else if res == errSecItemNotFound {
         print("ERROR! Signing key not found. Please run generate_keys tool first.")
     } else if res == errSecAuthFailed {

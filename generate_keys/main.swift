@@ -16,8 +16,8 @@ func findPublicKey() -> Data? {
         kSecAttrService as String: "https://sparkle-project.org",
         kSecAttrAccount as String: "ed25519",
         kSecAttrProtocol as String: kSecAttrProtocolSSH,
-        kSecReturnData as String: kCFBooleanTrue,
-        ] as CFDictionary, &item)
+        kSecReturnData as String: kCFBooleanTrue
+    ] as CFDictionary, &item)
     if res == errSecSuccess, let encoded = item as? Data, let keys = Data(base64Encoded: encoded) {
         print("OK! Read the existing key saved in the Keychain.")
         return keys[64...]
@@ -41,7 +41,7 @@ func generateKeyPair() -> Data {
     var publicEdKey = Data(count: 32)
     var privateEdKey = Data(count: 64)
 
-    if !seed.withUnsafeMutableBytes { (seed: UnsafeMutablePointer<UInt8>) in 0 == ed25519_create_seed(seed)} {
+    if !seed.withUnsafeMutableBytes { (seed: UnsafeMutablePointer<UInt8>) in 0 == ed25519_create_seed(seed) } {
         print("\nERROR: Unable to initialize random seed")
         exit(1)
     }
@@ -67,8 +67,8 @@ func generateKeyPair() -> Data {
         kSecAttrIsPermanent as String: kCFBooleanTrue,
         kSecAttrLabel as String: "Private key for signing Sparkle updates",
         kSecAttrComment as String: "Public key (SUPublicEDKey value) for this key is:\n\n\(publicEdKey.base64EncodedString())",
-        kSecAttrDescription as String: "private key",
-        ] as CFDictionary
+        kSecAttrDescription as String: "private key"
+    ] as CFDictionary
     let res = SecItemAdd(query, nil)
 
     if res == errSecSuccess {

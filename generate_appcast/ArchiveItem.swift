@@ -8,6 +8,7 @@ import Foundation
 class DeltaUpdate {
     let fromVersion: String
     let archivePath: URL
+    
     var dsaSignature: String?
     var edSignature: String?
 
@@ -34,7 +35,6 @@ class DeltaUpdate {
 
 class ArchiveItem: CustomStringConvertible {
     let version: String
-    // swiftlint:disable identifier_name
     let _shortVersion: String?
     let minimumSystemVersion: String
     let archivePath: URL
@@ -43,8 +43,8 @@ class ArchiveItem: CustomStringConvertible {
     let publicEdKey: Data?
     let supportsDSA: Bool
     let archiveFileAttributes: [FileAttributeKey: Any]
+    
     var deltas: [DeltaUpdate]
-
     var dsaSignature: String?
     var edSignature: String?
 
@@ -151,7 +151,7 @@ class ArchiveItem: CustomStringConvertible {
         return releaseNotes
     }
 
-    private func getReleaseNotesAsHTMLFragment(_ path: URL) -> String?  {
+    private func getReleaseNotesAsHTMLFragment(_ path: URL) -> String? {
         if let html = try? String(contentsOf: path) {
             if html.utf8.count < 1000 &&
                 !html.localizedCaseInsensitiveContains("<!DOCTYPE") &&

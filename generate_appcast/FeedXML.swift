@@ -41,7 +41,7 @@ func writeAppcast(appcastDestPath: URL, updates: [ArchiveItem]) throws {
         let options: XMLNode.Options = [
             XMLNode.Options.nodeLoadExternalEntitiesNever,
             XMLNode.Options.nodePreserveCDATA,
-            XMLNode.Options.nodePreserveWhitespace,
+            XMLNode.Options.nodePreserveWhitespace
         ]
         doc = try XMLDocument(contentsOf: appcastDestPath, options: options)
     } catch {
@@ -131,7 +131,7 @@ func writeAppcast(appcastDestPath: URL, updates: [ArchiveItem]) throws {
             XMLNode.attribute(withName: SUAppcastAttributeVersion, uri: sparkleNS, stringValue: update.version) as! XMLNode,
             XMLNode.attribute(withName: SUAppcastAttributeShortVersionString, uri: sparkleNS, stringValue: update.shortVersion) as! XMLNode,
             XMLNode.attribute(withName: "length", stringValue: String(update.fileSize)) as! XMLNode,
-            XMLNode.attribute(withName: "type", stringValue: update.mimeType) as! XMLNode,
+            XMLNode.attribute(withName: "type", stringValue: update.mimeType) as! XMLNode
         ]
         if let sig = update.edSignature {
             attributes.append(XMLNode.attribute(withName: SUAppcastAttributeEDSignature, uri: sparkleNS, stringValue: sig) as! XMLNode)
@@ -156,7 +156,7 @@ func writeAppcast(appcastDestPath: URL, updates: [ArchiveItem]) throws {
                     XMLNode.attribute(withName: SUAppcastAttributeShortVersionString, uri: sparkleNS, stringValue: update.shortVersion) as! XMLNode,
                     XMLNode.attribute(withName: SUAppcastAttributeDeltaFrom, uri: sparkleNS, stringValue: delta.fromVersion) as! XMLNode,
                     XMLNode.attribute(withName: "length", stringValue: String(delta.fileSize)) as! XMLNode,
-                    XMLNode.attribute(withName: "type", stringValue: "application/octet-stream") as! XMLNode,
+                    XMLNode.attribute(withName: "type", stringValue: "application/octet-stream") as! XMLNode
                 ]
                 if let sig = delta.edSignature {
                     attributes.append(XMLNode.attribute(withName: SUAppcastAttributeEDSignature, uri: sparkleNS, stringValue: sig) as! XMLNode)

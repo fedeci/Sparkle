@@ -50,7 +50,7 @@ func loadPrivateDSAKey(named keyName: String, fromKeychainAt keychainURL: URL) t
         kSecAttrLabel: keyName as CFString,
         kSecMatchLimit: kSecMatchLimitOne,
         kSecUseKeychain: keychain!,
-        kSecReturnRef: kCFBooleanTrue,
+        kSecReturnRef: kCFBooleanTrue
     ]
 
     var item: CFTypeRef?

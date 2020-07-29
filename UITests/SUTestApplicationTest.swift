@@ -8,22 +8,19 @@
 
 import XCTest
 
-class SUTestApplicationTest: XCTestCase
-{
+class SUTestApplicationTest: XCTestCase {
     var testApplicationURL: URL?
     var testApplicationBackupURL: URL?
     var tempDirectoryURL: URL?
 
-    func runningTestApplication() -> NSRunningApplication
-    {
+    func runningTestApplication() -> NSRunningApplication {
         // TODO: don't hardcode bundle ID?
         let runningApplications = NSRunningApplication.runningApplications(withBundleIdentifier: "org.sparkle-project.SparkleTestApp")
         XCTAssertEqual(runningApplications.count, 1, "More than one or zero running instances of the Test Application are found")
         return runningApplications[0]
     }
 
-    override func setUp()
-    {
+    override func setUp() {
         super.setUp()
 
         let app = XCUIApplication()
@@ -50,8 +47,7 @@ class SUTestApplicationTest: XCTestCase
         self.continueAfterFailure = false
     }
 
-    override func tearDown()
-    {
+    override func tearDown() {
         // Terminate just in case the app hasn't already quit
         XCUIApplication().terminate()
 
@@ -72,8 +68,7 @@ class SUTestApplicationTest: XCTestCase
         super.tearDown()
     }
 
-    func testRegularUpdate()
-    {
+    func testRegularUpdate() {
         let app = XCUIApplication()
         let menuBarsQuery = app.menuBars
 

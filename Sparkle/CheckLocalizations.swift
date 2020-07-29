@@ -1,3 +1,4 @@
+// swiftlint:disable:next all
 #!/usr/bin/xcrun swift
 
 import Foundation

@@ -17,17 +17,17 @@ class SPULocalCacheDirectory: NSObject {
     static func cachePathForBundleIdentifier(_ bundleIdentifier: String) -> String {
         let cacheURL = try? FileManager.default.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
         assert(cacheURL != nil)
-        
+
         let resultPath = cacheURL?.appendingPathComponent(bundleIdentifier).appendingPathComponent(SPUSparkleBundleIdentifier).path
         assert(resultPath != nil)
-        
+
         return resultPath!
     }
-    
+
     static func removeOldItemsInDirectory(_ directory: String) {
         var filePathsToRemove: [String] = []
         let fileManager = FileManager.default
-        
+
         if fileManager.fileExists(atPath: directory) {
             if let directoryEnumerator = fileManager.enumerator(atPath: directory) {
                 let currentDate = Date()
@@ -50,7 +50,7 @@ class SPULocalCacheDirectory: NSObject {
             }
         }
     }
-    
+
     static func createUniqueDirectoryInDirectory(_ directory: String) -> String? {
         let fileManager = FileManager.default
         do {
@@ -59,7 +59,7 @@ class SPULocalCacheDirectory: NSObject {
             SULog(.error, "Failed to create directory with intermediate components at \(directory) with error \(error)")
             return nil
         }
-        
+
         var buffer = [Int8](repeating: 0, count: Int(PATH_MAX))
         let templateString = URL(fileURLWithPath: directory).appendingPathComponent("XXXXXXXXX").absoluteString as NSString
         if templateString.getFileSystemRepresentation(&buffer, maxLength: MemoryLayout.size(ofValue: buffer)) {
