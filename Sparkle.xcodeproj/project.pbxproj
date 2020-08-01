@@ -364,6 +364,7 @@
 		7A1D50B524D056A80006CA5F /* SUOperatingSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D50AD24D0568D0006CA5F /* SUOperatingSystem.swift */; };
 		7A1D50B624D056B00006CA5F /* SUOperatingSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D50AD24D0568D0006CA5F /* SUOperatingSystem.swift */; };
 		7A1D5DEB24D547F6007DFECD /* StatusInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D5DEA24D547F6007DFECD /* StatusInfo.swift */; };
+		7A1D5DED24D5489E007DFECD /* SUStatusInfoProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D5DEC24D5489E007DFECD /* SUStatusInfoProtocol.swift */; };
 		7A1D5DEF24D54B68007DFECD /* SUApplicationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D5DEE24D54B68007DFECD /* SUApplicationInfo.swift */; };
 		7A1D5DF024D54B79007DFECD /* SUApplicationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D5DEE24D54B68007DFECD /* SUApplicationInfo.swift */; };
 		7A1D5DF224D54F1E007DFECD /* SPUMessageTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D5DF124D54F1E007DFECD /* SPUMessageTypes.swift */; };
@@ -1299,6 +1300,7 @@
 		7A16A82924CF569D00633A0B /* SULog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SULog.swift; sourceTree = "<group>"; };
 		7A1D50AD24D0568D0006CA5F /* SUOperatingSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUOperatingSystem.swift; sourceTree = "<group>"; };
 		7A1D5DEA24D547F6007DFECD /* StatusInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StatusInfo.swift; path = Sparkle/InstallerProgress/StatusInfo.swift; sourceTree = SOURCE_ROOT; };
+		7A1D5DEC24D5489E007DFECD /* SUStatusInfoProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUStatusInfoProtocol.swift; sourceTree = "<group>"; };
 		7A1D5DEE24D54B68007DFECD /* SUApplicationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUApplicationInfo.swift; sourceTree = "<group>"; };
 		7A1D5DF124D54F1E007DFECD /* SPUMessageTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SPUMessageTypes.swift; path = Autoupdate/SPUMessageTypes.swift; sourceTree = SOURCE_ROOT; };
 		7A31D4E924CF6AB300BFB864 /* SUSignatures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUSignatures.swift; sourceTree = "<group>"; };
@@ -2062,6 +2064,7 @@
 				724BB3961D333832005D534A /* SUInstallerStatus.h */,
 				724BB3971D333832005D534A /* SUInstallerStatus.m */,
 				724BB3951D333832005D534A /* SUInstallerStatusProtocol.h */,
+				7A1D5DEC24D5489E007DFECD /* SUStatusInfoProtocol.swift */,
 				7267E5DD1D3D8F5A00D1BF90 /* SUStatusInfoProtocol.h */,
 				724BB3A61D33461B005D534A /* SUXPCInstallerStatus.h */,
 				724BB3A71D33461B005D534A /* SUXPCInstallerStatus.m */,
@@ -3367,6 +3370,7 @@
 				7A1D5DF324D54F1E007DFECD /* SPUMessageTypes.swift in Sources */,
 				721652621D3C44A100FD13D8 /* SPUSystemAuthorization.m in Sources */,
 				7267E5EB1D3D90C200D1BF90 /* SUFileManager.m in Sources */,
+				7A1D5DED24D5489E007DFECD /* SUStatusInfoProtocol.swift in Sources */,
 				7A1D50A524D03D140006CA5F /* SULog.swift in Sources */,
 				7A1D50B524D056A80006CA5F /* SUOperatingSystem.swift in Sources */,
 				7A4F606624CEB1E300C11A32 /* SUBundleIcon.swift in Sources */,
