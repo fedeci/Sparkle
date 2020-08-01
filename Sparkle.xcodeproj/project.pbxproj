@@ -128,9 +128,6 @@
 		7229E1BE1C98EFF200CB50D0 /* SPUDownloadDriver.m in Sources */ = {isa = PBXBuildFile; fileRef = 7229E1BC1C98EFF200CB50D0 /* SPUDownloadDriver.m */; };
 		72316BD31E0DA8430039EFD9 /* SUUnarchiverNotifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 72316BD21E0DA8430039EFD9 /* SUUnarchiverNotifier.m */; };
 		72316BD41E0DB37E0039EFD9 /* SUUnarchiverNotifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 72316BD21E0DA8430039EFD9 /* SUUnarchiverNotifier.m */; };
-		723C8A541E2D60DB00C14942 /* SUTouchBarButtonGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = 723C8A521E2D60DB00C14942 /* SUTouchBarButtonGroup.h */; };
-		723C8A551E2D60DB00C14942 /* SUTouchBarButtonGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 723C8A531E2D60DB00C14942 /* SUTouchBarButtonGroup.m */; };
-		723C8A561E2D60DB00C14942 /* SUTouchBarButtonGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 723C8A531E2D60DB00C14942 /* SUTouchBarButtonGroup.m */; };
 		7246E0A31C83B685003B4E75 /* SPUStandardUpdaterController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7246E0A11C83B685003B4E75 /* SPUStandardUpdaterController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7246E0A41C83B685003B4E75 /* SPUStandardUpdaterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7246E0A21C83B685003B4E75 /* SPUStandardUpdaterController.m */; };
 		724BB3711D31D0B7005D534A /* SUInstallerConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 724BB3701D31D0B7005D534A /* SUInstallerConnection.m */; };
@@ -412,6 +409,8 @@
 		7AA2298D24CE332C001DFD0F /* SPUInstallationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA2298B24CE332C001DFD0F /* SPUInstallationType.swift */; };
 		7AA2298F24CE35B6001DFD0F /* SPULocalCacheDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA2298E24CE35B6001DFD0F /* SPULocalCacheDirectory.swift */; };
 		7AA2299024CE35B6001DFD0F /* SPULocalCacheDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA2298E24CE35B6001DFD0F /* SPULocalCacheDirectory.swift */; };
+		7AC98A2924D57A9D007FA682 /* SUTouchBarButtonGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC98A2824D57A9D007FA682 /* SUTouchBarButtonGroup.swift */; };
+		7AC98A2A24D5896A007FA682 /* SUTouchBarButtonGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC98A2824D57A9D007FA682 /* SUTouchBarButtonGroup.swift */; };
 		7AE8093A24CD8FB600CE076A /* SPUDownloadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE8093924CD8FB600CE076A /* SPUDownloadData.swift */; };
 		7AE8093B24CD8FB600CE076A /* SPUDownloadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE8093924CD8FB600CE076A /* SPUDownloadData.swift */; };
 		7AE8093C24CD8FB600CE076A /* SPUDownloadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE8093924CD8FB600CE076A /* SPUDownloadData.swift */; };
@@ -1319,6 +1318,7 @@
 		7A96DF6024D4A991007524E8 /* SUInstallerAgentInitiationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SUInstallerAgentInitiationProtocol.swift; path = Sparkle/InstallerProgress/SUInstallerAgentInitiationProtocol.swift; sourceTree = SOURCE_ROOT; };
 		7AA2298B24CE332C001DFD0F /* SPUInstallationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPUInstallationType.swift; sourceTree = "<group>"; };
 		7AA2298E24CE35B6001DFD0F /* SPULocalCacheDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPULocalCacheDirectory.swift; sourceTree = "<group>"; };
+		7AC98A2824D57A9D007FA682 /* SUTouchBarButtonGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUTouchBarButtonGroup.swift; sourceTree = "<group>"; };
 		7AE8093824CD8FB500CE076A /* SparkleDownloader-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SparkleDownloader-Bridging-Header.h"; sourceTree = "<group>"; };
 		7AE8093924CD8FB600CE076A /* SPUDownloadData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPUDownloadData.swift; sourceTree = "<group>"; };
 		7AE8093D24CD9A8200CE076A /* SPUDownloaderDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SPUDownloaderDelegate.swift; path = Downloader/SPUDownloaderDelegate.swift; sourceTree = SOURCE_ROOT; };
@@ -1854,6 +1854,7 @@
 				612DCBAD0D488BC60015DBEA /* SUUpdatePermissionPrompt.h */,
 				612DCBAE0D488BC60015DBEA /* SUUpdatePermissionPrompt.m */,
 				720767D21E2EE9C200F9A850 /* SUTouchBarForwardDeclarations.h */,
+				7AC98A2824D57A9D007FA682 /* SUTouchBarButtonGroup.swift */,
 				723C8A521E2D60DB00C14942 /* SUTouchBarButtonGroup.h */,
 				723C8A531E2D60DB00C14942 /* SUTouchBarButtonGroup.m */,
 				3772FEA813DE0B6B00F79537 /* SUVersionDisplayProtocol.h */,
@@ -2376,7 +2377,6 @@
 				7267E5B61D3D8AEE00D1BF90 /* SPUInstallationInfo.h in Headers */,
 				72B767CE1C9B924900A07552 /* SPUInstallerDriver.h in Headers */,
 				728337A61C9E6FF40085AA99 /* SPUProbeInstallStatus.h in Headers */,
-				723C8A541E2D60DB00C14942 /* SUTouchBarButtonGroup.h in Headers */,
 				72B767D21C9C7B9300A07552 /* SPUProbingUpdateDriver.h in Headers */,
 				7229E1B91C97CC4D00CB50D0 /* SPUScheduledUpdateDriver.h in Headers */,
 				726E075C1CA3A6D6001A286B /* SPUSecureCoding.h in Headers */,
@@ -3375,7 +3375,6 @@
 				72EB87EA1CB8798800C37F42 /* ShowInstallerProgress.m in Sources */,
 				7A1D5DEB24D547F6007DFECD /* StatusInfo.swift in Sources */,
 				7A1D5DF024D54B79007DFECD /* SUApplicationInfo.swift in Sources */,
-				723C8A561E2D60DB00C14942 /* SUTouchBarButtonGroup.m in Sources */,
 				7A1D5DF324D54F1E007DFECD /* SPUMessageTypes.swift in Sources */,
 				721652621D3C44A100FD13D8 /* SPUSystemAuthorization.m in Sources */,
 				7A96DF5D24D4A47D007524E8 /* SPUInstallerAgentProtocol.swift in Sources */,
@@ -3387,6 +3386,7 @@
 				7A1D50B524D056A80006CA5F /* SUOperatingSystem.swift in Sources */,
 				7A4F606624CEB1E300C11A32 /* SUBundleIcon.swift in Sources */,
 				721C245C1CB7576E005440CB /* SUStatusController.m in Sources */,
+				7AC98A2924D57A9D007FA682 /* SUTouchBarButtonGroup.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3598,7 +3598,6 @@
 				7246E0A41C83B685003B4E75 /* SPUStandardUpdaterController.m in Sources */,
 				725CB95B1C7121830064365A /* SPUStandardUserDriver.m in Sources */,
 				724BB3B01D3482BA005D534A /* SPUSystemAuthorization.m in Sources */,
-				723C8A551E2D60DB00C14942 /* SUTouchBarButtonGroup.m in Sources */,
 				72B767DB1C9CD2E400A07552 /* SPUUIBasedUpdateDriver.m in Sources */,
 				7A4677EE24CDA41500D0F75F /* SPUURLRequest.swift in Sources */,
 				72DBA37E1D60CC34002594A8 /* SPUUpdatePermissionRequest.m in Sources */,
@@ -3619,6 +3618,7 @@
 				61B5FC6F09C51F4900B25A18 /* SUAppcastItem.m in Sources */,
 				7AA2298F24CE35B6001DFD0F /* SPULocalCacheDirectory.swift in Sources */,
 				72DBA37F1D62C23E002594A8 /* SUCodeSigningVerifier.m in Sources */,
+				7AC98A2A24D5896A007FA682 /* SUTouchBarButtonGroup.swift in Sources */,
 				7A1D50AE24D0568D0006CA5F /* SUOperatingSystem.swift in Sources */,
 				7267E5E61D3D90AA00D1BF90 /* SUFileManager.m in Sources */,
 				7AF79D7024CE0CEE00672B3F /* SPUURLDownload.swift in Sources */,
