@@ -112,7 +112,6 @@
 		720E217B1D0D00BF003A311C /* SPUUpdaterCycle.h in Headers */ = {isa = PBXBuildFile; fileRef = 720E21791D0D00BF003A311C /* SPUUpdaterCycle.h */; };
 		720E217C1D0D00BF003A311C /* SPUUpdaterCycle.m in Sources */ = {isa = PBXBuildFile; fileRef = 720E217A1D0D00BF003A311C /* SPUUpdaterCycle.m */; };
 		7210C7681B9A9A1500EB90AC /* SUUnarchiverTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7210C7671B9A9A1500EB90AC /* SUUnarchiverTest.swift */; };
-		72162B081C82C9600013C1C5 /* SULocalizations.h in Headers */ = {isa = PBXBuildFile; fileRef = 72162B071C82C9600013C1C5 /* SULocalizations.h */; };
 		721652621D3C44A100FD13D8 /* SPUSystemAuthorization.m in Sources */ = {isa = PBXBuildFile; fileRef = 724BB3AC1D347EDE005D534A /* SPUSystemAuthorization.m */; };
 		721C245A1CB75756005440CB /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 525A278F133D6AE900FD8D70 /* Cocoa.framework */; };
 		721C245C1CB7576E005440CB /* SUStatusController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6196CFE409C71ADE000DC222 /* SUStatusController.m */; };
@@ -411,6 +410,8 @@
 		7AA2299024CE35B6001DFD0F /* SPULocalCacheDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA2298E24CE35B6001DFD0F /* SPULocalCacheDirectory.swift */; };
 		7AC98A2924D57A9D007FA682 /* SUTouchBarButtonGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC98A2824D57A9D007FA682 /* SUTouchBarButtonGroup.swift */; };
 		7AC98A2A24D5896A007FA682 /* SUTouchBarButtonGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC98A2824D57A9D007FA682 /* SUTouchBarButtonGroup.swift */; };
+		7AC98A2D24D5A379007FA682 /* SULocalizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC98A2C24D5A379007FA682 /* SULocalizations.swift */; };
+		7AC98A2E24D5A53D007FA682 /* SULocalizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC98A2C24D5A379007FA682 /* SULocalizations.swift */; };
 		7AE8093A24CD8FB600CE076A /* SPUDownloadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE8093924CD8FB600CE076A /* SPUDownloadData.swift */; };
 		7AE8093B24CD8FB600CE076A /* SPUDownloadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE8093924CD8FB600CE076A /* SPUDownloadData.swift */; };
 		7AE8093C24CD8FB600CE076A /* SPUDownloadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE8093924CD8FB600CE076A /* SPUDownloadData.swift */; };
@@ -1319,6 +1320,7 @@
 		7AA2298B24CE332C001DFD0F /* SPUInstallationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPUInstallationType.swift; sourceTree = "<group>"; };
 		7AA2298E24CE35B6001DFD0F /* SPULocalCacheDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPULocalCacheDirectory.swift; sourceTree = "<group>"; };
 		7AC98A2824D57A9D007FA682 /* SUTouchBarButtonGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUTouchBarButtonGroup.swift; sourceTree = "<group>"; };
+		7AC98A2C24D5A379007FA682 /* SULocalizations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SULocalizations.swift; sourceTree = "<group>"; };
 		7AE8093824CD8FB500CE076A /* SparkleDownloader-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SparkleDownloader-Bridging-Header.h"; sourceTree = "<group>"; };
 		7AE8093924CD8FB600CE076A /* SPUDownloadData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPUDownloadData.swift; sourceTree = "<group>"; };
 		7AE8093D24CD9A8200CE076A /* SPUDownloaderDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SPUDownloaderDelegate.swift; path = Downloader/SPUDownloaderDelegate.swift; sourceTree = SOURCE_ROOT; };
@@ -1901,6 +1903,7 @@
 				7A4F606824CEC5DB00C11A32 /* SUHost.swift */,
 				61EF67580E25C5B400F754E0 /* SUHost.h */,
 				61EF67550E25B58D00F754E0 /* SUHost.m */,
+				7AC98A2C24D5A379007FA682 /* SULocalizations.swift */,
 				72162B071C82C9600013C1C5 /* SULocalizations.h */,
 				7A16A82924CF569D00633A0B /* SULog.swift */,
 				55C14F04136EF6DB00649790 /* SULog.h */,
@@ -2404,7 +2407,6 @@
 				720767D31E2EE9C200F9A850 /* SUTouchBarForwardDeclarations.h in Headers */,
 				7267E5E51D3D90AA00D1BF90 /* SUFileManager.h in Headers */,
 				72B3DEC91E23472200457642 /* SPUDownloadedUpdate.h in Headers */,
-				72162B081C82C9600013C1C5 /* SULocalizations.h in Headers */,
 				72B3DECD1E23479000457642 /* SPUInformationalUpdate.h in Headers */,
 				61A225A40D1C4AC000430CCD /* SUStandardVersionComparator.h in Headers */,
 				6196CFF909C72148000DC222 /* SUStatusController.h in Headers */,
@@ -3384,6 +3386,7 @@
 				7A96DF6124D4A991007524E8 /* SUInstallerAgentInitiationProtocol.swift in Sources */,
 				7A1D50A524D03D140006CA5F /* SULog.swift in Sources */,
 				7A1D50B524D056A80006CA5F /* SUOperatingSystem.swift in Sources */,
+				7AC98A2E24D5A53D007FA682 /* SULocalizations.swift in Sources */,
 				7A4F606624CEB1E300C11A32 /* SUBundleIcon.swift in Sources */,
 				721C245C1CB7576E005440CB /* SUStatusController.m in Sources */,
 				7AC98A2924D57A9D007FA682 /* SUTouchBarButtonGroup.swift in Sources */,
@@ -3607,6 +3610,7 @@
 				726E078E1CA891E9001A286B /* SPUUpdaterSettings.m in Sources */,
 				72F9EC401D5E823F004AC8B6 /* SPUUpdaterTimer.m in Sources */,
 				725F977C1C8A896F00265BE4 /* SPUUserDriverCoreComponent.m in Sources */,
+				7AC98A2D24D5A379007FA682 /* SULocalizations.swift in Sources */,
 				72B767DF1C9CDB9700A07552 /* SPUUserInitiatedUpdateDriver.m in Sources */,
 				72F94F591CC44DE1002DEE68 /* SPUXPCServiceInfo.m in Sources */,
 				7AF76AFA24CDEB9D004C2838 /* SUConstants.swift in Sources */,
