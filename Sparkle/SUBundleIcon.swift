@@ -11,7 +11,7 @@ import Foundation
 @objcMembers
 class SUBundleIcon: NSObject {
     // Note: To obtain the most current bundle icon file from the Info dictionary, this should take a SUHost, not a NSBundle
-    static func iconURLForHost(_ host: SUHost) -> URL? {
+    static func iconURL(for host: SUHost) -> URL? {
         guard let resource = host.objectForInfoDictionaryKey("CFBundleIconFile") as? String else { return nil }
 
         var iconURL = host.bundle.url(forResource: resource, withExtension: "icns")
