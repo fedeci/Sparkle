@@ -83,3 +83,5 @@ let SURSSElementEnclosure = "enclosure"
 let SURSSElementLink = "link"
 let SURSSElementPubDate = "pubDate"
 let SURSSElementTitle = "title"
+
+let SUXMLLanguage = "xml:lang"
