@@ -11,14 +11,14 @@ import Foundation
 @objc
 protocol SPUInstallerAgentProtocol {
     func registerApplicationBundlePath(_ applicationBundlePath: String, reply: @escaping (NSNumber?) -> Void)
-    
+
     func registerInstallationInfoData(_ installationInfoData: Data)
-    
+
     func sendTerminationSignal()
-    
+
     func showProgress()
-    
+
     func stopProgress()
-    
+
     func relaunchPath(_ requestedPathToRelaunch: String)
 }

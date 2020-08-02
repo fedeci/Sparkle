@@ -16,7 +16,7 @@ class SUBundleIcon: NSObject {
 
         // The resource could already be containing the path extension, so try again a second time without the extra extension
         let iconURL = host.bundle.url(forResource: resource, withExtension: "icns") ?? host.bundle.url(forResource: resource, withExtension: nil)
-        
+
         return iconURL
     }
 }

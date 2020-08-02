@@ -6,8 +6,8 @@
 //  Copyright © 2020 Sparkle Project. All rights reserved.
 //
 
-import Foundation
 import CommonCrypto
+import Foundation
 
 extension FileHandle {
 

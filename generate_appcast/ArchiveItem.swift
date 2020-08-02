@@ -8,7 +8,7 @@ import Foundation
 class DeltaUpdate {
     let fromVersion: String
     let archivePath: URL
-    
+
     var dsaSignature: String?
     var edSignature: String?
 
@@ -43,7 +43,7 @@ class ArchiveItem: CustomStringConvertible {
     let publicEdKey: Data?
     let supportsDSA: Bool
     let archiveFileAttributes: [FileAttributeKey: Any]
-    
+
     var deltas: [DeltaUpdate]
     var dsaSignature: String?
     var edSignature: String?

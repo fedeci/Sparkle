@@ -11,6 +11,6 @@ import Foundation
 @objc
 protocol InstallerProgressDelegate: NSObjectProtocol {
     func installerProgressShouldDisplayWithHost(_ host: SUHost)
-    
+
     func installerProgressShouldStop()
 }

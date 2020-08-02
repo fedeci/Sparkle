@@ -89,7 +89,7 @@ extension SUSignatures: NSSecureCoding {
 
     func encode(with coder: NSCoder) {
         coder.encode(dsaSignatureStatus, forKey: SUDSASignatureStatusKey)
-        
+
         if dsaSignature != nil {
             coder.encode(dsaSignature, forKey: SUDSASignatureKey)
         }

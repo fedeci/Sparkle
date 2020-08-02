@@ -99,9 +99,9 @@ func edSignature(path: URL, publicEdKey: Data, privateEdKey: Data) throws -> Str
     assert(publicEdKey.count == 32)
     assert(privateEdKey.count == 64)
     let data = Array(try Data.init(contentsOf: path, options: .mappedIfSafe))
-    var output = Array<UInt8>(repeating: 0, count: 64)
+    var output = [UInt8](repeating: 0, count: 64)
     let pubkey = Array(publicEdKey), privkey = Array(privateEdKey)
-    
+
     ed25519_sign(&output, data, data.count, pubkey, privkey)
     return Data(output).base64EncodedString()
 }

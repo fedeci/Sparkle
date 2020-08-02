@@ -111,7 +111,8 @@ func writeAppcast(appcastDestPath: URL, updates: [ArchiveItem]) throws {
         let releaseNotesXpath = "\(SUAppcastElementReleaseNotesLink)"
         let results = ((try? item.nodes(forXPath: releaseNotesXpath)) as? [XMLElement])?
             .filter { !($0.attributes ?? [])
-            .contains(where: { $0.name == SUXMLLanguage }) }
+            .contains(where: { $0.name == SUXMLLanguage })
+            }
         let relElement = results?.first
         if let url = update.releaseNotesURL {
             if nil == relElement {
@@ -122,7 +123,7 @@ func writeAppcast(appcastDestPath: URL, updates: [ArchiveItem]) throws {
         }
 
         let languageNotesNodes = ((try? item.nodes(forXPath: releaseNotesXpath)) as? [XMLElement])?
-            .map { ($0, $0.attribute(forName: SUXMLLanguage)?.stringValue )}
+            .map { ($0, $0.attribute(forName: SUXMLLanguage)?.stringValue ) }
             .filter { $0.1 != nil } ?? []
         for (node, language) in languageNotesNodes.reversed()
             where !update.localizedReleaseNotes().contains(where: { $0.0 == language }) {
@@ -177,8 +178,8 @@ func writeAppcast(appcastDestPath: URL, updates: [ArchiveItem]) throws {
                     XMLNode.attribute(withName: SUAppcastAttributeShortVersionString, uri: sparkleNS, stringValue: update.shortVersion) as! XMLNode,
                     XMLNode.attribute(withName: SUAppcastAttributeDeltaFrom, uri: sparkleNS, stringValue: delta.fromVersion) as! XMLNode,
                     XMLNode.attribute(withName: "length", stringValue: String(delta.fileSize)) as! XMLNode,
-                    XMLNode.attribute(withName: "type", stringValue: "application/octet-stream") as! XMLNode,
-                    ]
+                    XMLNode.attribute(withName: "type", stringValue: "application/octet-stream") as! XMLNode
+                ]
                 if let sig = delta.edSignature {
                     attributes.append(XMLNode.attribute(withName: SUAppcastAttributeEDSignature, uri: sparkleNS, stringValue: sig) as! XMLNode)
                 }

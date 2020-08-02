@@ -24,7 +24,7 @@ class SPUURLRequest: NSObject {
     private(set) var timeoutInterval: TimeInterval
     private(set) var httpHeaderFields: [String: String]?
     private(set) var networkServiceType: URLRequest.NetworkServiceType
-    
+
     var request: URLRequest {
         var request = URLRequest(url: url, cachePolicy: cachePolicy, timeoutInterval: timeoutInterval)
         if httpHeaderFields != nil {

@@ -11,6 +11,6 @@ import Foundation
 @objc
 protocol SUStatusInfoProtocol {
     func probeStatusInfoWithReply(_ reply: @escaping (Data?) -> Void)
-    
+
     func probeStatusConnectivityWithReply(_ reply: () -> Void)
 }

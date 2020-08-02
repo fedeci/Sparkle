@@ -59,7 +59,7 @@ func loadPrivateKeys(_ privateDSAKey: SecKey?, _ privateEdString: String?) -> Pr
             kSecAttrService as String: "https://sparkle-project.org",
             kSecAttrAccount as String: "ed25519",
             kSecAttrProtocol as String: kSecAttrProtocolSSH,
-            kSecReturnData as String: kCFBooleanTrue!,
+            kSecReturnData as String: kCFBooleanTrue!
         ] as CFDictionary, &item)
         if res == errSecSuccess, let encoded = item as? Data, let data = Data(base64Encoded: encoded) {
             keys = data
@@ -125,7 +125,7 @@ func parseCommandLineOptions(argumentList: [String]) -> (privateDSAKey: SecKey?,
 
         // get the keyname and the keychain url to load the private DSA key
         let keyName: String = arguments[keyNameOptionIndex + 1]
-        let keychainUrl: URL = URL(fileURLWithPath: arguments[keychainNameOptionIndex + 1])
+        let keychainUrl = URL(fileURLWithPath: arguments[keychainNameOptionIndex + 1])
         do {
             privateDSAKey = try loadPrivateDSAKey(named: keyName, fromKeychainAt: keychainUrl)
         } catch {

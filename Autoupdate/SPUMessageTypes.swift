@@ -72,7 +72,7 @@ func SPUInstallerMessageTypeIsLegal(oldMessageType: SPUInstallerMessageType, new
 private func SPUServiceName(withTag tag: String, bundleIdentifier: String) -> String {
     let serviceName = bundleIdentifier + tag
     let length = min(serviceName.count, MAX_SERVICE_NAME_LENGTH)
-    
+
     // If the service name is too long, cut off the beginning rather than cutting off the end
     // This should lead to a more unique name
     return (serviceName as NSString).substring(from: serviceName.count - length)

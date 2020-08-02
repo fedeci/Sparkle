@@ -12,9 +12,9 @@ import Foundation
 @objc
 protocol SPUDownloaderProtocol {
     func startPersistentDownloadWithRequest(_ request: SPUURLRequest, bundleIdentifier: String, desiredFilename: String)
-    
+
     func startTemporaryDownloadWithRequest(_ request: SPUURLRequest)
-    
+
     // Cancels any ongoing download
     func cancelDownload()
 }

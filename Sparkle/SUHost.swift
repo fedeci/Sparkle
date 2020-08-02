@@ -184,7 +184,7 @@ class SUHost: NSObject {
             guard let defaultsDomain = defaultsDomain, let plr = CFPreferencesCopyAppValue(defaultName as CFString, defaultsDomain as CFString), CFGetTypeID(plr) == CFBooleanGetTypeID() else {
                 return false
             }
-            
+
             // swiftlint:disable:next force_unwrapping
             return CFBooleanGetValue((plr as! CFBoolean))
         }

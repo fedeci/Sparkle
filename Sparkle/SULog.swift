@@ -54,7 +54,7 @@ func SULog(_ level: SULogLevel, _ format: String, _ args: CVarArg...) {
     _ = dispatchOnce
 
     let logMessage = String(format: format, args)
-    
+
     // Use os_log if available (on 10.12+)
     if #available(macOS 10.12, *) {
         // We'll make all of our messages formatted as public; just don't log sensitive information.
@@ -67,7 +67,7 @@ func SULog(_ level: SULogLevel, _ format: String, _ args: CVarArg...) {
         case .error:
             os_log("%{public}@", log: logger, type: .error, logMessage)
         }
-        
+
     // Otherwise use ASL
     } else {
         // Return only if both os_log is unavailable and client is nil
@@ -75,11 +75,11 @@ func SULog(_ level: SULogLevel, _ format: String, _ args: CVarArg...) {
         // Make sure we do not async, because if we async, the log may not be delivered deterministically
         queue.sync {
             guard let message = asl_new(UInt32(ASL_TYPE_MSG)) else { return }
-            
+
             logMessage.withCString {
                 guard asl_set(message, ASL_KEY_MSG, $0) == 0 else { return }
             }
-            
+
             var levelSetResult: Int?
             switch level {
             case .default:
@@ -87,9 +87,9 @@ func SULog(_ level: SULogLevel, _ format: String, _ args: CVarArg...) {
             case .error:
                 levelSetResult = Int(asl_set(message, ASL_KEY_LEVEL, "\(ASL_LEVEL_ERR)"))
             }
-            
+
             guard levelSetResult == 0 else { return }
-            
+
             asl_send(client, message)
         }
     }

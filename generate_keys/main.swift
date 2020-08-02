@@ -17,9 +17,9 @@ func findPublicKey() -> Data? {
         kSecAttrAccount as String: "ed25519",
         kSecAttrProtocol as String: kSecAttrProtocolSSH,
 //        kSecAttrSynchronizableAny as String: kCFBooleanTrue,
-        kSecReturnData as String: kCFBooleanTrue!,
+        kSecReturnData as String: kCFBooleanTrue!
     ] as CFDictionary, &item)
-    
+
     if res == errSecSuccess, let encoded = item as? Data, let keys = Data(base64Encoded: encoded) {
 //        print("OK! Read the existing key saved in the Keychain.")
         return keys[64...]
@@ -39,9 +39,9 @@ func findPublicKey() -> Data? {
 }
 
 func generateKeyPair(makeSyncable: Bool) -> Data {
-    var seed = Array<UInt8>(repeating: 0, count: 32)
-    var publicEdKey = Array<UInt8>(repeating: 0, count: 32)
-    var privateEdKey = Array<UInt8>(repeating: 0, count: 64)
+    var seed = [UInt8](repeating: 0, count: 32)
+    var publicEdKey = [UInt8](repeating: 0, count: 32)
+    var privateEdKey = [UInt8](repeating: 0, count: 64)
 
     guard ed25519_create_seed(&seed) == 0 else {
         print("\nERROR: Unable to initialize random seed")
@@ -62,11 +62,11 @@ func generateKeyPair(makeSyncable: Bool) -> Data {
         kSecAttrIsPermanent as String: kCFBooleanTrue!,
         kSecAttrLabel as String: "Private key for signing Sparkle updates",
         kSecAttrComment as String: "Public key (SUPublicEDKey value) for this key is:\n\n\(Data(publicEdKey).base64EncodedString())",
-        kSecAttrDescription as String: "private key",
-        
+        kSecAttrDescription as String: "private key"
+
 //        kSecAttrSynchronizable as String: (makeSyncable ? kCFBooleanTrue : kCFBooleanFalse)!,
     ] as CFDictionary
-    
+
     let res = SecItemAdd(query, nil)
 
     if res == errSecSuccess {
@@ -105,13 +105,13 @@ func generateKeyPair(makeSyncable: Bool) -> Data {
 print("""
     This tool uses the macOS Keychain to store a private key for signing app updates which
     will be distributed via Sparkle. The key will be associated with your user account.
-    
+
     Note: You only need one signing key, no matter how many apps you embed Sparkle in.
-    
+
     The keychain may ask permission for this tool to access an existing key, if one
     exists, or for permission to save the new key. You must allow access in order to
     successfully proceed.
-    
+
     """)
 
 if let pubKey = findPublicKey() {
@@ -120,7 +120,7 @@ if let pubKey = findPublicKey() {
 
             <key>SUPublicEDKey</key>
             <string>\(pubKey.base64EncodedString())</string>
-            
+
         """)
 } else {
 //    print("A new signing key will be generated.")
@@ -139,17 +139,17 @@ if let pubKey = findPublicKey() {
 //    }
 //
 //    print("Generating a new signing key. This may take a moment, depending on your machine.")
-    
+
     let pubKey = generateKeyPair(makeSyncable: false)
-    
+
     print("""
         A key has been generated and saved in your keychain. Add the `SUPublicEDKey` key to
         the Info.plist of each app for which you intend to use Sparkle for distributing
         updates. It should appear like this:
-        
+
             <key>SUPublicEDKey</key>
             <string>\(pubKey.base64EncodedString())</string>
-        
+
         """)
 }
 
