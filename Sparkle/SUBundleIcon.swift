@@ -14,12 +14,9 @@ class SUBundleIcon: NSObject {
     static func iconURL(for host: SUHost) -> URL? {
         guard let resource = host.objectForInfoDictionaryKey("CFBundleIconFile") as? String else { return nil }
 
-        var iconURL = host.bundle.url(forResource: resource, withExtension: "icns")
-
-        // The resource could already be containing the path extension, so try again without the extra extension
-        if iconURL == nil {
-            iconURL = host.bundle.url(forResource: resource, withExtension: nil)
-        }
+        // The resource could already be containing the path extension, so try again a second time without the extra extension
+        let iconURL = host.bundle.url(forResource: resource, withExtension: "icns") ?? host.bundle.url(forResource: resource, withExtension: nil)
+        
         return iconURL
     }
 }

@@ -13,7 +13,7 @@ class StatusInfo: NSObject {
     var installationInfoData: Data?
     private var xpcListener: NSXPCListener?
     
-    init(with hostBundleIdentifier: String) {
+    init(hostBundleIdentifier: String) {
         super.init()
         xpcListener = NSXPCListener(machServiceName: SPUStatusInfoServiceName(for: hostBundleIdentifier))
         xpcListener?.delegate = self

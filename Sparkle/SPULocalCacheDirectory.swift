@@ -12,37 +12,46 @@ private let OLD_ITEM_DELETION_INTERVAL: TimeInterval = 86400 * 10 // 10 days
 
 @objcMembers
 class SPULocalCacheDirectory: NSObject {
+    // Returns a path to a suitable cache directory to create specifically for Sparkle
+    // Intermediate directories to this path may not exist yet
+    // This path may depend on the type of running process,
+    // such that sandboxed vs non-sandboxed processes could yield different paths
+    // The caller should create a subdirectory from the path that is returned here so they don't have files that
+    // conflict with other callers. Once that subdirectory name is decided, the caller can remove old items inside it (using removeOldItems:in)
+    // and then create a unique temporary directory inside it (using createUniqueDirectory:in)
+    //
     // It is important to note this may return a different path whether invoked from a sanboxed vs non-sandboxed process, or from a different user
     // For this reason, this method should not be a part of SUHost because its behavior depends on what kind of process it's being invoked from
-    static func cachePathForBundleIdentifier(_ bundleIdentifier: String) -> String {
+    static func cachePath(for bundleIdentifier: String) -> String? {
         let cacheURL = try? FileManager.default.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
         assert(cacheURL != nil)
 
-        let resultPath = cacheURL?.appendingPathComponent(bundleIdentifier).appendingPathComponent(SPUSparkleBundleIdentifier).path
-        assert(resultPath != nil)
-
-        return resultPath!
+        guard let resultPath = cacheURL?.appendingPathComponent(bundleIdentifier).appendingPathComponent(SPUSparkleBundleIdentifier).path else {
+            return nil
+        }
+        return resultPath
     }
 
-    static func removeOldItemsInDirectory(_ directory: String) {
+    // Remove old files inside a directory
+    // A caller may want to invoke this on a directory they own rather than remove and re-create an entire directory
+    // This does nothing if the supplied directory does not exist yet
+    static func removeOldItems(in directory: String) {
         var filePathsToRemove: [String] = []
         let fileManager = FileManager.default
 
         if fileManager.fileExists(atPath: directory) {
             if let directoryEnumerator = fileManager.enumerator(atPath: directory) {
                 let currentDate = Date()
-                for filename in directoryEnumerator {
-                    if let filename = filename as? String {
-                        let path = URL(fileURLWithPath: directory).appendingPathComponent(filename).absoluteString
-                        if let fileAttributes = try? fileManager.attributesOfItem(atPath: path) {
-                            if let lastModificationDate = fileAttributes[FileAttributeKey.modificationDate] as? Date {
-                                if currentDate.timeIntervalSince(lastModificationDate) >= OLD_ITEM_DELETION_INTERVAL {
-                                    filePathsToRemove.append(URL(fileURLWithPath: directory).appendingPathComponent(filename).absoluteString)
-                                }
+                for case let filename as String in directoryEnumerator {
+                    let path = URL(fileURLWithPath: directory).appendingPathComponent(filename).absoluteString
+                    if let fileAttributes = try? fileManager.attributesOfItem(atPath: path) {
+                        if let lastModificationDate = fileAttributes[FileAttributeKey.modificationDate] as? Date {
+                            if currentDate.timeIntervalSince(lastModificationDate) >= OLD_ITEM_DELETION_INTERVAL {
+                                filePathsToRemove.append(URL(fileURLWithPath: directory).appendingPathComponent(filename).absoluteString)
                             }
                         }
-                        directoryEnumerator.skipDescendents()
                     }
+                    directoryEnumerator.skipDescendents()
                 }
                 for filename in filePathsToRemove {
                     try? fileManager.removeItem(atPath: filename)
@@ -51,7 +60,9 @@ class SPULocalCacheDirectory: NSObject {
         }
     }
 
-    static func createUniqueDirectoryInDirectory(_ directory: String) -> String? {
+    // Create a unique directory inside a parent directory
+    // The parent directory doesn't have to exist yet. If it doesn't exist, intermediate directories will be created.
+    static func createUniqueDirectory(in directory: String) -> String? {
         let fileManager = FileManager.default
         do {
             try fileManager.createDirectory(atPath: directory, withIntermediateDirectories: true, attributes: nil)

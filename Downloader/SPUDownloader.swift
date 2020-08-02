@@ -13,25 +13,25 @@ enum SPUDownloadMode: UInt {
     case temporary
 }
 
+private let SUDownloadingReason = "Downloading update related file"
+
 // This object implements the protocol which we have defined. It provides the actual behavior for the service. It is 'exported' by the service to make it available to the process hosting the service over an NSXPCConnection.
 @objcMembers
 class SPUDownloader: NSObject {
-    static let SUDownloadingReason = "Downloading update related file"
-
     // swiftlint:disable:next weak_delegate
-    var delegate: SPUDownloaderDelegate?
+    var delegate: SPUDownloaderDelegate? // Delegate is intentionally strongly referenced
     var download: URLSessionDownloadTask?
     var downloadSession: URLSession?
-    var bundleIdentifier: String!
-    var desiredFilename: String!
+    var bundleIdentifier: String?
+    var desiredFilename: String?
     var downloadFilename: String?
-    var disabledAutomaticTermination: Bool!
-    var mode: SPUDownloadMode!
-    var receivedExpectedBytes: Bool!
+    var disabledAutomaticTermination: Bool?
+    var mode: SPUDownloadMode?
+    var receivedExpectedBytes: Bool?
 
     // Due to XPC remote object reasons, this delegate is strongly referenced
     // Invoke cleanup when done with this instance
-    init(withDelegate delegate: SPUDownloaderDelegate) {
+    init(with delegate: SPUDownloaderDelegate) {
         super.init()
         self.delegate = delegate
     }
@@ -45,8 +45,8 @@ class SPUDownloader: NSObject {
     // Don't implement deinit - make the client call cleanup, which is the only way to remove the reference cycle from the delegate anyway
 
     func enableAutomaticTermination() {
-        if disabledAutomaticTermination {
-            ProcessInfo.processInfo.enableAutomaticTermination(SPUDownloader.SUDownloadingReason)
+        if disabledAutomaticTermination == true {
+            ProcessInfo.processInfo.enableAutomaticTermination(SUDownloadingReason)
             disabledAutomaticTermination = false
         }
     }
@@ -74,17 +74,9 @@ class SPUDownloader: NSObject {
                 let response = download?.response
                 assert(response != nil)
 
-                var responseURL = response?.url
-                if responseURL == nil {
-                    responseURL = download?.currentRequest?.url
+                if let responseURL = response?.url ?? download?.currentRequest?.url ?? download?.originalRequest?.url {
+                    downloadData = SPUDownloadData(data: data, URL: responseURL, textEncodingName: response?.textEncodingName, MIMEType: response?.mimeType)
                 }
-                if responseURL == nil {
-                    responseURL = download?.originalRequest?.url
-                }
-                assert(responseURL != nil)
-
-                #warning("Fixable force unwrapping")
-                downloadData = SPUDownloadData(withData: data, URL: responseURL!, textEncodingName: response?.textEncodingName, MIMEType: response?.mimeType)
             }
 
             download = nil
@@ -119,11 +111,14 @@ extension SPUDownloader: URLSessionDownloadDelegate {
             downloadDidFinish() // file is already in a system temp dir
         } else {
             // Remove our old caches path so we don't start accumulating files in there
-            let rootPersistentDownloadCachePath = URL(fileURLWithPath: SPULocalCacheDirectory.cachePath(forBundleIdentifier: bundleIdentifier)).appendingPathComponent("PersistentDownloads").absoluteString
+            guard let bundleIdentifier = bundleIdentifier,
+                  let cachePath = SPULocalCacheDirectory.cachePath(for: bundleIdentifier)
+            else { return }
 
-            SPULocalCacheDirectory.removeOldItems(inDirectory: rootPersistentDownloadCachePath)
+            let rootPersistentDownloadCachePath = URL(fileURLWithPath: cachePath).appendingPathComponent("PersistentDownloads").absoluteString
+            SPULocalCacheDirectory.removeOldItems(in: rootPersistentDownloadCachePath)
 
-            let tempDir = SPULocalCacheDirectory.createUniqueDirectory(inDirectory: rootPersistentDownloadCachePath)
+            let tempDir = SPULocalCacheDirectory.createUniqueDirectory(in: rootPersistentDownloadCachePath)
             if tempDir == nil {
                 // Okay, something's really broken with this user's file structure.
                 download?.cancel()
@@ -136,6 +131,7 @@ extension SPUDownloader: URLSessionDownloadDelegate {
                 delegate?.downloaderDidFailWithError(error)
             } else {
                 guard let downloadFileName = desiredFilename else { return }
+                // swiftlint:disable:next force_unwrapping
                 let downloadFileNameDirectory = URL(fileURLWithPath: tempDir!).appendingPathComponent(downloadFileName)
 
                 do {
@@ -148,15 +144,16 @@ extension SPUDownloader: URLSessionDownloadDelegate {
                     return
                 }
 
-                var name = download?.response?.suggestedFilename
-                if name == nil {
-                    name = location.lastPathComponent // This likely contains nothing useful to identify the file (e.g. CFNetworkDownload_87LVIz.tmp)
-                }
-                let toPath = downloadFileNameDirectory.appendingPathComponent(name!).absoluteString
+                // location.lastPathComponent likely contains nothing useful to identify the file (e.g. CFNetworkDownload_87LVIz.tmp)
+                let name = download?.response?.suggestedFilename ?? location.lastPathComponent
+                let toPath = downloadFileNameDirectory.appendingPathComponent(name).absoluteString
                 let fromPath = location.path // suppress moveItemAtPath: non-null warning
 
                 do {
                     try FileManager.default.moveItem(atPath: fromPath, toPath: toPath)
+                    downloadFilename = toPath
+                    delegate?.downloaderDidSetDestinationName(name, temporaryDirection: downloadFileNameDirectory.absoluteString)
+                    downloadDidFinish()
                 } catch let error as NSError {
                     delegate?.downloaderDidFailWithError(error)
                     return
@@ -166,7 +163,7 @@ extension SPUDownloader: URLSessionDownloadDelegate {
     }
 
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
-        if mode == .persistent && totalBytesExpectedToWrite > 0 && !receivedExpectedBytes {
+        if mode == .persistent && totalBytesExpectedToWrite > 0 && receivedExpectedBytes == false {
             receivedExpectedBytes = true
             delegate?.downloaderDidReceiveExpectedContentLength(totalBytesExpectedToWrite)
         }
@@ -178,8 +175,7 @@ extension SPUDownloader: URLSessionDownloadDelegate {
 
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
         download = nil
-        #warning("Fixable force unwrapping")
-        delegate?.downloaderDidFailWithError(error! as NSError)
+        delegate?.downloaderDidFailWithError((error as NSError?) ?? NSError())
         cleanup()
     }
 }
@@ -188,7 +184,8 @@ extension SPUDownloader: SPUDownloaderProtocol {
     func startPersistentDownloadWithRequest(_ request: SPUURLRequest, bundleIdentifier: String, desiredFilename: String) {
         DispatchQueue.main.async {
             if self.download == nil && self.delegate != nil {
-                ProcessInfo.processInfo.disableAutomaticTermination(SPUDownloader.SUDownloadingReason)
+                // Prevent service from automatically terminating while downloading the update asynchronously without any reply blocks
+                ProcessInfo.processInfo.disableAutomaticTermination(SUDownloadingReason)
                 self.disabledAutomaticTermination = true
 
                 self.mode = .persistent
@@ -203,7 +200,8 @@ extension SPUDownloader: SPUDownloaderProtocol {
     func startTemporaryDownloadWithRequest(_ request: SPUURLRequest) {
         DispatchQueue.main.async {
             if self.download == nil && self.delegate != nil {
-                ProcessInfo.processInfo.disableAutomaticTermination(SPUDownloader.SUDownloadingReason)
+                // Prevent service from automatically terminating while downloading the update asynchronously without any reply blocks
+                ProcessInfo.processInfo.disableAutomaticTermination(SUDownloadingReason)
                 self.disabledAutomaticTermination = true
 
                 self.mode = .temporary

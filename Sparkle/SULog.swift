@@ -20,20 +20,15 @@ enum SULogLevel: UInt8 {
 
 // MARK: - One-time initialized variables
 private var client: aslclient?
-private var hasOSLogging: Bool?
 private var queue: DispatchQueue?
 private var logger: OSLog?
 
 private let dispatchOnce: () = {
     let mainBundle = Bundle.main
 
-    hasOSLogging = SUOperatingSystem.isOperatingSystemAtLeastVersion(OperatingSystemVersion(majorVersion: 10, minorVersion: 12, patchVersion: 0))
-
-    if hasOSLogging == true {
-        if #available(OSX 10.12, *) {
-            // This creates a thread-safe object
-            logger = OSLog(subsystem: SPUSparkleBundleIdentifier, category: "Sparkle")
-        }
+    if #available(macOS 10.12, *) {
+        // This creates a thread-safe object
+        logger = OSLog(subsystem: SPUSparkleBundleIdentifier, category: "Sparkle")
     } else {
         var options = UInt32(ASL_OPT_NO_DELAY)
         // Act the same way os_log() does; don't log to stderr if a terminal device is attached
@@ -45,7 +40,6 @@ private let dispatchOnce: () = {
         displayName.appending(" [Sparkle]").withCString {
             client = asl_open($0, SPUSparkleBundleIdentifier, options)
         }
-        queue = DispatchQueue(label: "")
     }
     queue = DispatchQueue(label: "")
 }()
@@ -59,48 +53,44 @@ func SULog(_ level: SULogLevel, _ format: String, _ args: CVarArg...) {
     // dispatch once
     _ = dispatchOnce
 
-    // Return only if both hasOSLogging is false and client is nil
-    guard hasOSLogging != nil, !(!hasOSLogging! && client == nil) else { return }
-
-    let logMessage = String(format: format, locale: nil, args)
-
+    let logMessage = String(format: format, args)
+    
     // Use os_log if available (on 10.12+)
-    if hasOSLogging! {
+    if #available(macOS 10.12, *) {
         // We'll make all of our messages formatted as public; just don't log sensitive information.
         // Note we don't take advantage of info like the source line number because we wrap this macro inside our own function
         // And we don't really leverage of os_log's deferred formatting processing because we format the string before passing it in
         guard let logger = logger else { return }
-        if #available(macOS 10.12, *) {
-            switch level {
-            case .default:
-                os_log("%{public}@", log: logger, type: .default, logMessage)
-            case .error:
-                os_log("%{public}@", log: logger, type: .error, logMessage)
-            }
-        }
-        return
-    }
-
-    // Otherwise use ASL
-    // Make sure we do not async, because if we async, the log may not be delivered deterministically
-    guard queue != nil else { return }
-    queue!.sync {
-        guard let message = asl_new(UInt32(ASL_TYPE_MSG)) else { return }
-
-        logMessage.withCString {
-            guard asl_set(message, ASL_KEY_MSG, $0) == 0 else { return }
-        }
-
-        var levelSetResult: Int?
         switch level {
         case .default:
-            levelSetResult = Int(asl_set(message, ASL_KEY_LEVEL, "\(ASL_LEVEL_WARNING)"))
+            os_log("%{public}@", log: logger, type: .default, logMessage)
         case .error:
-            levelSetResult = Int(asl_set(message, ASL_KEY_LEVEL, "\(ASL_LEVEL_ERR)"))
+            os_log("%{public}@", log: logger, type: .error, logMessage)
         }
-
-        guard levelSetResult == 0 else { return }
-
-        asl_send(client, message)
+        
+    // Otherwise use ASL
+    } else {
+        // Return only if both os_log is unavailable and client is nil
+        guard let client = client, let queue = queue else { return }
+        // Make sure we do not async, because if we async, the log may not be delivered deterministically
+        queue.sync {
+            guard let message = asl_new(UInt32(ASL_TYPE_MSG)) else { return }
+            
+            logMessage.withCString {
+                guard asl_set(message, ASL_KEY_MSG, $0) == 0 else { return }
+            }
+            
+            var levelSetResult: Int?
+            switch level {
+            case .default:
+                levelSetResult = Int(asl_set(message, ASL_KEY_LEVEL, "\(ASL_LEVEL_WARNING)"))
+            case .error:
+                levelSetResult = Int(asl_set(message, ASL_KEY_LEVEL, "\(ASL_LEVEL_ERR)"))
+            }
+            
+            guard levelSetResult == 0 else { return }
+            
+            asl_send(client, message)
+        }
     }
 }

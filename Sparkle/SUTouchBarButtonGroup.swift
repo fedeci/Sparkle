@@ -8,7 +8,7 @@
 
 import Cocoa
 
-@available(OSX 10.12, *)
+@available(macOS 10.12, *)
 class SUTouchBarButtonGroup: NSViewController {
     private(set) var buttons: [NSButton]?
     

@@ -109,7 +109,7 @@ class SUHost: NSObject {
     }
 
     var publicKeys: SUPublicKeys? {
-        return SUPublicKeys(withDsa: publicDSAKey, ed: publicEDKey)
+        return SUPublicKeys(dsa: publicDSAKey, ed: publicEDKey)
     }
 
     var publicDSAKeyFileKey: String? {
@@ -124,10 +124,7 @@ class SUHost: NSObject {
             SULog(.error, "Error: the bundle being updated at \(bundle) has no \(String(describing: kCFBundleIdentifierKey))! This will cause preference read/write to not work properly.")
         }
 
-        defaultsDomain = objectForInfoDictionaryKey(SUDefaultsDomainKey) as? String
-        if defaultsDomain == nil {
-            defaultsDomain = bundle.bundleIdentifier
-        }
+        defaultsDomain = objectForInfoDictionaryKey(SUDefaultsDomainKey) as? String ?? bundle.bundleIdentifier
 
         let mainBundleIdentifier = Bundle.main.bundleIdentifier
         usesStandardUserDefaults = defaultsDomain == nil || defaultsDomain == mainBundleIdentifier
@@ -187,7 +184,8 @@ class SUHost: NSObject {
             guard let defaultsDomain = defaultsDomain, let plr = CFPreferencesCopyAppValue(defaultName as CFString, defaultsDomain as CFString), CFGetTypeID(plr) == CFBooleanGetTypeID() else {
                 return false
             }
-
+            
+            // swiftlint:disable:next force_unwrapping
             return CFBooleanGetValue((plr as! CFBoolean))
         }
     }
@@ -205,16 +203,14 @@ class SUHost: NSObject {
     func objectForKey(_ key: String) -> Any? {
         if let object = objectForUserDefaultsKey(key) {
             return object
-        } else {
-            return objectForInfoDictionaryKey(key)
         }
+        return objectForInfoDictionaryKey(key)
     }
 
     func boolForKey(_ key: String) -> Bool? {
         if let _ = objectForUserDefaultsKey(key) {
             return boolForUserDefaultsKey(key)
-        } else {
-            return boolForInfoDictionaryKey(key)
         }
+        return boolForInfoDictionaryKey(key)
     }
 }

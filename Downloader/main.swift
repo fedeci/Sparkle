@@ -20,7 +20,7 @@ class ServiceDelegate: NSObject, NSXPCListenerDelegate {
         newConnection.remoteObjectInterface = NSXPCInterface(with: SPUDownloaderDelegate.self)
 
         // Next, set the object that the connection exports. All messages sent on the connection to this service will be sent to the exported object to handle. The connection retains the exported object.
-        let exportedObject = SPUDownloader(withDelegate: newConnection.remoteObjectProxy as! SPUDownloaderDelegate)
+        let exportedObject = SPUDownloader(with: newConnection.remoteObjectProxy as! SPUDownloaderDelegate)
         newConnection.exportedObject = exportedObject
 
         // Resuming the connection allows the system to deliver more incoming messages.

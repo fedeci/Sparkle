@@ -20,6 +20,6 @@ let SPUInstallationTypesArray = [
     SPUInstallationTypeInteractivePackage
 ]
 
-func SPUValidInstallationType(_ x: String) -> Bool {
-    return SPUInstallationTypesArray.contains(x)
+func SPUValidInstallationType(_ item: String) -> Bool {
+    return SPUInstallationTypesArray.contains(item)
 }

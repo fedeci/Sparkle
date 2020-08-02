@@ -20,16 +20,15 @@ enum SUSigningInputStatus: UInt8 {
     static let lastValidCase = SUSigningInputStatus.present.rawValue
 }
 
+private let SUDSASignatureKey = "SUDSASignature"
+private let SUDSASignatureStatusKey = "SUDSASignatureStatus"
+private let SUEDSignatureKey = "SUEDSignature"
+private let SUEDSignatureStatusKey = "SUEDSignatureStatus"
+
 // MARK: -
 @objcMembers
 class SUSignatures: NSObject {
-    static let DSASignatureKey = "SUDSASignature"
-    static let DSASignatureStatusKey = "SUDSASignatureStatus"
-    static let EDSignatureKey = "SUEDSignature"
-    static let EDSignatureStatusKey = "SUEDSignatureStatus"
-
     private var _ed25519Signature = [UInt8](repeating: 0, count: 64)
-
     private(set) var dsaSignature: Data?
     private(set) var dsaSignatureStatus: SUSigningInputStatus?
     private(set) var ed25519SignatureStatus: SUSigningInputStatus?
@@ -41,7 +40,7 @@ class SUSignatures: NSObject {
         return nil
     }
 
-    init(withDsa maybeDsa: String?, ed maybeEd25519: String?) {
+    init(dsa maybeDsa: String?, ed maybeEd25519: String?) {
         super.init()
         dsaSignatureStatus = decode(maybeDsa, &dsaSignature)
         if dsaSignatureStatus == .invalid {
@@ -68,15 +67,15 @@ class SUSignatures: NSObject {
 
     required init?(coder: NSCoder) {
         super.init()
-        guard decodeStatus(decoder: coder, key: SUSignatures.DSASignatureStatusKey, outStatus: &dsaSignatureStatus) else { return nil }
+        guard decodeStatus(decoder: coder, key: SUDSASignatureStatusKey, outStatus: &dsaSignatureStatus) else { return nil }
 
-        if let dsaSignature = coder.decodeObject(forKey: SUSignatures.DSASignatureKey) as? Data {
+        if let dsaSignature = coder.decodeObject(forKey: SUDSASignatureKey) as? Data {
             self.dsaSignature = dsaSignature
         }
 
-        guard decodeStatus(decoder: coder, key: SUSignatures.EDSignatureStatusKey, outStatus: &ed25519SignatureStatus) else { return nil }
+        guard decodeStatus(decoder: coder, key: SUEDSignatureStatusKey, outStatus: &ed25519SignatureStatus) else { return nil }
 
-        if let edSignature = coder.decodeObject(forKey: SUSignatures.EDSignatureKey) as? Data {
+        if let edSignature = coder.decodeObject(forKey: SUEDSignatureKey) as? Data {
             guard edSignature.count == MemoryLayout.size(ofValue: _ed25519Signature) else { return nil }
             edSignature.copyBytes(to: &_ed25519Signature, count: MemoryLayout.size(ofValue: _ed25519Signature))
         }
@@ -89,15 +88,16 @@ extension SUSignatures: NSSecureCoding {
     }
 
     func encode(with coder: NSCoder) {
-        coder.encode(dsaSignatureStatus, forKey: SUSignatures.DSASignatureStatusKey)
+        coder.encode(dsaSignatureStatus, forKey: SUDSASignatureStatusKey)
+        
         if dsaSignature != nil {
-            coder.encode(dsaSignature!, forKey: SUSignatures.DSASignatureKey)
+            coder.encode(dsaSignature, forKey: SUDSASignatureKey)
         }
 
-        coder.encode(ed25519SignatureStatus, forKey: SUSignatures.EDSignatureStatusKey)
+        coder.encode(ed25519SignatureStatus, forKey: SUEDSignatureStatusKey)
         if ed25519Signature != nil {
             let edSignature = Data(bytesNoCopy: &_ed25519Signature, count: MemoryLayout.size(ofValue: _ed25519Signature), deallocator: .free)
-            coder.encode(edSignature, forKey: SUSignatures.EDSignatureKey)
+            coder.encode(edSignature, forKey: SUEDSignatureKey)
         }
     }
 }
@@ -106,10 +106,11 @@ extension SUSignatures: NSSecureCoding {
 @objcMembers
 class SUPublicKeys: NSObject {
     private var _ed25519PubKey = [UInt8](repeating: 0, count: 32)
-
     private(set) var dsaPubKey: String?
 
     var dsaPubKeyStatus: SUSigningInputStatus {
+        // We don't currently do any prevalidation of DSA public keys,
+        // so this is always going to be "present" or "absent".
         return dsaPubKey != nil ? .present : .absent
     }
 
@@ -122,12 +123,12 @@ class SUPublicKeys: NSObject {
 
     private(set) var ed25519PubKeyStatus: SUSigningInputStatus?
 
-    /// Returns YES if either key is present (though they may be invalid).
+    /// Returns true if either key is present (though they may be invalid).
     var hasAnyKeys: Bool {
         return dsaPubKeyStatus != .absent || ed25519PubKeyStatus != .absent
     }
 
-    init(withDsa maybeDsa: String?, ed maybeEd25519: String?) {
+    init(dsa maybeDsa: String?, ed maybeEd25519: String?) {
         super.init()
         dsaPubKey = maybeDsa
         if let maybeEd25519 = maybeEd25519 {

@@ -12,7 +12,7 @@ import Foundation
 class SUOperatingSystem: NSObject {
     /// May return { 0, 0, 0 } if error occurred
     static func operatingSystemVersion() -> OperatingSystemVersion {
-        guard #available(OSX 10.10, *) else {
+        guard #available(macOS 10.10, *) else {
             var version = OperatingSystemVersion(majorVersion: 0, minorVersion: 0, patchVersion: 0)
             if !ProcessInfo.instancesRespond(to: #selector(operatingSystemVersion)) {
                 let coreServices = try? FileManager.default.url(for: .coreServiceDirectory, in: .systemDomainMask, appropriateFor: nil, create: false)
@@ -32,6 +32,7 @@ class SUOperatingSystem: NSObject {
         return ProcessInfo.processInfo.operatingSystemVersion
     }
 
+    @available(*, deprecated, message: "Use Swift's native availability checking")
     static func isOperatingSystemAtLeastVersion(_ version: OperatingSystemVersion) -> Bool {
         let systemVersion = operatingSystemVersion()
         if systemVersion.majorVersion == version.majorVersion {
@@ -45,6 +46,7 @@ class SUOperatingSystem: NSObject {
 
     static func systemVersionString() -> String {
         let version = operatingSystemVersion()
+        #warning("Check string formatting")
         return String(format: "%ld.%ld.%ld", version.majorVersion, version.minorVersion, version.patchVersion)
     }
 }

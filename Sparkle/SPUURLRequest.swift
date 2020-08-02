@@ -6,22 +6,25 @@
 //  Copyright © 2020 Sparkle Project. All rights reserved.
 //
 
-import AppKit
 import Foundation
 
+private let SPUURLRequestURLKey = "SPUURLRequestURL"
+private let SPUURLRequestCachePolicyKey = "SPUURLRequestCachePolicy"
+private let SPUURLRequestTimeoutIntervalKey = "SPUURLRequestTimeoutInterval"
+private let SPUURLRequestHttpHeaderFieldsKey = "SPUURLRequestHttpHeaderFields"
+private let SPUURLRequestNetworkServiceTypeKey = "SPUURLRequestNetworkServiceType"
+
+// A class that wraps NSURLRequest and implements NSSecureCoding
+// This class exists because NSURLRequest did not support NSSecureCoding in macOS 10.8
+// I have not verified if NSURLRequest in 10.9 implements NSSecureCoding or not
 @objcMembers
 class SPUURLRequest: NSObject {
-    static let URLKey = "SPUURLRequestURL"
-    static let CachePolicyKey = "SPUURLRequestCachePolicy"
-    static let TimeoutIntervalKey = "SPUURLRequestTimeoutInterval"
-    static let HttpHeaderFieldsKey = "SPUURLRequestHttpHeaderFields"
-    static let NetworkServiceTypeKey = "SPUURLRequestNetworkServiceType"
-
     private(set) var url: URL
     private(set) var cachePolicy: URLRequest.CachePolicy
     private(set) var timeoutInterval: TimeInterval
     private(set) var httpHeaderFields: [String: String]?
     private(set) var networkServiceType: URLRequest.NetworkServiceType
+    
     var request: URLRequest {
         var request = URLRequest(url: url, cachePolicy: cachePolicy, timeoutInterval: timeoutInterval)
         if httpHeaderFields != nil {
@@ -31,7 +34,7 @@ class SPUURLRequest: NSObject {
         return request
     }
 
-    required init(withURL url: URL, cachePolicy: URLRequest.CachePolicy, timeoutInterval: TimeInterval, httpHeaderFields: [String: String], networkServiceType: URLRequest.NetworkServiceType) {
+    required init(url: URL, cachePolicy: URLRequest.CachePolicy, timeoutInterval: TimeInterval, httpHeaderFields: [String: String], networkServiceType: URLRequest.NetworkServiceType) {
         self.url = url
         self.cachePolicy = cachePolicy
         self.timeoutInterval = timeoutInterval
@@ -40,20 +43,27 @@ class SPUURLRequest: NSObject {
         super.init()
     }
 
+    // Creates a new URL request
+    // Only these properties are currently tracked:
+    // * URL
+    // * Cache policy
+    // * Timeout interval
+    // * HTTP header fields
+    // * networkServiceType
     class func URLRequestWithRequest(_ request: URLRequest) -> Self? {
         guard let url = request.url, let httpHeaderFields = request.allHTTPHeaderFields else { return nil }
-        return self.init(withURL: url, cachePolicy: request.cachePolicy, timeoutInterval: request.timeoutInterval, httpHeaderFields: httpHeaderFields, networkServiceType: request.networkServiceType)
+        return self.init(url: url, cachePolicy: request.cachePolicy, timeoutInterval: request.timeoutInterval, httpHeaderFields: httpHeaderFields, networkServiceType: request.networkServiceType)
     }
 
     required convenience init?(coder: NSCoder) {
-        guard let url = coder.decodeObject(forKey: SPUURLRequest.URLKey) as? URL,
-              let cachePolicy = coder.decodeObject(forKey: SPUURLRequest.CachePolicyKey) as? URLRequest.CachePolicy,
-              let timeoutInterval = coder.decodeObject(forKey: SPUURLRequest.TimeoutIntervalKey) as? TimeInterval,
-              let httpHeaderFields = coder.decodeObject(forKey: SPUURLRequest.HttpHeaderFieldsKey) as? [String: String],
-              let networkServiceType = coder.decodeObject(forKey: SPUURLRequest.NetworkServiceTypeKey) as? URLRequest.NetworkServiceType
+        guard let url = coder.decodeObject(forKey: SPUURLRequestURLKey) as? URL,
+              let cachePolicy = coder.decodeObject(forKey: SPUURLRequestCachePolicyKey) as? URLRequest.CachePolicy,
+              let timeoutInterval = coder.decodeObject(forKey: SPUURLRequestTimeoutIntervalKey) as? TimeInterval,
+              let httpHeaderFields = coder.decodeObject(forKey: SPUURLRequestHttpHeaderFieldsKey) as? [String: String],
+              let networkServiceType = coder.decodeObject(forKey: SPUURLRequestNetworkServiceTypeKey) as? URLRequest.NetworkServiceType
         else { return nil }
 
-        self.init(withURL: url, cachePolicy: cachePolicy, timeoutInterval: timeoutInterval, httpHeaderFields: httpHeaderFields, networkServiceType: networkServiceType)
+        self.init(url: url, cachePolicy: cachePolicy, timeoutInterval: timeoutInterval, httpHeaderFields: httpHeaderFields, networkServiceType: networkServiceType)
     }
 }
 
@@ -63,13 +73,13 @@ extension SPUURLRequest: NSSecureCoding {
     }
 
     func encode(with coder: NSCoder) {
-        coder.encode(url, forKey: SPUURLRequest.URLKey)
-        coder.encode(cachePolicy.rawValue, forKey: SPUURLRequest.CachePolicyKey)
-        coder.encode(timeoutInterval, forKey: SPUURLRequest.TimeoutIntervalKey)
-        coder.encode(networkServiceType.rawValue, forKey: SPUURLRequest.NetworkServiceTypeKey)
+        coder.encode(url, forKey: SPUURLRequestURLKey)
+        coder.encode(cachePolicy.rawValue, forKey: SPUURLRequestCachePolicyKey)
+        coder.encode(timeoutInterval, forKey: SPUURLRequestTimeoutIntervalKey)
+        coder.encode(networkServiceType.rawValue, forKey: SPUURLRequestNetworkServiceTypeKey)
 
         if httpHeaderFields != nil {
-            coder.encode(httpHeaderFields, forKey: SPUURLRequest.HttpHeaderFieldsKey)
+            coder.encode(httpHeaderFields, forKey: SPUURLRequestHttpHeaderFieldsKey)
         }
     }
 }

@@ -12,18 +12,12 @@ import Foundation
 class SPUTemporaryDownloaderDelegate: NSObject {
     var completionBlock: ((SPUDownloadData?, NSError?) -> Void)?
 
-    init(withCompletion completionBlock: @escaping (SPUDownloadData?, NSError?) -> Void) {
+    init(completionBlock: @escaping (SPUDownloadData?, NSError?) -> Void) {
         self.completionBlock = completionBlock
     }
 }
 
 extension SPUTemporaryDownloaderDelegate: SPUDownloaderDelegate {
-    func downloaderDidSetDestinationName(_ destinationName: String?, temporaryDirection: String?) {}
-
-    func downloaderDidReceiveExpectedContentLength(_ expectedContentLength: Int64) {}
-
-    func downloaderDidReceiveDataOfLength(_ length: UInt64) {}
-
     func downloaderDidFinishWithTemporaryDownloadData(_ downloadData: SPUDownloadData?) {
         if let completionBlock = completionBlock {
             completionBlock(downloadData, nil)
@@ -39,12 +33,12 @@ extension SPUTemporaryDownloaderDelegate: SPUDownloaderDelegate {
     }
 }
 
-func SPUDownloadURLWithRequest(_ request: URLRequest, completionBlock: (SPUDownloadData?, NSError?) -> Void) {
+func SPUDownloadURL(with request: URLRequest, completionBlock: (SPUDownloadData?, NSError?) -> Void) {
     var downloader: SPUDownloaderProtocol?
     var connection: NSXPCConnection?
     var retrievedDownloadResult = false
 
-    let temporaryDownloaderDelegate = SPUTemporaryDownloaderDelegate(withCompletion: { downloadData, error in
+    let temporaryDownloaderDelegate = SPUTemporaryDownloaderDelegate(completionBlock: { downloadData, error in
         DispatchQueue.main.async {
             if !retrievedDownloadResult {
                 retrievedDownloadResult = true

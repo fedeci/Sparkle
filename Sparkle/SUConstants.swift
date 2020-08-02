@@ -8,7 +8,9 @@
 
 import Foundation
 
-#if !DEBUG
+#if DEBUG
+let DEBUG = true
+#else
 let DEBUG = false
 #endif
 
@@ -21,6 +23,7 @@ let SUDefaultUpdateCheckInterval: TimeInterval = DEBUG ? 60 : (60 * 60 * 24)
 // This is the time interval for a "week" it doesn't matter that this measure is imprecise.
 let SUImpatientUpdateCheckInterval: TimeInterval = DEBUG ? (60 * 2) : (60 * 60 * 24 * 7)
 
+#warning("TODO: Dynamic bundle identifiers")
 let SPUSparkleBundleIdentifier = "org.sparkle-project.Sparkle"
 let SPUDownloaderBundleIdentifier = "org.sparkle-project.Downloader"
 

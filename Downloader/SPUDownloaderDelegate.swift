@@ -10,9 +10,8 @@ import Foundation
 
 @objc
 protocol SPUDownloaderDelegate: NSObjectProtocol {
-
     // This is only invoked for persistent downloads
-    func downloaderDidSetDestinationName(_ destinationName: String?, temporaryDirection: String?)
+    func downloaderDidSetDestinationName(_ destinationName: String, temporaryDirection: String)
 
     // Under rare cases, this may be called more than once, in which case the current progress should be reset back to 0
     // This is only invoked for persistent downloads
@@ -25,5 +24,4 @@ protocol SPUDownloaderDelegate: NSObjectProtocol {
     func downloaderDidFinishWithTemporaryDownloadData(_ downloadData: SPUDownloadData?)
 
     func downloaderDidFailWithError(_ error: NSError)
-
 }

@@ -69,7 +69,7 @@ func SPUInstallerMessageTypeIsLegal(oldMessageType: SPUInstallerMessageType, new
     return legal
 }
 
-private func SPUServiceName(with tag: String, bundleIdentifier: String) -> String {
+private func SPUServiceName(withTag tag: String, bundleIdentifier: String) -> String {
     let serviceName = bundleIdentifier + tag
     let length = min(serviceName.count, MAX_SERVICE_NAME_LENGTH)
     
@@ -79,13 +79,13 @@ private func SPUServiceName(with tag: String, bundleIdentifier: String) -> Strin
 }
 
 func SPUInstallerServiceName(for bundleIdentifier: String) -> String {
-    return SPUServiceName(with: SPARKLE_INSTALLER_TAG, bundleIdentifier: bundleIdentifier)
+    return SPUServiceName(withTag: SPARKLE_INSTALLER_TAG, bundleIdentifier: bundleIdentifier)
 }
 
 func SPUStatusInfoServiceName(for bundleIdentifier: String) -> String {
-    return SPUServiceName(with: SPARKLE_STATUS_TAG, bundleIdentifier: bundleIdentifier)
+    return SPUServiceName(withTag: SPARKLE_STATUS_TAG, bundleIdentifier: bundleIdentifier)
 }
 
 func SPUProgressAgentServiceName(for bundleIdentifier: String) -> String {
-    return SPUServiceName(with: SPARKLE_PROGRESS_TAG, bundleIdentifier: bundleIdentifier)
+    return SPUServiceName(withTag: SPARKLE_PROGRESS_TAG, bundleIdentifier: bundleIdentifier)
 }
