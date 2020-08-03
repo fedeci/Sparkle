@@ -381,8 +381,6 @@
 		7A4677ED24CDA41500D0F75F /* SPUURLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4677E924CDA0B500D0F75F /* SPUURLRequest.swift */; };
 		7A4677EE24CDA41500D0F75F /* SPUURLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4677E924CDA0B500D0F75F /* SPUURLRequest.swift */; };
 		7A4677EF24CDA41700D0F75F /* SPUURLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4677E924CDA0B500D0F75F /* SPUURLRequest.swift */; };
-		7A4677F024CDB7BD00D0F75F /* SparkleDownloader-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AE8093824CD8FB500CE076A /* SparkleDownloader-Bridging-Header.h */; };
-		7A4677F124CDB7BE00D0F75F /* SparkleDownloader-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AE8093824CD8FB500CE076A /* SparkleDownloader-Bridging-Header.h */; };
 		7A4677F324CDD14C00D0F75F /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4677F224CDD14C00D0F75F /* main.swift */; };
 		7A4677F524CDDCCD00D0F75F /* SUErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4677F424CDDCCD00D0F75F /* SUErrors.swift */; };
 		7A4677F624CDDCD800D0F75F /* SUErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4677F424CDDCCD00D0F75F /* SUErrors.swift */; };
@@ -1342,7 +1340,7 @@
 		7AA2298E24CE35B6001DFD0F /* SPULocalCacheDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPULocalCacheDirectory.swift; sourceTree = "<group>"; };
 		7AC98A2824D57A9D007FA682 /* SUTouchBarButtonGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUTouchBarButtonGroup.swift; sourceTree = "<group>"; };
 		7AC98A2C24D5A379007FA682 /* SULocalizations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SULocalizations.swift; sourceTree = "<group>"; };
-		7AE8093824CD8FB500CE076A /* SparkleDownloader-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SparkleDownloader-Bridging-Header.h"; sourceTree = "<group>"; };
+		7AE8093824CD8FB500CE076A /* Sparkle-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sparkle-Bridging-Header.h"; sourceTree = "<group>"; };
 		7AE8093924CD8FB600CE076A /* SPUDownloadData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPUDownloadData.swift; sourceTree = "<group>"; };
 		7AE8093D24CD9A8200CE076A /* SPUDownloaderDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SPUDownloaderDelegate.swift; path = Downloader/SPUDownloaderDelegate.swift; sourceTree = SOURCE_ROOT; };
 		7AF76AF924CDEB9D004C2838 /* SUConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUConstants.swift; sourceTree = "<group>"; };
@@ -1861,7 +1859,7 @@
 				61A2279A0D1CEE7600430CCD /* SUSystemProfiler.h */,
 				61A2279B0D1CEE7600430CCD /* SUSystemProfiler.m */,
 				61A2259C0D1C495D00430CCD /* SUVersionComparisonProtocol.h */,
-				7AE8093824CD8FB500CE076A /* SparkleDownloader-Bridging-Header.h */,
+				7AE8093824CD8FB500CE076A /* Sparkle-Bridging-Header.h */,
 			);
 			name = "Appcast Support";
 			sourceTree = "<group>";
@@ -2394,7 +2392,6 @@
 				72A5D5E11D692B660009E5AC /* SUStandardVersionComparator.h in Headers */,
 				72A5D5E81D692BBB0009E5AC /* SUUpdatePermissionResponse.h in Headers */,
 				72A5D5E51D692B8C0009E5AC /* SUVersionComparisonProtocol.h in Headers */,
-				7A4677F124CDB7BE00D0F75F /* SparkleDownloader-Bridging-Header.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2416,7 +2413,6 @@
 				726E075C1CA3A6D6001A286B /* SPUSecureCoding.h in Headers */,
 				7246E0A31C83B685003B4E75 /* SPUStandardUpdaterController.h in Headers */,
 				725CB95A1C7121830064365A /* SPUStandardUserDriver.h in Headers */,
-				7A4677F024CDB7BD00D0F75F /* SparkleDownloader-Bridging-Header.h in Headers */,
 				726E4A371C89116000C57C6A /* SPUStandardUserDriverDelegate.h in Headers */,
 				725F97A81C8B42D700265BE4 /* SPUStandardUserDriverProtocol.h in Headers */,
 				726DF88E1C84277600188804 /* SPUStatusCompletionResults.h in Headers */,
@@ -4384,7 +4380,7 @@
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ENABLE_MODULES = YES;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				SWIFT_OBJC_BRIDGING_HEADER = "Sparkle/SparkleDownloader-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
@@ -4397,7 +4393,7 @@
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ENABLE_MODULES = YES;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				SWIFT_OBJC_BRIDGING_HEADER = "Sparkle/SparkleDownloader-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
@@ -4410,7 +4406,7 @@
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ENABLE_MODULES = YES;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				SWIFT_OBJC_BRIDGING_HEADER = "Sparkle/SparkleDownloader-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
