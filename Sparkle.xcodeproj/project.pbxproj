@@ -408,6 +408,7 @@
 		7AC98A2A24D5896A007FA682 /* SUTouchBarButtonGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC98A2824D57A9D007FA682 /* SUTouchBarButtonGroup.swift */; };
 		7AC98A2D24D5A379007FA682 /* SULocalizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC98A2C24D5A379007FA682 /* SULocalizations.swift */; };
 		7AC98A2E24D5A53D007FA682 /* SULocalizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC98A2C24D5A379007FA682 /* SULocalizations.swift */; };
+		7AD847B224D9A601005770FA /* SUInstallerConnectionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD847AB24D9A33D005770FA /* SUInstallerConnectionProtocol.swift */; };
 		7AE8093A24CD8FB600CE076A /* SPUDownloadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE8093924CD8FB600CE076A /* SPUDownloadData.swift */; };
 		7AE8093B24CD8FB600CE076A /* SPUDownloadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE8093924CD8FB600CE076A /* SPUDownloadData.swift */; };
 		7AE8093C24CD8FB600CE076A /* SPUDownloadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE8093924CD8FB600CE076A /* SPUDownloadData.swift */; };
@@ -1341,6 +1342,7 @@
 		7AA2298E24CE35B6001DFD0F /* SPULocalCacheDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPULocalCacheDirectory.swift; sourceTree = "<group>"; };
 		7AC98A2824D57A9D007FA682 /* SUTouchBarButtonGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUTouchBarButtonGroup.swift; sourceTree = "<group>"; };
 		7AC98A2C24D5A379007FA682 /* SULocalizations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SULocalizations.swift; sourceTree = "<group>"; };
+		7AD847AB24D9A33D005770FA /* SUInstallerConnectionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUInstallerConnectionProtocol.swift; sourceTree = "<group>"; };
 		7AE8093824CD8FB500CE076A /* Sparkle-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sparkle-Bridging-Header.h"; sourceTree = "<group>"; };
 		7AE8093924CD8FB600CE076A /* SPUDownloadData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPUDownloadData.swift; sourceTree = "<group>"; };
 		7AE8093D24CD9A8200CE076A /* SPUDownloaderDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SPUDownloaderDelegate.swift; path = Downloader/SPUDownloaderDelegate.swift; sourceTree = SOURCE_ROOT; };
@@ -2088,6 +2090,7 @@
 				724BB3801D31F186005D534A /* SUInstallerCommunicationProtocol.h */,
 				724BB36F1D31D0B7005D534A /* SUInstallerConnection.h */,
 				724BB3701D31D0B7005D534A /* SUInstallerConnection.m */,
+				7AD847AB24D9A33D005770FA /* SUInstallerConnectionProtocol.swift */,
 				724BB36E1D31D0B7005D534A /* SUInstallerConnectionProtocol.h */,
 				724BB3851D32A167005D534A /* SUXPCInstallerConnection.h */,
 				724BB3861D32A167005D534A /* SUXPCInstallerConnection.m */,
@@ -3429,6 +3432,7 @@
 			files = (
 				724BB3731D31D0B7005D534A /* main.m in Sources */,
 				724BB3B11D3484B2005D534A /* SPUSystemAuthorization.m in Sources */,
+				7AD847B224D9A601005770FA /* SUInstallerConnectionProtocol.swift in Sources */,
 				72F9EC341D5BF542004AC8B6 /* SUFileManager.m in Sources */,
 				724BB3711D31D0B7005D534A /* SUInstallerConnection.m in Sources */,
 			);
@@ -4289,6 +4293,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 724BB37F1D31D1EA005D534A /* ConfigInstallerConnectionDebug.xcconfig */;
 			buildSettings = {
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -4296,6 +4301,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 724BB37E1D31D1EA005D534A /* ConfigInstallerConnection.xcconfig */;
 			buildSettings = {
+				SWIFT_VERSION = 5.0;
 			};
 			name = Coverage;
 		};
@@ -4303,6 +4309,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 724BB37E1D31D1EA005D534A /* ConfigInstallerConnection.xcconfig */;
 			buildSettings = {
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
