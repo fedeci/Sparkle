@@ -123,7 +123,6 @@
 		72316BD41E0DB37E0039EFD9 /* SUUnarchiverNotifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 72316BD21E0DA8430039EFD9 /* SUUnarchiverNotifier.m */; };
 		7246E0A31C83B685003B4E75 /* SPUStandardUpdaterController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7246E0A11C83B685003B4E75 /* SPUStandardUpdaterController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7246E0A41C83B685003B4E75 /* SPUStandardUpdaterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7246E0A21C83B685003B4E75 /* SPUStandardUpdaterController.m */; };
-		724BB3731D31D0B7005D534A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 724BB3721D31D0B7005D534A /* main.m */; };
 		724BB3841D3203BA005D534A /* org.sparkle-project.InstallerConnection.xpc in Embed XPC Services */ = {isa = PBXBuildFile; fileRef = 724BB36C1D31D0B7005D534A /* org.sparkle-project.InstallerConnection.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		724BB3981D333832005D534A /* SUInstallerStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 724BB3971D333832005D534A /* SUInstallerStatus.m */; };
 		724BB39A1D333832005D534A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 724BB3991D333832005D534A /* main.m */; };
@@ -409,6 +408,7 @@
 		7AD847B624D9A7CE005770FA /* SUInstallerConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD847B524D9A7CE005770FA /* SUInstallerConnection.swift */; };
 		7AD847B724D9A9B5005770FA /* SUInstallerConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD847B524D9A7CE005770FA /* SUInstallerConnection.swift */; };
 		7AD847B824D9A9B5005770FA /* SUInstallerConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD847B524D9A7CE005770FA /* SUInstallerConnection.swift */; };
+		7AD847C224D9B99E005770FA /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD847C124D9B99E005770FA /* main.swift */; };
 		7AE8093A24CD8FB600CE076A /* SPUDownloadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE8093924CD8FB600CE076A /* SPUDownloadData.swift */; };
 		7AE8093B24CD8FB600CE076A /* SPUDownloadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE8093924CD8FB600CE076A /* SPUDownloadData.swift */; };
 		7AE8093C24CD8FB600CE076A /* SPUDownloadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE8093924CD8FB600CE076A /* SPUDownloadData.swift */; };
@@ -1346,6 +1346,7 @@
 		7AD847A524D9A173005770FA /* SUXPCInstallerConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUXPCInstallerConnection.swift; sourceTree = "<group>"; };
 		7AD847AB24D9A33D005770FA /* SUInstallerConnectionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUInstallerConnectionProtocol.swift; sourceTree = "<group>"; };
 		7AD847B524D9A7CE005770FA /* SUInstallerConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUInstallerConnection.swift; sourceTree = "<group>"; };
+		7AD847C124D9B99E005770FA /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		7AE8093824CD8FB500CE076A /* Sparkle-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sparkle-Bridging-Header.h"; sourceTree = "<group>"; };
 		7AE8093924CD8FB600CE076A /* SPUDownloadData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPUDownloadData.swift; sourceTree = "<group>"; };
 		7AE8093D24CD9A8200CE076A /* SPUDownloaderDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SPUDownloaderDelegate.swift; path = Downloader/SPUDownloaderDelegate.swift; sourceTree = SOURCE_ROOT; };
@@ -2089,6 +2090,7 @@
 			isa = PBXGroup;
 			children = (
 				724BB3741D31D0B7005D534A /* Info.plist */,
+				7AD847C124D9B99E005770FA /* main.swift */,
 				724BB3721D31D0B7005D534A /* main.m */,
 				7AD847A324D9A124005770FA /* SUInstallerCommunicationProtocol.swift */,
 				724BB3801D31F186005D534A /* SUInstallerCommunicationProtocol.h */,
@@ -3435,12 +3437,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				724BB3731D31D0B7005D534A /* main.m in Sources */,
 				7AD847B324D9A606005770FA /* SUXPCInstallerConnection.swift in Sources */,
 				7AD847B424D9A621005770FA /* SUConstants.swift in Sources */,
 				724BB3B11D3484B2005D534A /* SPUSystemAuthorization.m in Sources */,
 				7AD847B224D9A601005770FA /* SUInstallerConnectionProtocol.swift in Sources */,
 				72F9EC341D5BF542004AC8B6 /* SUFileManager.m in Sources */,
+				7AD847C224D9B99E005770FA /* main.swift in Sources */,
 				7AD847B124D9A5FC005770FA /* SUInstallerCommunicationProtocol.swift in Sources */,
 				7AD847B624D9A7CE005770FA /* SUInstallerConnection.swift in Sources */,
 			);
