@@ -26,6 +26,7 @@ let SUImpatientUpdateCheckInterval: TimeInterval = DEBUG ? (60 * 2) : (60 * 60 *
 #warning("TODO: Dynamic bundle identifiers")
 let SPUSparkleBundleIdentifier = "org.sparkle-project.Sparkle"
 let SPUDownloaderBundleIdentifier = "org.sparkle-project.Downloader"
+let SPUInstallerConnectionBundleIdentifier = "org.sparkle-project.InstallerConnection"
 
 let SUAppcastAttributeValueMacOS = "macos"
 
