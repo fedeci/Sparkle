@@ -46,7 +46,7 @@ class SUOperatingSystem: NSObject {
 
     static func systemVersionString() -> String {
         let version = operatingSystemVersion()
-        #warning("Check string formatting")
+        #warning("Check string formatting, may return nil?")
         return String(format: "%ld.%ld.%ld", version.majorVersion, version.minorVersion, version.patchVersion)
     }
 }

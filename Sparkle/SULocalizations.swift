@@ -8,7 +8,7 @@
 
 import Foundation
 
-func SULocalizedString(key: String, comment: String = "") -> String {
+func SULocalizedString(_ key: String, _ comment: String = "") -> String {
     let bundle = Bundle(identifier: SPUSparkleBundleIdentifier) ?? Bundle.main
     return NSLocalizedString(key, tableName: "Sparkle", bundle: bundle, comment: comment)
 }
