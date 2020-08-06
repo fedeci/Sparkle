@@ -350,6 +350,7 @@
 		7A4F606B24CEC8D400C11A32 /* SUHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4F606824CEC5DB00C11A32 /* SUHost.swift */; };
 		7A4F606C24CEC8D500C11A32 /* SUHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4F606824CEC5DB00C11A32 /* SUHost.swift */; };
 		7A4F606D24CEC8D500C11A32 /* SUHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4F606824CEC5DB00C11A32 /* SUHost.swift */; };
+		7A5BA4EF24DC372800B060F4 /* SPUInstallationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA2298B24CE332C001DFD0F /* SPUInstallationType.swift */; };
 		7A6DAC2A24D8587400974E8A /* SUAppcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6DAC2924D8587400974E8A /* SUAppcast.swift */; };
 		7A6DAC2B24D8587400974E8A /* SUAppcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6DAC2924D8587400974E8A /* SUAppcast.swift */; };
 		7A6DAC2D24D8587B00974E8A /* SUAppcastItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6DAC2C24D8587B00974E8A /* SUAppcastItem.swift */; };

@@ -32,7 +32,7 @@ func SPUNeedsSystemAuthorizationAccess(path: String, installationType: String) -
                     // Obvious indicator we may need authorization
                     needsAuthorization = true
                 } else {
-                    // TODO: Need missing
+                    needsAuthorization = (try? suFileManager.changeOwnerAndGroupOfItem(at: tempFileURL, to: URL(fileURLWithPath: path))) == nil
                 }
             } else {
                 // I don't imagine this ever happening but in case it does, requesting authorization may be the better option
