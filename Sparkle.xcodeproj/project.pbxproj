@@ -274,7 +274,6 @@
 		72B767E71C9CFD7200A07552 /* SPUAutomaticUpdateDriver.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B767E51C9CFD7200A07552 /* SPUAutomaticUpdateDriver.m */; };
 		72BEBFEF1D7287570019146B /* SUSpotlightImporterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72BEBFEE1D7287560019146B /* SUSpotlightImporterTest.swift */; };
 		72D954811CBACC35006F28BD /* InstallerProgressAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72D954801CBACC35006F28BD /* InstallerProgressAppController.m */; };
-		72D954831CBAD34F006F28BD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 72D954821CBAD34F006F28BD /* main.m */; };
 		72D954A21CBB415C006F28BD /* SPUCommandLineDriver.m in Sources */ = {isa = PBXBuildFile; fileRef = 72D954A11CBB415C006F28BD /* SPUCommandLineDriver.m */; };
 		72D954A51CBB415C006F28BD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 72D954A41CBB415C006F28BD /* main.m */; };
 		72D954B81CBB467F006F28BD /* SPUCommandLineUserDriver.m in Sources */ = {isa = PBXBuildFile; fileRef = 72D954B71CBB467F006F28BD /* SPUCommandLineUserDriver.m */; };
@@ -402,6 +401,7 @@
 		7AD847CC24D9D63C005770FA /* SUFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD847C424D9D62B005770FA /* SUFileManager.swift */; };
 		7AD847CD24D9D63C005770FA /* SUFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD847C424D9D62B005770FA /* SUFileManager.swift */; };
 		7AD847CE24D9D63E005770FA /* SUFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD847C424D9D62B005770FA /* SUFileManager.swift */; };
+		7AD847D324D9D6B1005770FA /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD847D224D9D6B1005770FA /* main.swift */; };
 		7AD847DB24D9D70E005770FA /* SPUSecureCoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD847DA24D9D70D005770FA /* SPUSecureCoding.swift */; };
 		7AD847DC24D9D711005770FA /* SPUSecureCoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD847DA24D9D70D005770FA /* SPUSecureCoding.swift */; };
 		7AD847DD24D9D711005770FA /* SPUSecureCoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD847DA24D9D70D005770FA /* SPUSecureCoding.swift */; };
@@ -1346,6 +1346,7 @@
 		7AD847B924D9B2FA005770FA /* SPUSystemAuthorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPUSystemAuthorization.swift; sourceTree = "<group>"; };
 		7AD847C124D9B99E005770FA /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		7AD847C424D9D62B005770FA /* SUFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SUFileManager.swift; sourceTree = "<group>"; };
+		7AD847D224D9D6B1005770FA /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		7AD847DA24D9D70D005770FA /* SPUSecureCoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPUSecureCoding.swift; sourceTree = "<group>"; };
 		7AE8093824CD8FB500CE076A /* Sparkle-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sparkle-Bridging-Header.h"; sourceTree = "<group>"; };
 		7AE8093924CD8FB600CE076A /* SPUDownloadData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPUDownloadData.swift; sourceTree = "<group>"; };
@@ -2063,6 +2064,7 @@
 				72D954801CBACC35006F28BD /* InstallerProgressAppController.m */,
 				7A96DF5E24D4A657007524E8 /* InstallerProgressDelegate.swift */,
 				72D954851CBAD4AE006F28BD /* InstallerProgressDelegate.h */,
+				7AD847D224D9D6B1005770FA /* main.swift */,
 				72D954821CBAD34F006F28BD /* main.m */,
 				72D954841CBAD418006F28BD /* ShowInstallerProgress.h */,
 				72EB87E91CB8798800C37F42 /* ShowInstallerProgress.m */,
@@ -3410,9 +3412,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				72D954811CBACC35006F28BD /* InstallerProgressAppController.m in Sources */,
+				7AD847D324D9D6B1005770FA /* main.swift in Sources */,
 				7A4F606B24CEC8D400C11A32 /* SUHost.swift in Sources */,
 				7A31D4EB24CF6AC600BFB864 /* SUSignatures.swift in Sources */,
-				72D954831CBAD34F006F28BD /* main.m in Sources */,
 				7AF76B0424CDEBC5004C2838 /* SUConstants.swift in Sources */,
 				7AD847BF24D9B312005770FA /* SPUSystemAuthorization.swift in Sources */,
 				72EB87EA1CB8798800C37F42 /* ShowInstallerProgress.m in Sources */,
