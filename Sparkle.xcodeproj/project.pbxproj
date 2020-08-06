@@ -285,7 +285,6 @@
 		72E45CF81B640DAE005C701A /* SUUpdateSettingsWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72E45CF61B640DAE005C701A /* SUUpdateSettingsWindowController.xib */; };
 		72E45CFC1B641961005C701A /* sparkletestcast.xml in Resources */ = {isa = PBXBuildFile; fileRef = 72E45CFB1B641961005C701A /* sparkletestcast.xml */; };
 		72E45DDD1B65C3BD005C701A /* sign_update in Resources */ = {isa = PBXBuildFile; fileRef = 72E45DDC1B65C3BD005C701A /* sign_update */; };
-		72EB87EA1CB8798800C37F42 /* ShowInstallerProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EB87E91CB8798800C37F42 /* ShowInstallerProgress.m */; };
 		72EB87EB1CB8859100C37F42 /* Updater.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 721C24451CB753E6005440CB /* Updater.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		72EB87EC1CB8887E00C37F42 /* SUStatus.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55C14BD8136EF00C00649790 /* SUStatus.xib */; };
 		72F94F581CC44DE1002DEE68 /* SPUXPCServiceInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 72F94F561CC44DE1002DEE68 /* SPUXPCServiceInfo.h */; };
@@ -401,6 +400,7 @@
 		7AD847CC24D9D63C005770FA /* SUFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD847C424D9D62B005770FA /* SUFileManager.swift */; };
 		7AD847CD24D9D63C005770FA /* SUFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD847C424D9D62B005770FA /* SUFileManager.swift */; };
 		7AD847CE24D9D63E005770FA /* SUFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD847C424D9D62B005770FA /* SUFileManager.swift */; };
+		7AD847D124D9D694005770FA /* ShowInstallerProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD847CF24D9D68A005770FA /* ShowInstallerProgress.swift */; };
 		7AD847D324D9D6B1005770FA /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD847D224D9D6B1005770FA /* main.swift */; };
 		7AD847DB24D9D70E005770FA /* SPUSecureCoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD847DA24D9D70D005770FA /* SPUSecureCoding.swift */; };
 		7AD847DC24D9D711005770FA /* SPUSecureCoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD847DA24D9D70D005770FA /* SPUSecureCoding.swift */; };
@@ -1346,6 +1346,7 @@
 		7AD847B924D9B2FA005770FA /* SPUSystemAuthorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPUSystemAuthorization.swift; sourceTree = "<group>"; };
 		7AD847C124D9B99E005770FA /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		7AD847C424D9D62B005770FA /* SUFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SUFileManager.swift; sourceTree = "<group>"; };
+		7AD847CF24D9D68A005770FA /* ShowInstallerProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowInstallerProgress.swift; sourceTree = "<group>"; };
 		7AD847D224D9D6B1005770FA /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		7AD847DA24D9D70D005770FA /* SPUSecureCoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPUSecureCoding.swift; sourceTree = "<group>"; };
 		7AE8093824CD8FB500CE076A /* Sparkle-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sparkle-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -2066,6 +2067,7 @@
 				72D954851CBAD4AE006F28BD /* InstallerProgressDelegate.h */,
 				7AD847D224D9D6B1005770FA /* main.swift */,
 				72D954821CBAD34F006F28BD /* main.m */,
+				7AD847CF24D9D68A005770FA /* ShowInstallerProgress.swift */,
 				72D954841CBAD418006F28BD /* ShowInstallerProgress.h */,
 				72EB87E91CB8798800C37F42 /* ShowInstallerProgress.m */,
 				7A96DF5C24D4A47D007524E8 /* SPUInstallerAgentProtocol.swift */,
@@ -3412,12 +3414,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				72D954811CBACC35006F28BD /* InstallerProgressAppController.m in Sources */,
+				7AD847D124D9D694005770FA /* ShowInstallerProgress.swift in Sources */,
 				7AD847D324D9D6B1005770FA /* main.swift in Sources */,
 				7A4F606B24CEC8D400C11A32 /* SUHost.swift in Sources */,
 				7A31D4EB24CF6AC600BFB864 /* SUSignatures.swift in Sources */,
 				7AF76B0424CDEBC5004C2838 /* SUConstants.swift in Sources */,
 				7AD847BF24D9B312005770FA /* SPUSystemAuthorization.swift in Sources */,
-				72EB87EA1CB8798800C37F42 /* ShowInstallerProgress.m in Sources */,
 				7A1D5DEB24D547F6007DFECD /* StatusInfo.swift in Sources */,
 				7A1D5DF024D54B79007DFECD /* SUApplicationInfo.swift in Sources */,
 				7A1D5DF324D54F1E007DFECD /* SPUMessageTypes.swift in Sources */,
