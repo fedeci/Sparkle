@@ -292,6 +292,7 @@
 		72F9EC481D5EA904004AC8B6 /* SPUUpdaterDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 72F9EC471D5EA7D3004AC8B6 /* SPUUpdaterDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7A0DF6B924DD4A5E00FBB332 /* SPUXPCServiceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0DF6B824DD4A2F00FBB332 /* SPUXPCServiceInfo.swift */; };
 		7A0DF6BA24DD4A5E00FBB332 /* SPUXPCServiceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0DF6B824DD4A2F00FBB332 /* SPUXPCServiceInfo.swift */; };
+		7A0DF6BC24DD4E7E00FBB332 /* SUInstallerLauncherStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0DF6BB24DD4E2300FBB332 /* SUInstallerLauncherStatus.swift */; };
 		7A1D50A524D03D140006CA5F /* SULog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A16A82924CF569D00633A0B /* SULog.swift */; };
 		7A1D50A624D03D150006CA5F /* SULog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A16A82924CF569D00633A0B /* SULog.swift */; };
 		7A1D50A724D03D160006CA5F /* SULog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A16A82924CF569D00633A0B /* SULog.swift */; };
@@ -1309,6 +1310,7 @@
 		72F9EC431D5E9ED8004AC8B6 /* SPUDownloadData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPUDownloadData.m; sourceTree = "<group>"; };
 		72F9EC471D5EA7D3004AC8B6 /* SPUUpdaterDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPUUpdaterDelegate.h; sourceTree = "<group>"; };
 		7A0DF6B824DD4A2F00FBB332 /* SPUXPCServiceInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPUXPCServiceInfo.swift; sourceTree = "<group>"; };
+		7A0DF6BB24DD4E2300FBB332 /* SUInstallerLauncherStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUInstallerLauncherStatus.swift; sourceTree = "<group>"; };
 		7A16A82924CF569D00633A0B /* SULog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SULog.swift; sourceTree = "<group>"; };
 		7A1D50AD24D0568D0006CA5F /* SUOperatingSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUOperatingSystem.swift; sourceTree = "<group>"; };
 		7A1D5DEA24D547F6007DFECD /* StatusInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StatusInfo.swift; path = Sparkle/InstallerProgress/StatusInfo.swift; sourceTree = SOURCE_ROOT; };
@@ -2169,6 +2171,7 @@
 				726E07B01CAF08D6001A286B /* SUInstallerLauncher.h */,
 				726E07B11CAF08D6001A286B /* SUInstallerLauncher.m */,
 				726E07AF1CAF08D6001A286B /* SUInstallerLauncherProtocol.h */,
+				7A0DF6BB24DD4E2300FBB332 /* SUInstallerLauncherStatus.swift */,
 				721652671D3C8FED00FD13D8 /* SUInstallerLauncherStatus.h */,
 			);
 			name = InstallerLauncher;
@@ -3488,6 +3491,7 @@
 				7AD847C824D9D634005770FA /* SUFileManager.swift in Sources */,
 				7A31D4EC24CF6AC700BFB864 /* SUSignatures.swift in Sources */,
 				726E07B21CAF08D6001A286B /* SUInstallerLauncher.m in Sources */,
+				7A0DF6BC24DD4E7E00FBB332 /* SUInstallerLauncherStatus.swift in Sources */,
 				7AF76AFD24CDEBAC004C2838 /* SUConstants.swift in Sources */,
 				7AD847BC24D9B30E005770FA /* SPUSystemAuthorization.swift in Sources */,
 				7A4D495724D5603400B2CD37 /* SPUMessageTypes.swift in Sources */,
