@@ -44,7 +44,7 @@ func SPUDownloadURL(with request: URLRequest, completionBlock: (SPUDownloadData?
                 retrievedDownloadResult = true
                 connection?.invalidate()
 
-                if downloadData == nil || downloadData?.data == nil {
+                if downloadData == nil {
                     completionBlock(nil, error)
                 } else {
                     completionBlock(downloadData, nil)
@@ -54,7 +54,7 @@ func SPUDownloadURL(with request: URLRequest, completionBlock: (SPUDownloadData?
     })
 
     if !SPUXPCServiceExists(SPUDownloaderBundleIdentifier) {
-        downloader = SPUDownloader(withDelegate: temporaryDownloaderDelegate)
+        downloader = SPUDownloader(with: temporaryDownloaderDelegate)
     } else {
         connection = NSXPCConnection(serviceName: SPUDownloaderBundleIdentifier)
         connection?.remoteObjectInterface = NSXPCInterface(with: SPUDownloaderProtocol.self)
@@ -86,10 +86,11 @@ func SPUDownloadURL(with request: URLRequest, completionBlock: (SPUDownloadData?
 
         downloader = connection?.remoteObjectProxy as? SPUDownloaderProtocol
 
-        if let request = SPUURLRequest.URLRequestWithRequest(request) {
-            downloader?.startTemporaryDownloadWithRequest(request)
-        } else {
-            #warning("Handle error")
-        }
+    }
+    
+    if let request = SPUURLRequest.URLRequestWithRequest(request) {
+        downloader?.startTemporaryDownloadWithRequest(request)
+    } else {
+        #warning("Throw error?")
     }
 }

@@ -28,6 +28,7 @@ let SPUSparkleBundleIdentifier = "org.sparkle-project.Sparkle"
 let SPUDownloaderBundleIdentifier = "org.sparkle-project.Downloader"
 let SPUInstallerConnectionBundleIdentifier = "org.sparkle-project.InstallerConnection"
 let SPARKLE_NORMALIZE_INSTALLED_APPLICATION_NAME = false
+let CURRENT_PROJECT_VERSION = "2.0"
 
 let SUAppcastAttributeValueMacOS = "macos"
 
