@@ -187,8 +187,6 @@
 		728337A71C9E6FF40085AA99 /* SPUProbeInstallStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 728337A51C9E6FF40085AA99 /* SPUProbeInstallStatus.m */; };
 		729924941DF4A45000DBCDF5 /* SUUpdateValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 729924931DF4A45000DBCDF5 /* SUUpdateValidator.m */; };
 		72A1C2631CD6849C004CD282 /* SUUpdatePermissionPrompt.h in Headers */ = {isa = PBXBuildFile; fileRef = 612DCBAD0D488BC60015DBEA /* SUUpdatePermissionPrompt.h */; };
-		72A450531C69A68900D67EEA /* SUUpdatePermissionResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 72A450511C69A68900D67EEA /* SUUpdatePermissionResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		72A450541C69A68900D67EEA /* SUUpdatePermissionResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 72A450521C69A68900D67EEA /* SUUpdatePermissionResponse.m */; };
 		72A4A2401BB6567D00E7820D /* SUFileManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A4A23F1BB6567D00E7820D /* SUFileManagerTest.swift */; };
 		72A5D5A61D6928630009E5AC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0867D69BFE84028FC02AAC07 /* Foundation.framework */; };
 		72A5D5AE1D6929F80009E5AC /* SUInstallerLauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = 726E07B11CAF08D6001A286B /* SUInstallerLauncher.m */; };
@@ -208,7 +206,6 @@
 		72A5D5D41D6929F80009E5AC /* SPUUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = 61B5F8E409C4CE3C00B25A18 /* SPUUpdater.m */; };
 		72A5D5D51D6929F80009E5AC /* SPUUpdaterSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 726E078C1CA891E9001A286B /* SPUUpdaterSettings.m */; };
 		72A5D5D61D6929F80009E5AC /* SPUUpdatePermissionRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 72DBA37C1D60CC34002594A8 /* SPUUpdatePermissionRequest.m */; };
-		72A5D5D71D6929F80009E5AC /* SUUpdatePermissionResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 72A450521C69A68900D67EEA /* SUUpdatePermissionResponse.m */; };
 		72A5D5D81D6929F80009E5AC /* SPUUpdaterCycle.m in Sources */ = {isa = PBXBuildFile; fileRef = 720E217A1D0D00BF003A311C /* SPUUpdaterCycle.m */; };
 		72A5D5D91D6929F90009E5AC /* SPUUpdaterTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 72F9EC3E1D5E823F004AC8B6 /* SPUUpdaterTimer.m */; };
 		72A5D5DA1D6929F90009E5AC /* SPUUserDriverCoreComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 725F977A1C8A896F00265BE4 /* SPUUserDriverCoreComponent.m */; };
@@ -218,7 +215,6 @@
 		72A5D5E31D692B770009E5AC /* SPUUpdaterSettings.h in Headers */ = {isa = PBXBuildFile; fileRef = 726E078B1CA891E9001A286B /* SPUUpdaterSettings.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		72A5D5E41D692B770009E5AC /* SPUUpdaterDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 72F9EC471D5EA7D3004AC8B6 /* SPUUpdaterDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		72A5D5E71D692BB00009E5AC /* SPUUpdatePermissionRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 72DBA37B1D60CC34002594A8 /* SPUUpdatePermissionRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		72A5D5E81D692BBB0009E5AC /* SUUpdatePermissionResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 72A450511C69A68900D67EEA /* SUUpdatePermissionResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		72A5D5E91D692BC80009E5AC /* SPUUserDriver.h in Headers */ = {isa = PBXBuildFile; fileRef = 725CB9561C7120410064365A /* SPUUserDriver.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		72A5D5EA1D692BC80009E5AC /* SPUUserDriverCoreComponent.h in Headers */ = {isa = PBXBuildFile; fileRef = 725F97791C8A896F00265BE4 /* SPUUserDriverCoreComponent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		72A5D5EF1D692C440009E5AC /* Autoupdate in CopyFiles */ = {isa = PBXBuildFile; fileRef = 72B398D21D3D879300EE297F /* Autoupdate */; };
@@ -307,6 +303,8 @@
 		7A31D4EC24CF6AC700BFB864 /* SUSignatures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A31D4E924CF6AB300BFB864 /* SUSignatures.swift */; };
 		7A31D4ED24CF6AC800BFB864 /* SUSignatures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A31D4E924CF6AB300BFB864 /* SUSignatures.swift */; };
 		7A31D4EE24CF6AC800BFB864 /* SUSignatures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A31D4E924CF6AB300BFB864 /* SUSignatures.swift */; };
+		7A3D8B3F24DEB9A500265FA1 /* SUUpdatePermissionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3D8B3E24DEB9A500265FA1 /* SUUpdatePermissionResponse.swift */; };
+		7A3D8B4024DEB9B400265FA1 /* SUUpdatePermissionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3D8B3E24DEB9A500265FA1 /* SUUpdatePermissionResponse.swift */; };
 		7A4677DF24CD9C6D00D0F75F /* SPUDownloaderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE8093D24CD9A8200CE076A /* SPUDownloaderDelegate.swift */; };
 		7A4677E024CD9C6E00D0F75F /* SPUDownloaderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE8093D24CD9A8200CE076A /* SPUDownloaderDelegate.swift */; };
 		7A4677E624CD9F0800D0F75F /* SPUDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4677D824CD9BFF00D0F75F /* SPUDownloader.swift */; };
@@ -1318,6 +1316,7 @@
 		7A1D5DEE24D54B68007DFECD /* SUApplicationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUApplicationInfo.swift; sourceTree = "<group>"; };
 		7A1D5DF124D54F1E007DFECD /* SPUMessageTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SPUMessageTypes.swift; path = Autoupdate/SPUMessageTypes.swift; sourceTree = SOURCE_ROOT; };
 		7A31D4E924CF6AB300BFB864 /* SUSignatures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUSignatures.swift; sourceTree = "<group>"; };
+		7A3D8B3E24DEB9A500265FA1 /* SUUpdatePermissionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUUpdatePermissionResponse.swift; sourceTree = "<group>"; };
 		7A4677D824CD9BFF00D0F75F /* SPUDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SPUDownloader.swift; path = Downloader/SPUDownloader.swift; sourceTree = SOURCE_ROOT; };
 		7A4677E924CDA0B500D0F75F /* SPUURLRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPUURLRequest.swift; sourceTree = "<group>"; };
 		7A4677F224CDD14C00D0F75F /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = main.swift; path = Downloader/main.swift; sourceTree = SOURCE_ROOT; };
@@ -2048,6 +2047,7 @@
 				726E078C1CA891E9001A286B /* SPUUpdaterSettings.m */,
 				72F9EC3D1D5E823F004AC8B6 /* SPUUpdaterTimer.h */,
 				72F9EC3E1D5E823F004AC8B6 /* SPUUpdaterTimer.m */,
+				7A3D8B3E24DEB9A500265FA1 /* SUUpdatePermissionResponse.swift */,
 				72A450511C69A68900D67EEA /* SUUpdatePermissionResponse.h */,
 				72A450521C69A68900D67EEA /* SUUpdatePermissionResponse.m */,
 			);
@@ -2432,7 +2432,6 @@
 				72A5D5E31D692B770009E5AC /* SPUUpdaterSettings.h in Headers */,
 				72A5D5E91D692BC80009E5AC /* SPUUserDriver.h in Headers */,
 				72A5D5EA1D692BC80009E5AC /* SPUUserDriverCoreComponent.h in Headers */,
-				72A5D5E81D692BBB0009E5AC /* SUUpdatePermissionResponse.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2473,7 +2472,6 @@
 				61A2279C0D1CEE7600430CCD /* SUSystemProfiler.h in Headers */,
 				61B5FCDF09C52A9F00B25A18 /* SUUpdateAlert.h in Headers */,
 				72A1C2631CD6849C004CD282 /* SUUpdatePermissionPrompt.h in Headers */,
-				72A450531C69A68900D67EEA /* SUUpdatePermissionResponse.h in Headers */,
 				72F9EBE21D517E2F004AC8B6 /* SUUpdater.h in Headers */,
 				72A6F98A1C94E2D6005F404C /* SUUpdaterDelegate.h in Headers */,
 				3772FEA913DE0B6B00F79537 /* SUVersionDisplayProtocol.h in Headers */,
@@ -3590,9 +3588,9 @@
 				7A31D4EE24CF6AC800BFB864 /* SUSignatures.swift in Sources */,
 				72A5D5AE1D6929F80009E5AC /* SUInstallerLauncher.m in Sources */,
 				72B3DED01E23479000457642 /* SPUInformationalUpdate.m in Sources */,
+				7A3D8B4024DEB9B400265FA1 /* SUUpdatePermissionResponse.swift in Sources */,
 				7A4D495524D5603300B2CD37 /* SPUMessageTypes.swift in Sources */,
 				72A5D5BF1D6929F80009E5AC /* SUSystemProfiler.m in Sources */,
-				72A5D5D71D6929F80009E5AC /* SUUpdatePermissionResponse.m in Sources */,
 				7A6DAC2E24D8587B00974E8A /* SUAppcastItem.swift in Sources */,
 				7A6DAC3824D8847100974E8A /* SUVersionComparisonProtocol.swift in Sources */,
 				7AC282F124DDE75900CC0E8C /* SUXPCInstallerStatus.swift in Sources */,
@@ -3676,6 +3674,7 @@
 				725CB95B1C7121830064365A /* SPUStandardUserDriver.m in Sources */,
 				72B767DB1C9CD2E400A07552 /* SPUUIBasedUpdateDriver.m in Sources */,
 				7A4677EE24CDA41500D0F75F /* SPUURLRequest.swift in Sources */,
+				7A3D8B3F24DEB9A500265FA1 /* SUUpdatePermissionResponse.swift in Sources */,
 				72DBA37E1D60CC34002594A8 /* SPUUpdatePermissionRequest.m in Sources */,
 				7AE8093A24CD8FB600CE076A /* SPUDownloadData.swift in Sources */,
 				61B5F8EE09C4CE3C00B25A18 /* SPUUpdater.m in Sources */,
@@ -3713,7 +3712,6 @@
 				61B5FCDE09C52A9F00B25A18 /* SUUpdateAlert.m in Sources */,
 				7A9A82D824DDF15900F6F5FC /* SPUInstallationInfo.swift in Sources */,
 				612DCBB00D488BC60015DBEA /* SUUpdatePermissionPrompt.m in Sources */,
-				72A450541C69A68900D67EEA /* SUUpdatePermissionResponse.m in Sources */,
 				72F9EBE31D517E2F004AC8B6 /* SUUpdater.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
