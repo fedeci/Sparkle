@@ -27,6 +27,7 @@ let SUImpatientUpdateCheckInterval: TimeInterval = DEBUG ? (60 * 2) : (60 * 60 *
 let SPUSparkleBundleIdentifier = "org.sparkle-project.Sparkle"
 let SPUDownloaderBundleIdentifier = "org.sparkle-project.Downloader"
 let SPUInstallerConnectionBundleIdentifier = "org.sparkle-project.InstallerConnection"
+let SPUInstallerStatusBundleIdentifier = "org.sparkle-project.InstallerStatus"
 let SPARKLE_NORMALIZE_INSTALLED_APPLICATION_NAME = false
 let CURRENT_PROJECT_VERSION = "2.0"
 
