@@ -364,6 +364,7 @@
 		7AC282EE24DDE71700CC0E8C /* SUStatusInfoProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D5DEC24D5489E007DFECD /* SUStatusInfoProtocol.swift */; };
 		7AC282F024DDE74800CC0E8C /* SUXPCInstallerStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC282EF24DDE74800CC0E8C /* SUXPCInstallerStatus.swift */; };
 		7AC282F124DDE75900CC0E8C /* SUXPCInstallerStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC282EF24DDE74800CC0E8C /* SUXPCInstallerStatus.swift */; };
+		7AC282F324DDE79300CC0E8C /* SUInstallerStatusProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC282F224DDE79300CC0E8C /* SUInstallerStatusProtocol.swift */; };
 		7AC282F524DDE92300CC0E8C /* SUXPCInstallerStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC282EF24DDE74800CC0E8C /* SUXPCInstallerStatus.swift */; };
 		7AC282F724DDEAE900CC0E8C /* SUInstallerStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC282F624DDEAE900CC0E8C /* SUInstallerStatus.swift */; };
 		7AC2F2C724DE9617005C2D3D /* SUConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF76AF924CDEB9D004C2838 /* SUConstants.swift */; };
@@ -1341,6 +1342,7 @@
 		7AA2298B24CE332C001DFD0F /* SPUInstallationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPUInstallationType.swift; sourceTree = "<group>"; };
 		7AA2298E24CE35B6001DFD0F /* SPULocalCacheDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPULocalCacheDirectory.swift; sourceTree = "<group>"; };
 		7AC282EF24DDE74800CC0E8C /* SUXPCInstallerStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUXPCInstallerStatus.swift; sourceTree = "<group>"; };
+		7AC282F224DDE79300CC0E8C /* SUInstallerStatusProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUInstallerStatusProtocol.swift; sourceTree = "<group>"; };
 		7AC282F624DDEAE900CC0E8C /* SUInstallerStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUInstallerStatus.swift; sourceTree = "<group>"; };
 		7AC98A2824D57A9D007FA682 /* SUTouchBarButtonGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUTouchBarButtonGroup.swift; sourceTree = "<group>"; };
 		7AC98A2C24D5A379007FA682 /* SULocalizations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SULocalizations.swift; sourceTree = "<group>"; };
@@ -2132,6 +2134,7 @@
 				7AC282F624DDEAE900CC0E8C /* SUInstallerStatus.swift */,
 				724BB3961D333832005D534A /* SUInstallerStatus.h */,
 				724BB3971D333832005D534A /* SUInstallerStatus.m */,
+				7AC282F224DDE79300CC0E8C /* SUInstallerStatusProtocol.swift */,
 				724BB3951D333832005D534A /* SUInstallerStatusProtocol.h */,
 				7A1D5DEC24D5489E007DFECD /* SUStatusInfoProtocol.swift */,
 				7267E5DD1D3D8F5A00D1BF90 /* SUStatusInfoProtocol.h */,
@@ -3472,6 +3475,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				724BB39A1D333832005D534A /* main.m in Sources */,
+				7AC282F324DDE79300CC0E8C /* SUInstallerStatusProtocol.swift in Sources */,
 				7AC2F2C724DE9617005C2D3D /* SUConstants.swift in Sources */,
 				7AC282F524DDE92300CC0E8C /* SUXPCInstallerStatus.swift in Sources */,
 				7AD847C624D9D633005770FA /* SUFileManager.swift in Sources */,
