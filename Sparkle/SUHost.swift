@@ -153,8 +153,8 @@ class SUHost: NSObject {
         }
     }
 
-    func boolForInfoDictionaryKey(_ key: String) -> Bool? {
-        return (objectForKey(key) as? NSNumber)?.boolValue
+    func boolForInfoDictionaryKey(_ key: String) -> Bool {
+        return (objectForKey(key) as? NSNumber)?.boolValue ?? false
     }
 
     func objectForUserDefaultsKey(_ defaultName: String) -> Any? {
@@ -207,7 +207,7 @@ class SUHost: NSObject {
         return objectForInfoDictionaryKey(key)
     }
 
-    func boolForKey(_ key: String) -> Bool? {
+    func boolForKey(_ key: String) -> Bool {
         if let _ = objectForUserDefaultsKey(key) {
             return boolForUserDefaultsKey(key)
         }
