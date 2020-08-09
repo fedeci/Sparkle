@@ -10,22 +10,16 @@ import Foundation
 
 private let SPUUpdatePermissionRequestSystemProfileKey = "SPUUpdatePermissionRequestSystemProfile"
 
-/**
- This class represents information needed to make a permission request for checking updates.
-*/
+/// This class represents information needed to make a permission request for checking updates.
 @objcMembers
 class SPUUpdatePermissionRequest: NSObject {
     
-    /**
-     A read-only property for the user's system profile.
-    */
+    /// A read-only property for the user's system profile.
     private(set) var systemProfile: [[String: String]]
     
-    /**
-     Initializes a new update permission request instance.
-     
-     - Parameter systemProfile: The system profile information.
-     */
+    /// Initializes a new update permission request instance.
+    ///
+    /// - Parameter systemProfile: The system profile information.
     init(systemProfile: [[String: String]]) {
         self.systemProfile = systemProfile
         super.init()

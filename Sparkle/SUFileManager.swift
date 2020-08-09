@@ -11,11 +11,9 @@ import System
 
 private let SUAppleQuarantineIdentifier = "com.apple.quarantine"
 
-/**
- A class used for performing file operations more suitable than NSFileManager for performing installation work.
- All operations on this class may be used on thread other than the main thread.
- This class provides just basic file operations and stays away from including much application-level logic.
- */
+/// A class used for performing file operations more suitable than NSFileManager for performing installation work.
+/// All operations on this class may be used on thread other than the main thread.
+/// This class provides just basic file operations and stays away from including much application-level logic.
 @objcMembers
 class SUFileManager: NSObject {
     
@@ -28,16 +26,12 @@ class SUFileManager: NSObject {
         super.init()
     }
     
-    /**
-     * Creates a temporary directory on the same volume as a provided URL
-     * @param preferredName A name that may be used when creating the temporary directory. Note that in the uncothirdStageErrormmon case this name is used, the temporary directory will be created inside the directory pointed by appropriateURL
-     * @param directoryURL A URL to a directory that resides on the volume that the temporary directory will be created on. In the uncommon case, the temporary directory may be created inside this directory.
-     * @return A URL pointing to the newly created temporary directory, or nil with a populated error object if an error occurs.
-     *
-     * When moving an item from a source to a destination, it is desirable to create a temporary intermediate destination on the same volume as the destination to ensure
-     * that the item will be moved, and not copied, from the intermediate point to the final destination. This ensures file atomicity.
-     */
-    // MARK: - Fatto
+    /// Creates a temporary directory on the same volume as a provided URL
+    /// - Parameter preferredName: A name that may be used when creating the temporary directory. Note that in the uncothirdStageErrormmon case this name is used, the temporary directory will be created inside the directory pointed by appropriateURL
+    /// - Parameter directoryURL: A URL to a directory that resides on the volume that the temporary directory will be created on. In the uncommon case, the temporary directory may be created inside this directory.
+    /// - Returns: A URL pointing to the newly created temporary directory, or nil with a populated error object if an error occurs.
+    ///
+    /// When moving an item from a source to a destination, it is desirable to create a temporary intermediate destination on the same volume as the destination to ensure that the item will be moved, and not copied, from the intermediate point to the final destination. This ensures file atomicity.
     func makeTemporaryDirectory(with preferredName: String, appropriateFor directoryURL: URL) throws -> URL {
         if let tempURL = try? fileManager.url(for: .itemReplacementDirectory, in: .userDomainMask, appropriateFor: directoryURL, create: true) {
             return tempURL
@@ -56,14 +50,11 @@ class SUFileManager: NSObject {
         return desiredURL
     }
     
-    /**
-     Creates a directory at the target URL
-     - Parameter targetURL: A URL pointing to the directory to create. The item at this URL must not exist, and the parent directory of this URL must already exist.
-     - Returns: true if the item was created successfully, otherwise false.
-     
-     This is an atomic operation.
-     */
-    // MARK: - Fatto
+    /// Creates a directory at the target URL
+    /// - Parameter targetURL: A URL pointing to the directory to create. The item at this URL must not exist, and the parent directory of this URL must already exist.
+    /// - Returns: true if the item was created successfully, otherwise false.
+    ///
+    /// This is an atomic operation.
     func makeDirectory(at targetURL: URL) throws {
         guard !itemExists(at: targetURL) else {
             throw NSError(domain: NSCocoaErrorDomain, code: NSFileWriteFileExistsError, userInfo: [NSLocalizedDescriptionKey: "Failed to create directory because file \(targetURL.lastPathComponent) already exists."])
@@ -78,16 +69,13 @@ class SUFileManager: NSObject {
         try fileManager.createDirectory(at: targetURL, withIntermediateDirectories: false, attributes: nil)
     }
     
-    /**
-     Moves an item from a source to a destination
-     - Parameter sourceURL: A URL pointing to the item to move. The item at this URL must exist.
-     - Parameter destinationURL: A URL pointing to the destination the item will be moved at. An item must not already exist at this URL.
-     - Returns: true if the item was moved successfully, otherwise false.
-     
-     If sourceURL and destinationURL reside on the same volume, this operation will be an atomic move operation.
-     Otherwise this will be equivalent to a copy & remove which will be a nonatomic operation.
-     */
-    // MARK: - Fatto
+    /// Moves an item from a source to a destination
+    /// - Parameter sourceURL: A URL pointing to the item to move. The item at this URL must exist.
+    /// - Parameter destinationURL: A URL pointing to the destination the item will be moved at. An item must not already exist at this URL.
+    /// - Returns: true if the item was moved successfully, otherwise false.
+    ///
+    /// If sourceURL and destinationURL reside on the same volume, this operation will be an atomic move operation.
+    /// Otherwise this will be equivalent to a copy & remove which will be a nonatomic operation.
     func moveItem(at sourceURL: URL, to destinationURL: URL) throws {
         guard itemExists(at: sourceURL) else {
             throw NSError(domain: NSCocoaErrorDomain, code: NSFileNoSuchFileError, userInfo: [NSLocalizedDescriptionKey: "Source file to move (\(sourceURL.lastPathComponent)) does not exist."])
@@ -122,15 +110,12 @@ class SUFileManager: NSObject {
         try fileManager.moveItem(at: sourceURL, to: destinationURL)
     }
     
-    /**
-     Copies an item from a source to a destination
-     - Parameter sourceURL: A URL pointing to the item to move. The item at this URL must exist.
-     - Parameter destinationURL: A URL pointing to the destination the item will be moved at. An item must not already exist at this URL.
-     - Returns: true if the item was copied successfully, otherwise false.
-     
-     This is not an atomic operation.
-     */
-    // MARK: - DFatto
+    /// Copies an item from a source to a destination
+    /// - Parameter sourceURL: A URL pointing to the item to move. The item at this URL must exist.
+    /// - Parameter destinationURL: A URL pointing to the destination the item will be moved at. An item must not already exist at this URL.
+    /// - Returns: true if the item was copied successfully, otherwise false.
+    ///
+    /// This is not an atomic operation.
     func copyItem(at sourceURL: URL, to destinationURL: URL) throws {
         guard itemExists(at: sourceURL) else {
             throw NSError(domain: NSCocoaErrorDomain, code: NSFileNoSuchFileError, userInfo: [NSLocalizedDescriptionKey: "Source file to copy (\(sourceURL.lastPathComponent)) does not exist."])
@@ -147,14 +132,11 @@ class SUFileManager: NSObject {
         try fileManager.copyItem(at: sourceURL, to: destinationURL)
     }
     
-    /**
-     Removes an item at a URL
-     - Parameter targetURL: A URL pointing to the item to remove. The item at this URL must exist.
-     - Returns: true if the item was removed successfully, otherwise false.
-     
-     This is not an atomic operation.
-     */
-    // MARK: - Fatto
+    /// Removes an item at a URL
+    /// - Parameter targetURL: A URL pointing to the item to remove. The item at this URL must exist.
+    /// - Returns: true if the item was removed successfully, otherwise false.
+    ///
+    /// This is not an atomic operation.
     func removeItem(at targetURL: URL) throws {
         guard itemExists(at: targetURL) else {
             throw NSError(domain: NSCocoaErrorDomain, code: NSFileNoSuchFileError, userInfo: [NSLocalizedDescriptionKey: "Failed to remove file \(targetURL.lastPathComponent) because it does not exist."])
@@ -163,19 +145,16 @@ class SUFileManager: NSObject {
         try fileManager.removeItem(at: targetURL)
     }
     
-    /**
-     Changes the owner and group IDs of an item at a specified target URL to match another URL
-     - Parameter targetURL: A URL pointing to the target item whose owner and group IDs to alter. This will be applied recursively if the item is a directory. The item at this URL must exist.
-     - Parameter matchURL: A URL pointing to the item whose owner and group IDs will be used for changing on the targetURL. The item at this URL must exist.
-     - Returns: true if the target item's owner and group IDs have changed to match the origin's ones, otherwise false.
-     
-     If the owner and group IDs match on the root items of targetURL and matchURL, this method stops and assumes that nothing needs to be done.
-     Otherwise this method recursively changes the IDs if the target is a directory. If an item in the directory is encountered that is unable to be changed,
-     then this method stops and returns false.
-     
-     This is not an atomic operation.
-     */
-    // MARK: - Fatto
+    /// Changes the owner and group IDs of an item at a specified target URL to match another URL
+    /// - Parameter targetURL: A URL pointing to the target item whose owner and group IDs to alter. This will be applied recursively if the item is a directory. The item at this URL must exist.
+    /// - Parameter matchURL: A URL pointing to the item whose owner and group IDs will be used for changing on the targetURL. The item at this URL must exist.
+    /// - Returns: true if the target item's owner and group IDs have changed to match the origin's ones, otherwise false.
+    ///
+    /// If the owner and group IDs match on the root items of targetURL and matchURL, this method stops and assumes that nothing needs to be done.
+    /// Otherwise this method recursively changes the IDs if the target is a directory. If an item in the directory is encountered that is unable to be changed,
+    /// then this method stops and returns false.
+    ///
+    /// This is not an atomic operation.
     func changeOwnerAndGroupOfItem(at targetURL: URL, to matchURL: URL) throws {
         var isTargetADirectory = false
         guard itemExists(at: targetURL, isDirectory: &isTargetADirectory) else {
@@ -219,17 +198,14 @@ class SUFileManager: NSObject {
         }
     }
     
-    /**
-     Updates the modification and access time of an item at a specified target URL to the current time
-     - Parameter targetURL: A URL pointing to the target item whose modification and access time to update. The item at this URL must exist.
-     - Returns: true if the target item's modification and access times have been updated, otherwise false.
-     
-     This method updates the modification and access time of an item to the current time, ideal for letting the system know we installed a new file or
-     application.
-     
-     This is not an atomic operation.
-     */
-    // MARK: - Fatto
+    /// Updates the modification and access time of an item at a specified target URL to the current time
+    /// - Parameter targetURL: A URL pointing to the target item whose modification and access time to update. The item at this URL must exist.
+    /// - Returns: true if the target item's modification and access times have been updated, otherwise false.
+    ///
+    /// This method updates the modification and access time of an item to the current time, ideal for letting the system know we installed a new file or
+    /// application.
+    ///
+    /// This is not an atomic operation.
     func updateModificationAndAccessTimeOfItem(at targetURL: URL) throws {
         guard itemExists(at: targetURL) else {
             throw NSError(domain: NSCocoaErrorDomain, code: NSFileNoSuchFileError, userInfo: [NSLocalizedDescriptionKey: "Failed to update modification & access time because \(targetURL.lastPathComponent) does not exist."])
@@ -253,18 +229,15 @@ class SUFileManager: NSObject {
         }
     }
     
-    /**
-     Updates the access time of an item at a specified root URL to the current time
-     - Parameter targetURL: A URL pointing to the target item whose access time to update to the current time.
-     This will be applied recursively if the item is a directory. The item at this URL must exist.
-     - Returns: true if the target item's access times have been updated, otherwise false.
-     
-     This method updates the access time of an item to the current time, ideal for letting the system know not to remove a file or directory when placing it
-     at a temporary directory.
-     
-     This is not an atomic operation.
-     */
-    // MARK: - Fatto
+    /// Updates the access time of an item at a specified root URL to the current time
+    /// - Parameter targetURL: A URL pointing to the target item whose access time to update to the current time.
+    /// This will be applied recursively if the item is a directory. The item at this URL must exist.
+    /// - Returns: true if the target item's access times have been updated, otherwise false.
+    ///
+    /// This method updates the access time of an item to the current time, ideal for letting the system know not to remove a file or directory when placing it
+    /// at a temporary directory.
+    ///
+    /// This is not an atomic operation.
     func updateAccessTimeOfItem(at targetURL: URL) throws {
         guard itemExists(at: targetURL) else {
             throw NSError(domain: NSCocoaErrorDomain, code: NSFileNoSuchFileError, userInfo: [NSLocalizedDescriptionKey: "Failed to update modification & access time recursively because \(targetURL.lastPathComponent) does not exist."])
@@ -321,22 +294,19 @@ class SUFileManager: NSObject {
     // We used to have code similar to the method below that used -[NSURL getResourceValue:forKey:error:] and -[NSURL setResourceValue:forKey:error:]
     // However, those methods *really suck* - you can't rely on the return value from getting the resource value and if you set the resource value
     // when the key isn't present, errors are spewed out to the console
-    /**
-     Releases Apple's quarantine extended attribute from the item at the specified root URL
-     - Parameter rootURL: A URL pointing to the item to release from Apple's quarantine. This will be applied recursively if the item is a directory. The item at this URL must exist.
-     - Returns: true if all the items at the target could be released from quarantine, otherwise false if any items couldn't.
-     
-     This method removes quarantine attributes from an item, ideally an application, so that when the user launches a new application themselves, they
-     don't have to witness the system dialog alerting them that they downloaded an application from the internet and asking if they want to continue.
-     Note that this may not exactly mimic the system behavior when a user opens an application for the first time (i.e, the xattr isn't deleted),
-     but this should be sufficient enough for our purposes.
-     
-     This method may return false even if some items do get released from quarantine if the target URL is pointing to a directory.
-     Thus if an item cannot be released from quarantine, this method still continues on to the next enumerated item.
-     
-     This is not an atomic operation.
-     */
-    // MARK: - Fatto
+    /// Releases Apple's quarantine extended attribute from the item at the specified root URL
+    /// - Parameter rootURL: A URL pointing to the item to release from Apple's quarantine. This will be applied recursively if the item is a directory. The item at this URL must exist.
+    /// - Returns: true if all the items at the target could be released from quarantine, otherwise false if any items couldn't.
+    ///
+    /// This method removes quarantine attributes from an item, ideally an application, so that when the user launches a new application themselves, they
+    /// don't have to witness the system dialog alerting them that they downloaded an application from the internet and asking if they want to continue.
+    /// Note that this may not exactly mimic the system behavior when a user opens an application for the first time (i.e, the xattr isn't deleted),
+    /// but this should be sufficient enough for our purposes.
+    ///
+    /// This method may return false even if some items do get released from quarantine if the target URL is pointing to a directory.
+    /// Thus if an item cannot be released from quarantine, this method still continues on to the next enumerated item.
+    ///
+    /// This is not an atomic operation.
     func releaseItemFromQuarantine(at rootURL: URL) throws {
         let removeXAttrOptions = XATTR_NOFOLLOW
         
@@ -373,13 +343,12 @@ class SUFileManager: NSObject {
         }
     }
     
-    // MARK: - FAtto
+    // MARK: - Private methods
     private func itemExists(at fileURL: URL) -> Bool {
         let path = fileURL.path
         return (try? fileManager.attributesOfItem(atPath: path)) != nil
     }
     
-    // MARK: - FAtto
     private func itemExists(at fileURL: URL, isDirectory: inout Bool) -> Bool {
         let path = fileURL.path
         guard let attributes = try? fileManager.attributesOfItem(atPath: path) else { return false }
@@ -388,7 +357,7 @@ class SUFileManager: NSObject {
         
         return true
     }
-    // MARK: - Fatto
+    
     // Wrapper around getxattr()
     private func getXAttr(name: UnsafePointer<Int8>, from file: String, options: Int32) -> Int {
         var path = [Int8](repeating: 0, count: Int(PATH_MAX))
@@ -400,7 +369,6 @@ class SUFileManager: NSObject {
         return getxattr(&path, name, nil, 0, 0, options)
     }
     
-    // MARK: - Fatto
     // Wrapper around removexattr()
     private func removeXAttr(attr: UnsafePointer<Int8>, fromFile file: String, options: Int32) -> Int32 {
         var path = [Int8](repeating: 0, count: Int(PATH_MAX))
@@ -412,7 +380,6 @@ class SUFileManager: NSObject {
         return removexattr(&path, attr, options)
     }
     
-    // MARK: - Fatto
     private func changeOwnerAndGroupOfItem(at targetURL: URL, ownerID: Int, groupID: Int) throws {
         var path = [Int8](repeating: 0, count: Int(PATH_MAX))
         guard (targetURL.path as NSString).getFileSystemRepresentation(&path, maxLength: MemoryLayout.size(ofValue: path)) else {
@@ -433,7 +400,6 @@ class SUFileManager: NSObject {
         }
     }
     
-    // MARK: - Fatto
     private func updateItem(at targetURL: URL, with accessTime: timeval) throws {
         var path = [Int8](repeating: 0, count: Int(PATH_MAX))
         
@@ -475,13 +441,11 @@ class SUFileManager: NSObject {
         }
     }
     
-    /**
-     Retrieves the volume ID that a particular url resides on
-     The url must point to a file that exists
-     There is no cocoa equivalent for obtaining the volume ID
-     
-     If the function does not throw it is ok to assume that `volumeID` is not optional.
-     */
+    /// Retrieves the volume ID that a particular url resides on
+    /// The url must point to a file that exists
+    /// There is no cocoa equivalent for obtaining the volume ID
+    ///
+    /// If the function does not throw it is ok to assume that `volumeID` is not optional.
     private func getVolumeID(_ volumeID: inout VolumeID?, ofItemAt url: URL) throws {
         guard itemExists(at: url) else {
             throw NSError(domain: NSCocoaErrorDomain, code: NSFileNoSuchFileError, userInfo: [NSLocalizedDescriptionKey: "Cannot get volume identifier of \(url.lastPathComponent) because it does not exist."])

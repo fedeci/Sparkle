@@ -57,9 +57,8 @@ let SUPromptUserOnFirstLaunchKey = "SUPromptUserOnFirstLaunch"
 let SUEnableJavaScriptKey = "SUEnableJavaScript"
 let SUFixedHTMLDisplaySizeKey = "SUFixedHTMLDisplaySize"
 let SUDefaultsDomainKey = "SUDefaultsDomain"
-/**
- * Error domain used by Sparkle
- */
+
+/// Error domain used by Sparkle
 let SUSparkleErrorDomain = "SUSparkleErrorDomain"
 
 let SUAppendVersionNumberKey = "SUAppendVersionNumber"

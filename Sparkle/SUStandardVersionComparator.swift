@@ -16,13 +16,11 @@ private let dispatchOnce: () = {
 }()
 
 // MARK: -
-/**
-Sparkle's default version comparator.
-
-This comparator is adapted from MacPAD, by Kevin Ballard.
-It's "dumb" in that it does essentially string comparison,
-in components split by character type.
-*/
+/// Sparkle's default version comparator.
+///
+/// This comparator is adapted from MacPAD, by Kevin Ballard.
+/// It's "dumb" in that it does essentially string comparison,
+/// in components split by character type.
 @objcMembers
 public class SUStandardVersionComparator: NSObject {
     
@@ -32,18 +30,14 @@ public class SUStandardVersionComparator: NSObject {
         case kSeparatorType
     }
     
-    /**
-    Initializes a new instance of the standard version comparator.
-    */
+    /// Initializes a new instance of the standard version comparator.
     public override init() {
         super.init()
     }
     
-    /**
-    Returns a singleton instance of the comparator.
-
-    It is usually preferred to alloc/init new a comparator instead.
-     */
+    /// Returns a singleton instance of the comparator.
+    ///
+    /// It is usually preferred to alloc/init new a comparator instead.
     public class func defaultComparator() -> SUStandardVersionComparator? {
         _ = dispatchOnce
         
@@ -99,11 +93,10 @@ public class SUStandardVersionComparator: NSObject {
 }
 
 extension SUStandardVersionComparator: SUVersionComparison {
-    /**
-    Compares version strings through textual analysis.
-
-    See the implementation for more details.
-    */
+    
+    /// Compares version strings through textual analysis.
+    ///
+    /// See the implementation for more details.
     func compareVersion(_ versionA: String, toVersion versionB: String) -> ComparisonResult {
         let partsA = splitVersionString(versionA)
         let partsB = splitVersionString(versionB)

@@ -11,28 +11,20 @@ import Foundation
 private let SUUpdatePermissionAutomaticUpdateChecksKey = "SUUpdatePermissionAutomaticUpdateChecks"
 private let SUUpdatePermissionSendSystemProfileKey = "SUUpdatePermissionSendSystemProfile"
 
-/**
- This class represents a response for permission to check updates.
-*/
+/// This class represents a response for permission to check updates.
 @objcMembers
 class SUUpdatePermissionResponse: NSObject {
     
-    /**
-     A read-only property indicating whether automatic update checks are allowed or not.
-    */
+    /// A read-only property indicating whether automatic update checks are allowed or not.
     private(set) var automaticUpdateChecks: Bool
     
-    /**
-     A read-only property indicating if system profile should be sent or not.
-    */
+    /// A read-only property indicating if system profile should be sent or not.
     private(set) var sendSystemProfile: Bool
     
-    /**
-     Initializes a new update permission response instance.
-     
-     - Parameter automaticUpdateChecks: Flag for whether to allow automatic update checks.
-     - Parameter sendSystemProfile: Flag for if system profile information should be sent to the server hosting the appcast.
-    */
+    /// Initializes a new update permission response instance.
+    ///
+    /// - Parameter automaticUpdateChecks: Flag for whether to allow automatic update checks.
+    /// - Parameter sendSystemProfile: Flag for if system profile information should be sent to the server hosting the appcast.
     init(automaticUpdateChecks: Bool, sendSystemProfile: Bool) {
         self.automaticUpdateChecks = automaticUpdateChecks
         self.sendSystemProfile = sendSystemProfile
