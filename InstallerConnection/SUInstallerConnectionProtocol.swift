@@ -12,10 +12,10 @@ import Foundation
 protocol SUInstallerConnectionProtocol {
     #warning("Inherit SUInstallerCommunicationProtocol?")
     func handleMessageWithIdentifier(_ identifier: Int32, data: Data)
-    
+
     func setInvalidationHandler(_ invalidationHandler: @escaping () -> Void)
-    
+
     func setServiceName(_ serviceName: String, hostPath: String, installationType: String)
-    
+
     func invalidate()
 }

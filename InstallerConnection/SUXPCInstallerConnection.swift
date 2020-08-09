@@ -14,29 +14,29 @@ class SUXPCInstallerConnection: NSObject {
     private var delegate: SUInstallerCommunicationProtocol?
     private var connection: NSXPCConnection?
     private var invalidationBlock: (() -> Void)?
-    
+
     init(with delegate: SUInstallerCommunicationProtocol) {
         super.init()
         connection = NSXPCConnection(serviceName: SPUInstallerConnectionBundleIdentifier)
         connection?.remoteObjectInterface = NSXPCInterface(with: SUInstallerConnectionProtocol.self)
-        
+
         connection?.invalidationHandler = { [weak self] in
             self?.invokeInvalidation()
         }
-        
+
         connection?.interruptionHandler = { [weak self] in
             self?.invokeInvalidation()
             self?.connection?.invalidate()
         }
-        
+
         self.delegate = delegate
-        
+
         connection?.exportedInterface = NSXPCInterface(with: SUInstallerConnectionProtocol.self)
         connection?.exportedObject = delegate
-        
+
         connection?.resume()
     }
-    
+
     private func invokeInvalidation() {
         invalidationBlock?()
         invalidationBlock = nil
@@ -49,19 +49,19 @@ extension SUXPCInstallerConnection: SUInstallerConnectionProtocol {
     func handleMessageWithIdentifier(_ identifier: Int32, data: Data) {
         (connection?.remoteObjectProxy as? SUInstallerConnectionProtocol)?.handleMessageWithIdentifier(identifier, data: data)
     }
-    
+
     func setInvalidationHandler(_ invalidationHandler: @escaping () -> Void) {
         invalidationBlock = invalidationHandler
-        
+
         (connection?.remoteObjectProxy as? SUInstallerConnectionProtocol)?.setInvalidationHandler { [weak self] in
             self?.invokeInvalidation()
         }
     }
-    
+
     func setServiceName(_ serviceName: String, hostPath: String, installationType: String) {
         (connection?.remoteObjectProxy as? SUInstallerConnectionProtocol)?.setServiceName(serviceName, hostPath: hostPath, installationType: installationType)
     }
-    
+
     func invalidate() {
         (connection?.remoteObjectProxy as? SUInstallerConnectionProtocol)?.invalidate()
         connection?.invalidate()

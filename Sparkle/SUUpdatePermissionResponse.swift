@@ -14,13 +14,13 @@ private let SUUpdatePermissionSendSystemProfileKey = "SUUpdatePermissionSendSyst
 /// This class represents a response for permission to check updates.
 @objcMembers
 class SUUpdatePermissionResponse: NSObject {
-    
+
     /// A read-only property indicating whether automatic update checks are allowed or not.
     private(set) var automaticUpdateChecks: Bool
-    
+
     /// A read-only property indicating if system profile should be sent or not.
     private(set) var sendSystemProfile: Bool
-    
+
     /// Initializes a new update permission response instance.
     ///
     /// - Parameter automaticUpdateChecks: Flag for whether to allow automatic update checks.
@@ -30,7 +30,7 @@ class SUUpdatePermissionResponse: NSObject {
         self.sendSystemProfile = sendSystemProfile
         super.init()
     }
-    
+
     required convenience init?(coder: NSCoder) {
         let automaticUpdateChecks = coder.decodeBool(forKey: SUUpdatePermissionAutomaticUpdateChecksKey)
         let sendSystemProfile = coder.decodeBool(forKey: SUUpdatePermissionSendSystemProfileKey)
@@ -42,7 +42,7 @@ extension SUUpdatePermissionResponse: NSSecureCoding {
     static var supportsSecureCoding: Bool {
         return true
     }
-    
+
     func encode(with coder: NSCoder) {
         coder.encode(automaticUpdateChecks, forKey: SUUpdatePermissionAutomaticUpdateChecksKey)
         coder.encode(sendSystemProfile, forKey: SUUpdatePermissionSendSystemProfileKey)

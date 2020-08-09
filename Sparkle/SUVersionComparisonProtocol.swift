@@ -11,7 +11,7 @@ import Foundation
 /// Provides version comparison facilities for Sparkle.
 @objc
 protocol SUVersionComparison {
-    
+
     /// An abstract method to compare two version strings.
     ///
     /// Should return OrderedAscending if b `>` a, NSOrderedDescending if b `<` a, and OrderedSame if they are equivalent.

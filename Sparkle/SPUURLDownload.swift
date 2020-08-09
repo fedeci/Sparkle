@@ -87,7 +87,7 @@ func SPUDownloadURL(with request: URLRequest, completionBlock: (SPUDownloadData?
         downloader = connection?.remoteObjectProxy as? SPUDownloaderProtocol
 
     }
-    
+
     if let request = SPUURLRequest.URLRequestWithRequest(request) {
         downloader?.startTemporaryDownloadWithRequest(request)
     } else {

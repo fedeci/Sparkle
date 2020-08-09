@@ -9,8 +9,8 @@
 import Foundation
 
 extension XMLElement {
-    var attributesAsDictionary: [AnyHashable : Any]? {
-        var dictionary: [AnyHashable : Any] = [:]
+    var attributesAsDictionary: [AnyHashable: Any]? {
+        var dictionary: [AnyHashable: Any] = [:]
         if let attributeEnum = (attributes as NSArray?)?.objectEnumerator() {
             for case let attribute as XMLNode in attributeEnum {
                 guard let attrName = attribute.name else { continue }
@@ -29,29 +29,29 @@ class SUAppcast: NSObject {
     var httpHeaders: [String: String]?
     var items: [AnyHashable]?
     private var completionBlock: ((NSError?) -> Void)?
-    
+
     override init() {
         super.init()
     }
-    
+
     func fetchAppcastFromURL(_ url: URL, inBackground background: Bool, completionBlock block: @escaping (NSError?) -> Void) {
         completionBlock = block
-        
+
         var request = URLRequest(url: url, cachePolicy: .reloadIgnoringCacheData, timeoutInterval: 30)
-        
+
         if userAgentString != nil {
             request.setValue(userAgentString, forHTTPHeaderField: "User-Agent")
         }
         request.networkServiceType = background ? .background : .default
-        
+
         if let httpHeaders = httpHeaders {
             for (key, value) in httpHeaders {
                 request.setValue(value, forHTTPHeaderField: key)
             }
         }
-        
+
         request.setValue("application/rss+xml,*/*;q=0.1", forHTTPHeaderField: "Accept")
-        
+
         SPUDownloadURL(with: request) { downloadData, error in
             if let downloadData = downloadData {
                 do {
@@ -61,40 +61,40 @@ class SUAppcast: NSObject {
                     completionBlock = nil
                 } catch let error as NSError {
                     let userInfo: [String: Any] = [NSLocalizedDescriptionKey: SULocalizedString("An error occurred while parsing the update feed."), NSUnderlyingErrorKey: error]
-                    
+
                     reportError(NSError(domain: SUSparkleErrorDomain, code: Int(SUError.SUAppcastParseError.rawValue), userInfo: userInfo))
                 }
             } else {
                 SULog(.error, "Encountered download feed error: \(String(describing: error))")
-                
+
                 var userInfo: [String: Any] = [NSLocalizedDescriptionKey: SULocalizedString("An error occurred while downloading the update feed.")]
-                
+
                 if let error = error {
                     userInfo[NSUnderlyingErrorKey] = error
                 }
-                
+
                 reportError(NSError(domain: SUSparkleErrorDomain, code: Int(SUError.SUDownloadError.rawValue), userInfo: userInfo))
             }
         }
-        
+
     }
-    
+
     private func parseAppcastItemsFromXMLData(_ appcastData: Data, relativeTo appcastURL: URL?) throws -> [AnyHashable]? {
         guard let appcastURL = appcastURL else { return nil }
-        
+
         let options: XMLNode.Options = .nodeLoadExternalEntitiesNever
         guard let document = try? XMLDocument(data: appcastData, options: options) else { return nil }
-        
+
         guard let xmlItems = try? document.nodes(forXPath: "/rss/channel/item") else { return nil }
-        
+
         let appcastItems: [AnyHashable]?
         var node: XMLNode?
-        
+
         for xmlItem in xmlItems {
             node = xmlItem
             var nodesDict: [AnyHashable: Any] = [:]
             var dict: [AnyHashable: Any] = [:]
-            
+
             // First, we'll "index" all the first-level children of this appcast item so we can pick them out by language later.
             if node?.children?.count != nil {
                 node = node?.child(at: 0)
@@ -110,7 +110,7 @@ class SUAppcast: NSObject {
                     node = node?.nextSibling
                 }
             }
-            
+
             for case let (key as String, _) in nodesDict {
                 node = bestNodeInNodes(nodesDict[key] as? [AnyHashable])
                 if key == SURSSElementEnclosure {
@@ -151,7 +151,7 @@ class SUAppcast: NSObject {
                     }
                 }
             }
-            
+
             do {
                 let anItem = try SUAppcastItem(dictionary: dict, relativeTo: appcastURL)
                 appcastItems?.append(anItem)
@@ -161,7 +161,7 @@ class SUAppcast: NSObject {
             }
         }
     }
-    
+
     ////
     func copyWithoutDeltaUpdates() -> SUAppcast? {
         guard let items = items else { return nil }
@@ -172,7 +172,7 @@ class SUAppcast: NSObject {
                 nonDeltaItems.append(item)
             }
         }
-        
+
         other.items = nonDeltaItems
         return other
     }
@@ -180,10 +180,10 @@ class SUAppcast: NSObject {
     private func attributesOfNode(_ node: XMLElement?) -> [String: String] {
         guard let attributeEnum = node?.attributes else { return [:] }
         var dictionary: [String: String] = [:]
-        
+
         for attribute in attributeEnum {
             guard let attrName = sparkleNamespacedNameOfNode(attribute) else { continue }
-            
+
             if let attributeStringValue = attribute.stringValue {
                 dictionary[attrName] = attributeStringValue
             }
@@ -207,10 +207,10 @@ class SUAppcast: NSObject {
         guard let nodes = nodes as? [XMLElement] else { return nil }
         guard !nodes.isEmpty else { return nil }
         guard nodes.count != 1 else { return nodes[0] }
-        
+
         var languages: [String] = []
         var lang: String = ""
-        
+
         for node in nodes {
             lang = node.attribute(forName: "xml:lang")?.stringValue ?? ""
             languages.append(lang)
@@ -218,14 +218,14 @@ class SUAppcast: NSObject {
         lang = Bundle.preferredLocalizations(from: languages)[0]
         let contains = languages.contains(lang)
         let index = languages.firstIndex(of: contains ? lang : "") ?? NSNotFound
-        
+
         guard index != NSNotFound else { return nodes[0] }
         return nodes[index]
     }
     ////
     private func reportError(_ error: NSError) {
         var userInfo = error.userInfo
-        
+
         if userInfo.isEmpty {
             userInfo = [
                 NSLocalizedDescriptionKey: SULocalizedString("An error occurred in retrieving update information. Please try again later."),
@@ -233,11 +233,11 @@ class SUAppcast: NSObject {
                 NSUnderlyingErrorKey: error
             ]
         }
-        
+
         if let failingURL = error.userInfo[NSURLErrorFailingURLErrorKey] {
             userInfo[NSURLErrorFailingURLErrorKey] = failingURL
         }
-        
+
         completionBlock?(NSError(domain: SUSparkleErrorDomain, code: Int(SUError.SUAppcastError.rawValue), userInfo: userInfo))
         completionBlock = nil
     }

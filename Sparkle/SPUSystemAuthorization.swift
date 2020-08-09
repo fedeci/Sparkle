@@ -25,7 +25,7 @@ func SPUNeedsSystemAuthorizationAccess(path: String, installationType: String) -
             // If we can, then we can probably perform an update without authorization
             let tempFilename = "permission_test"
             let suFileManager = SUFileManager()
-            
+
             if let tempDirectoryURL = try? suFileManager.makeTemporaryDirectory(with: tempFilename, appropriateFor: URL(fileURLWithPath: NSTemporaryDirectory())) {
                 let tempFileURL: URL = tempDirectoryURL.appendingPathComponent(tempFilename)
                 if (try? Data().write(to: tempFileURL)) == nil {

@@ -18,15 +18,15 @@ class SUInstallerConnection: NSObject {
     private var disabledAutomaticTermination: Bool?
     private var invalidationBlock: (() -> Void)?
     private var connection: NSXPCConnection?
-    
+
     init(with delegate: SUInstallerCommunicationProtocol) {
         self.delegate = delegate
-        
+
         // If we are a XPC service, protect it from being terminated until the invalidation handler is set
         disabledAutomaticTermination = true
         ProcessInfo.processInfo.disableAutomaticTermination(SUInstallerConnectionKeepAliveReason)
     }
-    
+
     private func enableAutomaticTermination() {
         if disabledAutomaticTermination == true {
             ProcessInfo.processInfo.enableAutomaticTermination(SUInstallerConnectionKeepAliveReason)
@@ -39,46 +39,46 @@ extension SUInstallerConnection: SUInstallerConnectionProtocol {
     func handleMessageWithIdentifier(_ identifier: Int32, data: Data) {
         (connection?.remoteObjectProxy as? SUInstallerCommunicationProtocol)?.handleMessageWithIdentifier(identifier, data: data)
     }
-    
+
     func setInvalidationHandler(_ invalidationHandler: @escaping () -> Void) {
         invalidationBlock = invalidationHandler
         // No longer needed because of invalidation callback
         enableAutomaticTermination()
     }
-    
+
     func setServiceName(_ serviceName: String, hostPath: String, installationType: String) {
         let options = SPUNeedsSystemAuthorizationAccess(path: hostPath, installationType: installationType) ? NSXPCConnection.Options.privileged : NSXPCConnection.Options()
         let connection = NSXPCConnection(machServiceName: serviceName, options: options)
-        
+
         connection.exportedInterface = NSXPCInterface(with: SUInstallerCommunicationProtocol.self)
         connection.exportedObject = delegate
-        
+
         connection.remoteObjectInterface = NSXPCInterface(with: SUInstallerCommunicationProtocol.self)
-        
+
         self.connection = connection
-        
+
         self.connection?.interruptionHandler = { [weak self] in
             self?.connection?.invalidate()
         }
-        
+
         self.connection?.invalidationHandler = { [weak self] in
             self?.connection = nil
             self?.invalidate()
         }
-        
+
         self.connection?.resume()
     }
-    
+
     func invalidate() {
         DispatchQueue.main.async {
             self.connection?.invalidate()
             self.connection = nil
-            
+
             self.invalidationBlock?()
             self.invalidationBlock = nil
             // Break the retain cycle
             self.delegate = nil
-            
+
             self.enableAutomaticTermination()
         }
     }

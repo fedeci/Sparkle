@@ -49,7 +49,7 @@ class SUAppcastItem: NSObject {
     private(set) var installationType: String?
     // Returns the dictionary provided in initWithDictionary; this might be useful later for extensions.
     private(set) var propertiesDictionary: [AnyHashable: Any]?
-    
+
     var isDeltaUpdate: Bool {
         guard let rssElementEnclosure = propertiesDictionary?[SURSSElementEnclosure] as? [AnyHashable: Any] else { return false }
         return rssElementEnclosure[SUAppcastAttributeDeltaFrom] != nil
@@ -72,11 +72,11 @@ class SUAppcastItem: NSObject {
     convenience init(dictionary dict: [AnyHashable: Any]) throws {
         try self.init(dictionary: dict, relativeTo: nil)
     }
-    
+
     init(dictionary dict: [AnyHashable: Any], relativeTo appcastURL: URL?) throws {
         super.init()
         let enclosure = dict[SURSSElementEnclosure] as? [AnyHashable: Any]
-        
+
         // Try to find a version string.
         // Finding the new version number from the RSS feed is a little bit hacky. There are two ways:
         // 1. A "sparkle:version" attribute on the enclosure tag, an extension from the RSS spec.
@@ -89,10 +89,10 @@ class SUAppcastItem: NSObject {
         if newVersion == nil {
             newVersion = dict[SUAppcastAttributeVersion] as? String // Get version from the item, in case it's a download-less item (i.e. paid upgrade).
         }
-        
+
         if newVersion == nil { // no sparkle:version attribute anywhere?
             SULog(.error, "warning: <\(SURSSElementEnclosure)> for URL '\(String(describing: enclosure?[SURSSAttributeURL]))' is missing \(SUAppcastAttributeVersion) attribute. Version comparison may be unreliable. Please always specify \(SUAppcastAttributeVersion)")
-            
+
             // Separate the url by underscores and take the last component, as that'll be closest to the end,
             // then we remove the extension. Hopefully, this will be the version.
             if let fileComponents = (enclosure?[SURSSAttributeURL] as? String)?.components(separatedBy: "_") {
@@ -101,16 +101,16 @@ class SUAppcastItem: NSObject {
                 }
             }
         }
-        
+
         guard newVersion != nil else {
             throw SUAppcastItemError.missingAttributeVersion("Feed item lacks \(SUAppcastAttributeVersion) attribute, and version couldn't be deduced from file name (would have used last component of a file name like AppName_1.3.4.zip)")
         }
-        
+
         propertiesDictionary = dict
         title = dict[SURSSElementTitle] as? String
         dateString = dict[SURSSElementPubDate] as? String
         itemDescription = dict[SURSSElementDescription] as? String
-        
+
         let theInfoURL = dict[SURSSElementLink]
         if !(theInfoURL is String) {
             SULog(.error, "\(NSStringFromClass(SUAppcastItem.self))-\(NSStringFromSelector(#function)) Info URL is not of valid type.")
@@ -119,18 +119,18 @@ class SUAppcastItem: NSObject {
                 infoURL = URL(string: theInfoURL as String, relativeTo: appcastURL)
             }
         }
-        
+
         // Need an info URL or an enclosure URL. Former to show "More Info"
         // page, latter to download & install:
         guard enclosure != nil && theInfoURL != nil else {
             throw SUAppcastItemError.missingEnclosure("No enclosure in feed item")
         }
-        
+
         let enclosureURLString: String? = enclosure?[SURSSAttributeURL] as? String
         guard enclosureURLString != nil && theInfoURL != nil else {
             throw SUAppcastItemError.missingEnclosureURL("Feed item's enclosure lacks URL")
         }
-        
+
         if enclosureURLString != nil {
             var contentLength: Int64 = 0
             if let enclosureLengthString = enclosure?[SURSSAttributeLength] as? String {
@@ -138,42 +138,42 @@ class SUAppcastItem: NSObject {
             }
             self.contentLength = contentLength > 0 ? UInt64(contentLength) : 0
         }
-        
+
         if let enclosureURLString = enclosureURLString {
             // Sparkle used to always URL-encode, so for backwards compatibility spaces in URLs must be forgiven.
             let fileURLString = enclosureURLString.replacingOccurrences(of: " ", with: "%20")
             fileURL = URL(string: fileURLString, relativeTo: appcastURL)
         }
-        
+
         if let enclosure = enclosure {
             signatures = SUSignatures(dsa: enclosure[SUAppcastAttributeDSASignature] as? String, ed: enclosure[SUAppcastAttributeEDSignature] as? String)
         }
-        
+
         versionString = newVersion
         minimumSystemVersion = dict[SUAppcastElementMinimumSystemVersion] as? String
         maximumSystemVersion = dict[SUAppcastElementMaximumSystemVersion] as? String
-        
+
         var shortVersionString: String? = enclosure?[SUAppcastAttributeShortVersionString] as? String
         if shortVersionString == nil {
             shortVersionString = dict[SUAppcastAttributeShortVersionString] as? String // fall back on the <item>
         }
-        
+
         if shortVersionString != nil {
             displayVersionString = shortVersionString
         } else {
             displayVersionString = versionString
         }
-        
+
         installationType = enclosure?[SUAppcastAttributeInstallationType] as? String
-        
+
         if installationType == nil {
             installationType = SPUInstallationTypeDefault
-        } else if (!SPUValidInstallationType(installationType)) {
+        } else if !SPUValidInstallationType(installationType) {
             throw SUAppcastItemError.invalidAttributeInstallationType("Feed item's enclosure lacks valid \(SUAppcastAttributeInstallationType) (found \(String(describing: installationType))")
-        } else if (installationType == SPUInstallationTypeInteractivePackage) {
+        } else if installationType == SPUInstallationTypeInteractivePackage {
             SULog(.default, "warning: '\(SPUInstallationTypeInteractivePackage)' for \(SUAppcastAttributeInstallationType) is deprecated. Use '\(SPUInstallationTypeGuidedPackage)' instead.")
         }
-        
+
         // Find the appropriate release notes URL.
         if let releaseNotesString = dict[SUAppcastElementReleaseNotesLink] as? String {
             let url = URL(string: releaseNotesString, relativeTo: appcastURL)
@@ -188,24 +188,24 @@ class SUAppcastItem: NSObject {
         } else {
             releaseNotesURL = nil
         }
-        
+
         if let deltaDictionaries = dict[SUAppcastElementDeltas] as? [[AnyHashable: Any]] {
             var deltas: [String: SUAppcastItem] = [:]
             for deltaDictionary in deltaDictionaries {
                 guard let deltaFrom = deltaDictionary[SUAppcastAttributeDeltaFrom] as? String else { continue }
-                
+
                 var fakeAppCastDict = dict
                 fakeAppCastDict.removeValue(forKey: SUAppcastElementDeltas)
                 fakeAppCastDict[SURSSElementEnclosure] = deltaDictionary
                 let deltaItem = try? SUAppcastItem(dictionary: fakeAppCastDict)
-                
+
                 deltas[deltaFrom] = deltaItem
             }
-            
+
             deltaUpdates = deltas
         }
     }
-    
+
     required init?(coder: NSCoder) {
         super.init()
         deltaUpdates = coder.decodeObject(of: [NSDictionary.self, SUAppcastItem.self], forKey: SUAppcastItemDeltaUpdatesKey) as? [AnyHashable: Any]
@@ -225,9 +225,9 @@ class SUAppcastItem: NSObject {
         releaseNotesURL = coder.decodeObject(forKey: SUAppcastItemReleaseNotesURLKey) as? URL
         title = coder.decodeObject(forKey: SUAppcastItemTitleKey) as? String
         versionString = coder.decodeObject(forKey: SUAppcastItemVersionStringKey) as? String
-        
+
         propertiesDictionary = coder.decodeObject(of: [NSDictionary.self, NSString.self, NSDate.self, NSArray.self], forKey: SUAppcastItemPropertiesKey) as? [AnyHashable: Any]
-        
+
     }
 }
 
@@ -235,20 +235,20 @@ extension SUAppcastItem: NSSecureCoding {
     static var supportsSecureCoding: Bool {
         return true
     }
-    
+
     func encode(with coder: NSCoder) {
         if let deltaUpdates = deltaUpdates {
             coder.encode(deltaUpdates, forKey: SUAppcastItemDeltaUpdatesKey)
         }
-        
+
         if let displayVersionString = displayVersionString {
             coder.encode(displayVersionString, forKey: SUAppcastItemDisplayVersionStringKey)
         }
-        
+
         if let signatures = signatures {
             coder.encode(signatures, forKey: SUAppcastItemSignaturesKey)
         }
-        
+
         if let fileURL = fileURL {
             coder.encode(fileURL, forKey: SUAppcastItemFileURLKey)
         }
@@ -256,7 +256,7 @@ extension SUAppcastItem: NSSecureCoding {
         if let infoURL = infoURL {
             coder.encode(infoURL, forKey: SUAppcastItemInfoURLKey)
         }
-        
+
         if let contentLength = contentLength {
             coder.encode(contentLength, forKey: SUAppcastItemContentLengthKey)
         }

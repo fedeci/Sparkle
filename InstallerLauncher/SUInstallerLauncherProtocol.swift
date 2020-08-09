@@ -10,6 +10,6 @@ import Foundation
 
 protocol SUInstallerLauncherProtocol {
     func launchInstallerWithHostBundlePath(_ hostBundlePath: String, authorizationPrompt: String, installationType: String, allowingDriverInteraction: Bool, allowingUpdaterInteraction: Bool, completion: (SUInstallerLauncherStatus) -> Void)
-    
+
     func checkIfApplicationInstallationRequiresAuthorizationWithHostBundlePath(_ hostBundlePath: String, reply: (Bool) -> Void)
 }

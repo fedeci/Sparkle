@@ -19,7 +19,7 @@ extension ShowInstallerProgress: InstallerProgressDelegate {
         statusController?.beginAction(with: SULocalizedString("Installing update..."), maxProgressValue: 0, statusText: "")
         statusController?.showWindow(self)
     }
-    
+
     func installerProgressShouldStop() {
         statusController?.close()
         statusController = nil

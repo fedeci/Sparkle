@@ -14,7 +14,7 @@ func SPUArchiveRootObjectSecurely(_ rootObject: NSSecureCoding) -> Data {
     let data = NSMutableData()
     let keyedArchiver = NSKeyedArchiver(forWritingWith: data)
     keyedArchiver.requiresSecureCoding = true
-    
+
     keyedArchiver.encode(rootObject, forKey: SURootObjectArchiveKey)
     keyedArchiver.finishEncoding()
     return data as Data

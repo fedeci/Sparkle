@@ -9,7 +9,7 @@
 import Foundation
 
 protocol SPUUpdaterCycleDelegate: NSObjectProtocol {
-    
+
     func resetUpdateCycle()
 }
 
@@ -18,20 +18,20 @@ protocol SPUUpdaterCycleDelegate: NSObjectProtocol {
 @objcMembers
 class SPUUpdaterCycle: NSObject {
     private weak var delegate: SPUUpdaterCycleDelegate?
-    
+
     init(with delegate: SPUUpdaterCycleDelegate) {
         super.init()
         self.delegate = delegate
     }
-    
+
     func resetUpdateCycleAfterDelay() {
         perform(#selector(resetUpdateCycle), with: nil, afterDelay: 1)
     }
-    
+
     func cancelNextUpdateCycle() {
         SPUUpdaterCycle.cancelPreviousPerformRequests(withTarget: self, selector: #selector(resetUpdateCycle), object: nil)
     }
-    
+
     private func resetUpdateCycle() {
         delegate?.resetUpdateCycle()
     }

@@ -9,7 +9,7 @@
 import Foundation
 
 protocol SPUUpdaterTimerDelegate: NSObjectProtocol {
-    
+
     func updaterTimerDidFire()
 }
 
@@ -19,22 +19,22 @@ protocol SPUUpdaterTimerDelegate: NSObjectProtocol {
 class SPUUpdaterTimer: NSObject {
     private weak var delegate: SPUUpdaterTimerDelegate?
     private var timer: Timer?
-    
+
     init(with delegate: SPUUpdaterTimerDelegate) {
         super.init()
         self.delegate = delegate
     }
-    
+
     func startAndFire(after delay: TimeInterval) {
         assert(timer == nil)
         timer = Timer(timeInterval: delay, target: self, selector: #selector(fire), userInfo: nil, repeats: false)
     }
-    
+
     func invalidate() {
         timer?.invalidate()
         timer = nil
     }
-    
+
     private func fire(_ timer: Timer) {
         delegate?.updaterTimerDidFire()
         timer = nil
