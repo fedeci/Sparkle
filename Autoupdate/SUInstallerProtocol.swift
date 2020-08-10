@@ -26,5 +26,5 @@ protocol SUInstallerProtocol: NSObjectProtocol {
     // Any installation work after the user application has has been terminated. This is where the final installation work can be done.
     // After this stage is done, the user application may be relaunched.
     // Should be able to be called from non-main thread
-    func performFinalInstallationProgressBlock(_ progressionBlock: ((Double) -> Void)?, error: NSError) -> Bool
+    func performFinalInstallationProgressBlock(_ progressionBlock: ((Double) -> Void)?) throws
 }
