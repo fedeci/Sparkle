@@ -35,8 +35,8 @@ extension SUGuidedPackageInstaller: SUInstallerProtocol {
         return true
     }
     
-    func performInitialInstallation(_ error: NSError) -> Bool {
-        return true
+    func performInitialInstallation() throws {
+        return
     }
     
     func performFinalInstallationProgressBlock(_ progressionBlock: ((Double) -> Void)?) throws {

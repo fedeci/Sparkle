@@ -21,7 +21,7 @@ protocol SUInstallerProtocol: NSObjectProtocol {
     // Any installation work can be done prior to user application being terminated and relaunched
     // No UI should occur during this stage (i.e, do not show package installer apps, etc..)
     // Should be able to be called from non-main thread
-    func performInitialInstallation(_ error: NSError) -> Bool
+    func performInitialInstallation() throws
     
     // Any installation work after the user application has has been terminated. This is where the final installation work can be done.
     // After this stage is done, the user application may be relaunched.
