@@ -278,6 +278,7 @@
 		7A1D5DF024D54B79007DFECD /* SUApplicationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D5DEE24D54B68007DFECD /* SUApplicationInfo.swift */; };
 		7A1D5DF224D54F1E007DFECD /* SPUMessageTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D5DF124D54F1E007DFECD /* SPUMessageTypes.swift */; };
 		7A1D5DF324D54F1E007DFECD /* SPUMessageTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D5DF124D54F1E007DFECD /* SPUMessageTypes.swift */; };
+		7A31A90024E143A30059F7B0 /* SUInstallerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A31A8FF24E143A30059F7B0 /* SUInstallerProtocol.swift */; };
 		7A31D4EA24CF6AB300BFB864 /* SUSignatures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A31D4E924CF6AB300BFB864 /* SUSignatures.swift */; };
 		7A31D4EB24CF6AC600BFB864 /* SUSignatures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A31D4E924CF6AB300BFB864 /* SUSignatures.swift */; };
 		7A31D4EC24CF6AC700BFB864 /* SUSignatures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A31D4E924CF6AB300BFB864 /* SUSignatures.swift */; };
@@ -1311,6 +1312,7 @@
 		7A1D5DEC24D5489E007DFECD /* SUStatusInfoProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUStatusInfoProtocol.swift; sourceTree = "<group>"; };
 		7A1D5DEE24D54B68007DFECD /* SUApplicationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUApplicationInfo.swift; sourceTree = "<group>"; };
 		7A1D5DF124D54F1E007DFECD /* SPUMessageTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SPUMessageTypes.swift; path = Autoupdate/SPUMessageTypes.swift; sourceTree = SOURCE_ROOT; };
+		7A31A8FF24E143A30059F7B0 /* SUInstallerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SUInstallerProtocol.swift; path = Autoupdate/SUInstallerProtocol.swift; sourceTree = SOURCE_ROOT; };
 		7A31D4E924CF6AB300BFB864 /* SUSignatures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUSignatures.swift; sourceTree = "<group>"; };
 		7A3D8B3E24DEB9A500265FA1 /* SUUpdatePermissionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUUpdatePermissionResponse.swift; sourceTree = "<group>"; };
 		7A3D8B4124DEBD2100265FA1 /* SPUUpdaterTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPUUpdaterTimer.swift; sourceTree = "<group>"; };
@@ -1922,6 +1924,7 @@
 				7267E5BB1D3D8B2700D1BF90 /* SUGuidedPackageInstaller.m */,
 				7267E5BC1D3D8B2700D1BF90 /* SUInstaller.h */,
 				7267E5BD1D3D8B2700D1BF90 /* SUInstaller.m */,
+				7A31A8FF24E143A30059F7B0 /* SUInstallerProtocol.swift */,
 				7267E5B91D3D8B0B00D1BF90 /* SUInstallerProtocol.h */,
 				7267E5BE1D3D8B2700D1BF90 /* SUPackageInstaller.h */,
 				7267E5BF1D3D8B2700D1BF90 /* SUPackageInstaller.m */,
@@ -3616,6 +3619,7 @@
 				7AC2F2CD24DE98DE005C2D3D /* SPUSecureCoding.swift in Sources */,
 				7A4F606024CEB1A900C11A32 /* SPULocalCacheDirectory.swift in Sources */,
 				7267E59C1D3D8A5A00D1BF90 /* SUCodeSigningVerifier.m in Sources */,
+				7A31A90024E143A30059F7B0 /* SUInstallerProtocol.swift in Sources */,
 				7267E5861D3D89B300D1BF90 /* SUDiskImageUnarchiver.m in Sources */,
 				7267E59D1D3D8A5A00D1BF90 /* SUSignatureVerifier.m in Sources */,
 				7267E5C21D3D8B2700D1BF90 /* SUGuidedPackageInstaller.m in Sources */,
