@@ -39,7 +39,7 @@ extension SUGuidedPackageInstaller: SUInstallerProtocol {
         return
     }
     
-    func performFinalInstallationProgressBlock(_ progressionBlock: ((Double) -> Void)?) throws {
+    func performFinalInstallationProgressBlock(_ progressBlock: ((Double) -> Void)?) throws {
         // This command *must* be run as root
         let installerPath = "/usr/sbin/installer"
         

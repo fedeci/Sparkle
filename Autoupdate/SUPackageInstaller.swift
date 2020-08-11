@@ -34,7 +34,7 @@ extension SUPackageInstaller: SUInstallerProtocol {
         }
     }
     
-    func performFinalInstallationProgressBlock(_ progressionBlock: ((Double) -> Void)?) throws {
+    func performFinalInstallationProgressBlock(_ progressBlock: ((Double) -> Void)?) throws {
         // Run installer using the "open" command to ensure it is launched in front of current application.
         // -W = wait until the app has quit.
         // -n = Open another instance if already open.

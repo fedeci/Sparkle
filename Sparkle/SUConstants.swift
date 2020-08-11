@@ -30,6 +30,7 @@ let SPUInstallerConnectionBundleIdentifier = "org.sparkle-project.InstallerConne
 let SPUInstallerStatusBundleIdentifier = "org.sparkle-project.InstallerStatus"
 let SPARKLE_NORMALIZE_INSTALLED_APPLICATION_NAME = false
 let CURRENT_PROJECT_VERSION = "2.0"
+let SPARKLE_AUTOMATED_DOWNGRADES = false
 
 let SUAppcastAttributeValueMacOS = "macos"
 
