@@ -42,7 +42,7 @@ class SUCodeSigningVerifier: NSObject {
         // swiftlint:disable:next force_unwrapping
         result = SecStaticCodeCheckValidityWithErrors(staticCode!, flags, requirement, &cfError)
         
-        if let tmpError = cfError?.takeUnretainedValue() as? NSError {
+        if let tmpError = cfError?.takeUnretainedValue() as Error? {
             cfError?.release()
             throw tmpError
         }
@@ -81,7 +81,7 @@ class SUCodeSigningVerifier: NSObject {
         let flags = SecCSFlags(rawValue: 0 | kSecCSCheckAllArchitectures)
         result = SecStaticCodeCheckValidityWithErrors(staticCode!, flags, nil, &cfError)
         
-        if let tmpError = cfError?.takeUnretainedValue() as? NSError {
+        if let tmpError = cfError?.takeUnretainedValue() as Error? {
             cfError?.release()
             throw tmpError
         }

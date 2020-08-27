@@ -12,7 +12,9 @@ let SPUInstallationTypeApplication = "application" // the default installation t
 let SPUInstallationTypeGuidedPackage = "package" // the preferred installation type for package installations
 let SPUInstallationTypeInteractivePackage = "interactive-package" // the deprecated installation type; use guided package instead
 
-let SPUInstallationTypeDefault = SPUInstallationTypeApplication
+var SPUInstallationTypeDefault: String {
+    return SPUInstallationTypeApplication
+}
 
 let SPUInstallationTypesArray = [
     SPUInstallationTypeApplication,
