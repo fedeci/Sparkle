@@ -22,6 +22,6 @@ protocol SPUDownloaderDelegate: NSObjectProtocol {
     // downloadData is nil if this is a persisent download, otherwise it's non-nil if it's a temporary download
     func downloaderDidFinishWithTemporaryDownloadData(_ downloadData: SPUDownloadData?)
 
-    func downloaderDidFailWithError(_ error: NSError)
+    func downloaderDidFailWithError(_ error: Error)
 
 }

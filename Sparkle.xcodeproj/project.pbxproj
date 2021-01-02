@@ -438,6 +438,7 @@
 		72F9EC481D5EA904004AC8B6 /* SPUUpdaterDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 72F9EC471D5EA7D3004AC8B6 /* SPUUpdaterDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7A118FC125A0E461003EB234 /* SPUDownloaderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A118F7525A0E409003EB234 /* SPUDownloaderDelegate.swift */; };
 		7A1190AE25A0E8AA003EB234 /* SPUDownloaderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1190AD25A0E8AA003EB234 /* SPUDownloaderProtocol.swift */; };
+		7A1190D425A0E9AA003EB234 /* SPUDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1190D325A0E9AA003EB234 /* SPUDownloader.swift */; };
 		C23E885B1BE7B24F0050BB73 /* SparkleTestCodeSignApp.enc.dmg in Resources */ = {isa = PBXBuildFile; fileRef = C23E88591BE7AF890050BB73 /* SparkleTestCodeSignApp.enc.dmg */; };
 		EA1E281722B645AE004AA304 /* libbsdiff.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA1E280F22B64522004AA304 /* libbsdiff.a */; };
 		EA1E281822B645CE004AA304 /* libbsdiff.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA1E280F22B64522004AA304 /* libbsdiff.a */; };
@@ -1351,6 +1352,7 @@
 		7A118F7525A0E409003EB234 /* SPUDownloaderDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPUDownloaderDelegate.swift; sourceTree = "<group>"; };
 		7A118FD425A0E573003EB234 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		7A1190AD25A0E8AA003EB234 /* SPUDownloaderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPUDownloaderProtocol.swift; sourceTree = "<group>"; };
+		7A1190D325A0E9AA003EB234 /* SPUDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPUDownloader.swift; sourceTree = "<group>"; };
 		8DC2EF5A0486A6940098B216 /* Sparkle-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Sparkle-Info.plist"; sourceTree = "<group>"; };
 		8DC2EF5B0486A6940098B216 /* Sparkle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Sparkle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5BF4F1B1BC7668B007A052A /* SUTestWebServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUTestWebServer.h; sourceTree = "<group>"; };
@@ -2143,6 +2145,7 @@
 				729BB3D11D503826007C4276 /* org.sparkle-project.Downloader.entitlements */,
 				723B5DA21CF7AB0100365F95 /* SPUDownloader.h */,
 				723B5DA31CF7AB0100365F95 /* SPUDownloader.m */,
+				7A1190D325A0E9AA003EB234 /* SPUDownloader.swift */,
 				723B5DA41CF7AB0100365F95 /* SPUDownloaderDelegate.h */,
 				7A118F7525A0E409003EB234 /* SPUDownloaderDelegate.swift */,
 				723B5DA51CF7AB0100365F95 /* SPUDownloaderProtocol.h */,
@@ -3497,6 +3500,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				72464F721E1F327C00FB341C /* SUOperatingSystem.m in Sources */,
+				7A1190D425A0E9AA003EB234 /* SPUDownloader.swift in Sources */,
 				7A118FC125A0E461003EB234 /* SPUDownloaderDelegate.swift in Sources */,
 				723B5DA71CF7AB0100365F95 /* main.m in Sources */,
 				72E539121D68C3FA0092CE5E /* SPUDownloadData.m in Sources */,
