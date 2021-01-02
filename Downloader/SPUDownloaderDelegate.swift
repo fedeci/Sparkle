@@ -8,6 +8,7 @@
 
 import Foundation
 
+@objc
 protocol SPUDownloaderDelegate: NSObjectProtocol {
     // This is only invoked for persistent downloads
     func downloaderDidSetDestinationName(_ destinationName: String, temporaryDirectory: String)

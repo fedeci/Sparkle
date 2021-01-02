@@ -1,5 +1,4 @@
 #import "SPUDownloadData.h"
 #import "SPUURLRequest.h"
 #import "SPULocalCacheDirectory.h"
-#import "SUConstants.h"
 #import "SUErrors.h"

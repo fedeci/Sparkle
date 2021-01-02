@@ -9,6 +9,7 @@
 import Foundation
 
 // The protocol that this service will vend as its API. This header file will also need to be visible to the process hosting the service.
+@objc
 protocol SPUDownloaderProtocol {
     func startPersistentDownloadWithRequest(_ request: SPUURLRequest, bundleIdentifier: String, desiredFilename: String)
     
