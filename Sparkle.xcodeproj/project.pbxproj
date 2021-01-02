@@ -1138,11 +1138,6 @@
 		723ABE38259A9F2B00BDB4FA /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		723ABE39259A9F2E00BDB4FA /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		723B5D9F1CF7AB0100365F95 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Downloader/Info.plist; sourceTree = SOURCE_ROOT; };
-		723B5DA01CF7AB0100365F95 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Downloader/main.m; sourceTree = SOURCE_ROOT; };
-		723B5DA21CF7AB0100365F95 /* SPUDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPUDownloader.h; path = Downloader/SPUDownloader.h; sourceTree = SOURCE_ROOT; };
-		723B5DA31CF7AB0100365F95 /* SPUDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPUDownloader.m; path = Downloader/SPUDownloader.m; sourceTree = SOURCE_ROOT; };
-		723B5DA41CF7AB0100365F95 /* SPUDownloaderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPUDownloaderDelegate.h; path = Downloader/SPUDownloaderDelegate.h; sourceTree = SOURCE_ROOT; };
-		723B5DA51CF7AB0100365F95 /* SPUDownloaderProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPUDownloaderProtocol.h; path = Downloader/SPUDownloaderProtocol.h; sourceTree = SOURCE_ROOT; };
 		723C8A521E2D60DB00C14942 /* SUTouchBarButtonGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUTouchBarButtonGroup.h; sourceTree = "<group>"; };
 		723C8A531E2D60DB00C14942 /* SUTouchBarButtonGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUTouchBarButtonGroup.m; sourceTree = "<group>"; };
 		7246E0A11C83B685003B4E75 /* SPUStandardUpdaterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPUStandardUpdaterController.h; sourceTree = "<group>"; };
@@ -2141,15 +2136,10 @@
 			isa = PBXGroup;
 			children = (
 				723B5D9F1CF7AB0100365F95 /* Info.plist */,
-				723B5DA01CF7AB0100365F95 /* main.m */,
 				7A1190F925A107BF003EB234 /* main.swift */,
 				729BB3D11D503826007C4276 /* org.sparkle-project.Downloader.entitlements */,
-				723B5DA21CF7AB0100365F95 /* SPUDownloader.h */,
-				723B5DA31CF7AB0100365F95 /* SPUDownloader.m */,
 				7A1190D325A0E9AA003EB234 /* SPUDownloader.swift */,
-				723B5DA41CF7AB0100365F95 /* SPUDownloaderDelegate.h */,
 				7A118F7525A0E409003EB234 /* SPUDownloaderDelegate.swift */,
-				723B5DA51CF7AB0100365F95 /* SPUDownloaderProtocol.h */,
 				7A1190AD25A0E8AA003EB234 /* SPUDownloaderProtocol.swift */,
 				7A118FD425A0E573003EB234 /* Bridging-Header.h */,
 			);
